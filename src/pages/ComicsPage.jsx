@@ -71,89 +71,6 @@ export default function ComicsPage() {
       {/* Carousel */}
       {!isLoading && comics && (
         <>
-          <section id="carousel">
-            <div id="carouselExampleCaptions" className="carousel slide">
-              <div className="carousel-indicators">
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide-to="0"
-                  className="active"
-                  aria-current="true"
-                  aria-label="Slide 1"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide-to="1"
-                  aria-label="Slide 2"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide-to="2"
-                  aria-label="Slide 3"
-                ></button>
-              </div>
-              <div className="carousel-inner">
-                <div className="carousel-item active">
-                  <img src="..." className="d-block w-100" alt="..." />
-                  <div className="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>
-                      Some representative placeholder content for the first
-                      slide.
-                    </p>
-                  </div>
-                </div>
-                <div className="carousel-item">
-                  <img src="..." className="d-block w-100" alt="..." />
-                  <div className="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>
-                      Some representative placeholder content for the second
-                      slide.
-                    </p>
-                  </div>
-                </div>
-                <div className="carousel-item">
-                  <img src="..." className="d-block w-100" alt="..." />
-                  <div className="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>
-                      Some representative placeholder content for the third
-                      slide.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <button
-                className="carousel-control-prev"
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev"
-              >
-                <span
-                  className="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button
-                className="carousel-control-next"
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next"
-              >
-                <span
-                  className="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Next</span>
-              </button>
-            </div>
-          </section>
-
           {/* DC Comics */}
 
           <section id="DC" className="">
@@ -163,14 +80,17 @@ export default function ComicsPage() {
                   <Link
                     to={`/comics/${dcComic.id}`}
                     className="text-decoration-none"
+                    key={dcComic.id}
                   >
-                    <div className="col" key={dcComic.id}>
+                    <div className="col">
                       <div className="card h-100 border-0">
-                        <img
-                          src={`http://127.0.0.1:8000/storage/${dcComic.cover_img}`}
-                          className="card-img-top h-100"
-                          alt="..."
-                        />
+                        <div style={{ height: "379px" }}>
+                          <img
+                            src={`http://127.0.0.1:8000/storage/${dcComic.cover_img}`}
+                            className="card-img-top h-100 overflow-hidden"
+                            alt="..."
+                          />
+                        </div>
                         <div className="card-body h-25">
                           <p className="card-text text-center fw-semibold">
                             {dcComic.title}
@@ -193,8 +113,9 @@ export default function ComicsPage() {
                   <Link
                     to={`/comics/${marvelComic.id}`}
                     className="text-decoration-none"
+                    key={marvelComic.id}
                   >
-                    <div className="col" key={marvelComic.id}>
+                    <div className="col">
                       <div className="card h-100 border-0">
                         <img
                           src={`http://127.0.0.1:8000/storage/${marvelComic.cover_img}`}
