@@ -4,12 +4,18 @@ import { Link, useSearchParams } from "react-router-dom";
 
 export default function ComicsPage() {
   const [comics, setComics] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   function fetchComics() {
-    axios.get("http://127.0.0.1:8000/api/comics").then((response) => {
-      //   console.log(response.data.data);
-      setComics(response.data.data);
-    });
+    axios
+      .get("http://127.0.0.1:8000/api/comics")
+      .then((response) => {
+        //   console.log(response.data.data);
+        setComics(response.data.data);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
   //# Filtro per dividere i brand DC e Marvel
   const marvelComics = comics.filter((comic) => {
@@ -34,147 +40,181 @@ export default function ComicsPage() {
 
   return (
     <>
+      {/* Loader */}
+
+      {isLoading && (
+        <div className="d-flex justify-content-center align-items-center vh-100">
+          <div
+            className="spinner-grow mx-2"
+            style={{ width: "3rem", height: "3rem" }}
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+          <div
+            className="spinner-grow mx-2"
+            style={{ width: "3rem", height: "3rem" }}
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+          <div
+            className="spinner-grow mx-2"
+            style={{ width: "3rem", height: "3rem" }}
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      )}
+
       {/* Carousel */}
-
-      <section id="carousel">
-        <div id="carouselExampleCaptions" className="carousel slide">
-          <div className="carousel-indicators">
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="0"
-              className="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
-          </div>
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img src="..." className="d-block w-100" alt="..." />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>
-                  Some representative placeholder content for the first slide.
-                </p>
+      {!isLoading && comics && (
+        <>
+          <section id="carousel">
+            <div id="carouselExampleCaptions" className="carousel slide">
+              <div className="carousel-indicators">
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleCaptions"
+                  data-bs-slide-to="0"
+                  className="active"
+                  aria-current="true"
+                  aria-label="Slide 1"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleCaptions"
+                  data-bs-slide-to="1"
+                  aria-label="Slide 2"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleCaptions"
+                  data-bs-slide-to="2"
+                  aria-label="Slide 3"
+                ></button>
               </div>
-            </div>
-            <div className="carousel-item">
-              <img src="..." className="d-block w-100" alt="..." />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>
-                  Some representative placeholder content for the second slide.
-                </p>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img src="..." className="d-block w-100" alt="..." />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>
-                  Some representative placeholder content for the third slide.
-                </p>
-              </div>
-            </div>
-          </div>
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div>
-      </section>
-
-      {/* DC Comics */}
-
-      <section id="DC" className="">
-        <div className="row row-cols-5 g-3">
-          {dcComicsSliced.map((dcComic) => {
-            return (
-              <Link
-                to={`/comics/${dcComic.id}`}
-                className="text-decoration-none"
-              >
-                <div className="col" key={dcComic.id}>
-                  <div className="card h-100 border-0">
-                    <img
-                      src={`http://127.0.0.1:8000/storage/${dcComic.cover_img}`}
-                      className="card-img-top h-100"
-                      alt="..."
-                    />
-                    <div className="card-body h-25">
-                      <p className="card-text text-center fw-semibold">
-                        {dcComic.title}
-                      </p>
-                    </div>
+              <div className="carousel-inner">
+                <div className="carousel-item active">
+                  <img src="..." className="d-block w-100" alt="..." />
+                  <div className="carousel-caption d-none d-md-block">
+                    <h5>First slide label</h5>
+                    <p>
+                      Some representative placeholder content for the first
+                      slide.
+                    </p>
                   </div>
                 </div>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Marvel Comics */}
-
-      <section id="Marvel" className="mt-5">
-        <div className="row row-cols-5 g-3">
-          {marvelComicsSliced.map((marvelComic) => {
-            return (
-              <Link
-                to={`/comics/${marvelComic.id}`}
-                className="text-decoration-none"
-              >
-                <div className="col" key={marvelComic.id}>
-                  <div className="card h-100 border-0">
-                    <img
-                      src={`http://127.0.0.1:8000/storage/${marvelComic.cover_img}`}
-                      className="card-img-top h-100"
-                      alt="..."
-                    />
-                    <div className="card-body h-25">
-                      <p className="card-text text-center fw-semibold">
-                        {marvelComic.title}
-                      </p>
-                    </div>
+                <div className="carousel-item">
+                  <img src="..." className="d-block w-100" alt="..." />
+                  <div className="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>
+                      Some representative placeholder content for the second
+                      slide.
+                    </p>
                   </div>
                 </div>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
+                <div className="carousel-item">
+                  <img src="..." className="d-block w-100" alt="..." />
+                  <div className="carousel-caption d-none d-md-block">
+                    <h5>Third slide label</h5>
+                    <p>
+                      Some representative placeholder content for the third
+                      slide.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <button
+                className="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev"
+              >
+                <span
+                  className="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Previous</span>
+              </button>
+              <button
+                className="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next"
+              >
+                <span
+                  className="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Next</span>
+              </button>
+            </div>
+          </section>
+
+          {/* DC Comics */}
+
+          <section id="DC" className="">
+            <div className="row row-cols-5 g-3">
+              {dcComicsSliced.map((dcComic) => {
+                return (
+                  <Link
+                    to={`/comics/${dcComic.id}`}
+                    className="text-decoration-none"
+                  >
+                    <div className="col" key={dcComic.id}>
+                      <div className="card h-100 border-0">
+                        <img
+                          src={`http://127.0.0.1:8000/storage/${dcComic.cover_img}`}
+                          className="card-img-top h-100"
+                          alt="..."
+                        />
+                        <div className="card-body h-25">
+                          <p className="card-text text-center fw-semibold">
+                            {dcComic.title}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* Marvel Comics */}
+
+          <section id="Marvel" className="mt-5">
+            <div className="row row-cols-5 g-3">
+              {marvelComicsSliced.map((marvelComic) => {
+                return (
+                  <Link
+                    to={`/comics/${marvelComic.id}`}
+                    className="text-decoration-none"
+                  >
+                    <div className="col" key={marvelComic.id}>
+                      <div className="card h-100 border-0">
+                        <img
+                          src={`http://127.0.0.1:8000/storage/${marvelComic.cover_img}`}
+                          className="card-img-top h-100"
+                          alt="..."
+                        />
+                        <div className="card-body h-25">
+                          <p className="card-text text-center fw-semibold">
+                            {marvelComic.title}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        </>
+      )}
     </>
   );
 }

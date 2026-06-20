@@ -6,12 +6,18 @@ import dateFormat from "dateformat";
 export default function ComicDetailPage() {
   const { id } = useParams();
   const [comic, setComic] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   function fetchComic() {
-    axios.get(`http://127.0.0.1:8000/api/comics/${id}`).then((response) => {
-      //   console.log(response.data.data);
-      setComic(response.data.data);
-    });
+    axios
+      .get(`http://127.0.0.1:8000/api/comics/${id}`)
+      .then((response) => {
+        //   console.log(response.data.data);
+        setComic(response.data.data);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   console.log("comic", comic);
@@ -20,7 +26,34 @@ export default function ComicDetailPage() {
 
   return (
     <>
-      {comic && (
+      {/* Loader */}
+
+      {isLoading && !comic && (
+        <div className="d-flex justify-content-center align-items-center vh-100">
+          <div
+            className="spinner-grow mx-2"
+            style={{ width: "3rem", height: "3rem" }}
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+          <div
+            className="spinner-grow mx-2"
+            style={{ width: "3rem", height: "3rem" }}
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+          <div
+            className="spinner-grow mx-2"
+            style={{ width: "3rem", height: "3rem" }}
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      )}
+      {!isLoading && comic && (
         <>
           <div className="mb-3">
             <Link to="/comics" className="text-dark">
