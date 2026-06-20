@@ -81,7 +81,7 @@ export default function ComicDetailPage() {
                   <p className="card-text">
                     Pubblicazione:
                     <span className="text-body-secondary">
-                      {dateFormat(comic.relese_date, " dddd, mmmm dS, yyyy")}
+                      {dateFormat(comic.release_date, " dddd, mmmm dS, yyyy")}
                     </span>
                   </p>
                   <div>
@@ -117,6 +117,31 @@ export default function ComicDetailPage() {
               </div>
             </div>
           </div>
+
+          <section id="related-characters" className="my-5">
+            <div className="container my-5">
+              <div className="row row-cols-6 g-3">
+                {comic.characters.map((character) => {
+                  return (
+                    <div className="col" key={character.id}>
+                      <div className="card border-0 related-character-card">
+                        <img
+                          src={`http://127.0.0.1:8000/storage/${character.character_img}`}
+                          className="card-img-top"
+                          alt="..."
+                        />
+                        <div className="card-body related-character-info">
+                          <p className="card-text text-center">
+                            {character.name}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
         </>
       )}
     </>
