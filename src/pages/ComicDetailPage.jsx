@@ -15,7 +15,7 @@ export default function ComicDetailPage() {
   }
 
   console.log("comic", comic);
-
+  //   console.log(`http://127.0.0.1:8000/storage/${comic.cover_img}`);
   useEffect(fetchComic, [id]);
 
   return (
@@ -39,7 +39,12 @@ export default function ComicDetailPage() {
               <div className="col-md-8">
                 <div className="card-body p-5 d-flex flex-column justify-content-between h-100">
                   <h5 className="card-title">{comic.title}</h5>
-                  <p className="card-text overflow-auto">{comic.description}</p>
+                  <p
+                    className="card-text overflow-auto"
+                    style={{ minHeight: "100px" }}
+                  >
+                    {comic.description}
+                  </p>
                   <p className="card-text">
                     Pubblicazione:
                     <span className="text-body-secondary">
@@ -51,11 +56,29 @@ export default function ComicDetailPage() {
                     <span>
                       {comic.characters.map((character, index) => {
                         return (
+                          " " +
                           character.name +
                           (index < comic.characters.length - 1 ? ", " : "")
                         );
                       })}
                     </span>
+                  </div>
+                  <div className="d-flex justify-content-between align-items-end">
+                    <img
+                      src={`http://127.0.0.1:8000/storage/${comic.brand.logo}`}
+                      alt=""
+                      style={{
+                        height:
+                          comic.brand.name === "DC Comics" ? "80px" : "100px",
+                        width:
+                          comic.brand.name === "Marvel Comics"
+                            ? "200px"
+                            : "100px",
+                      }}
+                    />
+                    <p className="align-self-end m-0 fs-1 fw-semibold">
+                      <i>&euro;{comic.price}</i>
+                    </p>
                   </div>
                 </div>
               </div>

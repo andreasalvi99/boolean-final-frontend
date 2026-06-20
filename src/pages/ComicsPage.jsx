@@ -152,20 +152,25 @@ export default function ComicsPage() {
         <div className="row row-cols-5 g-3">
           {marvelComicsSliced.map((marvelComic) => {
             return (
-              <div className="col" key={marvelComic.id}>
-                <div className="card h-100 border-0">
-                  <img
-                    src={`http://127.0.0.1:8000/storage/${marvelComic.cover_img}`}
-                    className="card-img-top h-100"
-                    alt="..."
-                  />
-                  <div className="card-body h-25">
-                    <p className="card-text text-center fw-semibold">
-                      {marvelComic.title}
-                    </p>
+              <Link
+                to={`/comics/${marvelComic.id}`}
+                className="text-decoration-none"
+              >
+                <div className="col" key={marvelComic.id}>
+                  <div className="card h-100 border-0">
+                    <img
+                      src={`http://127.0.0.1:8000/storage/${marvelComic.cover_img}`}
+                      className="card-img-top h-100"
+                      alt="..."
+                    />
+                    <div className="card-body h-25">
+                      <p className="card-text text-center fw-semibold">
+                        {marvelComic.title}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
