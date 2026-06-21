@@ -6,7 +6,7 @@ export default [
     title: "Vieni a scoprire la nostra collezione Marvel",
     paragraph:
       "Immergiti alla scoperta di centinaia di fumetti di uno dei brand più famosi di sempre",
-    btnText: "More",
+    btnText: "Scopri di più",
     imgUrl: first,
   },
   {
