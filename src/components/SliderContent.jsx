@@ -1,0 +1,21 @@
+export default function SliderContent({ activeIndex, sliderImage }) {
+  return (
+    <section>
+      {sliderImage.map((slide, index) => {
+        return (
+          <div
+            key={index}
+            className={index === activeIndex ? "slides active" : "inactive"}
+          >
+            <img src={slide.imgUrl} alt="" className="slide-image" />
+            <h1 className="slide-title">{slide.title}</h1>
+            <p className="slide-text">{slide.paragraph}</p>
+            <button className="btn btn-outline-light slide-btn">
+              {slide.btnText}
+            </button>
+          </div>
+        );
+      })}
+    </section>
+  );
+}

@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
 import { Carousel } from "bootstrap";
 import { useEffect } from "react";
+import Slider from "../components/Slider";
 // import first from "../assets/img/93OX40.jpg";
 // import second from "../assets/img/a3e9cd5019d76ece5897945489780afc.jpg";
 
@@ -25,6 +26,7 @@ export default function DefaultLayout() {
   return (
     <>
       <Header />
+      <Slider />
       {/* <section id="slideshow">
         <div className="slideshow-container">
           <div>
