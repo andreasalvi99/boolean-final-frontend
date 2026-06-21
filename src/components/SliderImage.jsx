@@ -1,9 +1,9 @@
 import first from "../assets/img/93OX40.jpg";
-import second from "../assets/img/a3e9cd5019d76ece5897945489780afc.jpg";
+import second from "../assets/img/injustice-superman-batman-wonder-woman-dc-comics-animation-3440x1440-6709.jpg";
 
 export default [
   {
-    title: "Vieni a scoprire la nostra collezione Marvel test 1",
+    title: "Vieni a scoprire la nostra collezione Marvel",
     paragraph:
       "Immergiti alla scoperta di centinaia di fumetti di uno dei brand più famosi di sempre",
     btnText: "More",

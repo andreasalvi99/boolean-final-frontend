@@ -72,7 +72,7 @@
 /* } */
 
 :root {
-  --heights: 60vh;
+  --heights: 70vh;
   --widths: 100%;
 }
 
@@ -103,13 +103,14 @@
   height: 100%;
   position: absolute;
   object-fit: cover;
-  object-position: top;
+  object-position: center;
 }
 
 .slide-title,
-.slide-text {
+.slide-text,
+.slide-btn {
   left: 3%;
-  width: 50%;
+  width: 35%;
   height: 100%;
   color: rgb(255, 255, 255);
   font-size: 40px;
@@ -120,7 +121,7 @@
 }
 
 .slide-text {
-  top: 50%;
+  top: 60%;
   font-size: 2rem;
 }
 
@@ -187,4 +188,15 @@
   text-align: center;
   top: 90%;
   z-index: 10;
+}
+
+.layover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 5;
 }

@@ -5,8 +5,9 @@ export default function SliderContent({ activeIndex, sliderImage }) {
         return (
           <div
             key={index}
-            className={index === activeIndex ? "slides active" : "inactive"}
+            className={`${index === activeIndex ? "slides active" : "inactive"}`}
           >
+            <div className="layover"></div>
             <img src={slide.imgUrl} alt="" className="slide-image" />
             <h1 className="slide-title">{slide.title}</h1>
             <p className="slide-text">{slide.paragraph}</p>
