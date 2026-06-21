@@ -12,7 +12,7 @@ export default [
   {
     title: "Vieni a scoprire la nostra collezione DC",
     paragraph: "paragrafo test 2",
-    btnText: "More",
+    btnText: "Scopri di più",
     imgUrl: second,
   },
 ];

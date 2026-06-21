@@ -106,9 +106,8 @@
   object-position: center;
 }
 
-.slide-title,
-.slide-text,
-.slide-btn {
+/* .slide-title,
+.slide-text {
   left: 3%;
   width: 35%;
   height: 100%;
@@ -122,8 +121,8 @@
 
 .slide-text {
   top: 60%;
-  font-size: 2rem;
-}
+  font-size: 1.5rem;
+} */
 
 .prev,
 .next {
@@ -199,4 +198,24 @@
   background-color: black;
   opacity: 0.5;
   z-index: 5;
+}
+
+/* .slide-btn {
+  left: 15%;
+  width: 10%;
+  height: 40px;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  position: absolute;
+  top: 90%;
+  z-index: 10;
+} */
+
+.info-container {
+  position: absolute;
+  left: 10%;
+  top: 45%;
+  color: white;
+  z-index: 10;
+  width: 30%;
 }
