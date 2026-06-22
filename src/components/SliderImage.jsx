@@ -11,7 +11,8 @@ export default [
   },
   {
     title: "Vieni a scoprire la nostra collezione DC",
-    paragraph: "paragrafo test 2",
+    paragraph:
+      "Immergiti alla scoperta di centinaia di fumetti di uno dei brand più famosi di sempre",
     btnText: "Scopri di più",
     imgUrl: second,
   },
