@@ -61,8 +61,8 @@ export default function ComicDetailPage() {
         <>
           <section>
             {/* <div className="container p-5"> */}
-            <div className="container">
-              <div className="mb-3">
+            <div className="container mt-5 mb-3">
+              <div>
                 <Link to="/comics" className="text-dark">
                   <i className="bi bi-arrow-left me-2"></i>Torna ai fumetti
                 </Link>
