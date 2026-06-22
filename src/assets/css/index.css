@@ -1,61 +1,26 @@
-@import "tailwindcss";
-
-.related-character-card:hover .related-character-info {
-  transform: translateY(240%);
-  color: white;
-  font-weight: 800;
-}
-
-.related-character-info {
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  width: 100%;
-  height: 30%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: red;
-  color: white;
-
-  font-weight: 800;
-
-  transform: translateY(500%);
-  transition: all 0.5s ease;
-}
-
-.related-character-card {
-  position: relative;
-  overflow: hidden;
-}
-
 :root {
   --heights: 60vh;
   --widths: 100%;
 }
 
-.slider-container {
-  height: var(--heights);
-  width: var(--widths);
-  position: relative;
-  margin: auto;
+.slider-wrapper {
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
-.active {
-  display: inline-block;
-}
-
-.inactive {
-  display: none;
+.slider-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.18, 1);
 }
 
 .slides {
+  min-width: 100%;
   height: var(--heights);
-  width: var(--widths);
   position: relative;
+  flex-shrink: 0;
 }
 
 .slide-image {
@@ -72,9 +37,9 @@
   z-index: 100;
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
   width: auto;
   padding: 0.7rem;
-  margin-top: -3rem;
   font-size: 30px;
   font-weight: bold;
   border-radius: 0px 5px 5px 0px;
@@ -82,9 +47,9 @@
 
 .prev:hover,
 .next:hover {
-  color: rgb(255, 255, 255);
+  color: white;
   background-color: rgba(0, 0, 0, 0.6);
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .next {
@@ -94,31 +59,24 @@
 
 .all-dots {
   width: 100%;
-  height: 100%;
   position: absolute;
+  bottom: 20px;
   display: flex;
-  top: 95%;
   justify-content: center;
   z-index: 200;
 }
 
 .dot {
   cursor: pointer;
-  height: 0.2rem;
+  height: 0.25rem;
   width: 2rem;
-  margin: 0px 5px;
+  margin: 0 5px;
   background-color: rgba(0, 0, 0, 0.7);
-  display: inline-block;
 }
 
 .active-dot,
 .dot:hover {
   background-color: rgba(255, 255, 255, 0.8);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
 }
 
 .slide-btn {
@@ -132,10 +90,7 @@
 
 .layover {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
+  inset: 0;
   background-color: black;
   opacity: 0.5;
   z-index: 5;
@@ -148,4 +103,12 @@
   color: white;
   z-index: 10;
   width: 30%;
+}
+
+.slider-container {
+  height: var(--heights);
+  width: var(--widths);
+  position: relative;
+  margin: auto;
+  overflow: hidden;
 }
