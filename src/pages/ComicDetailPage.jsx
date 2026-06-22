@@ -59,11 +59,11 @@ export default function ComicDetailPage() {
       )}
       {!isLoading && comic && (
         <>
-          <section>
+          <section className="bg-dark">
             {/* <div className="container p-5"> */}
-            <div className="container mt-5 mb-3">
+            <div className="container p-4">
               <div>
-                <Link to="/comics" className="text-dark">
+                <Link to="/comics" className="text-light">
                   <i className="bi bi-arrow-left me-2"></i>Torna ai fumetti
                 </Link>
               </div>
@@ -143,8 +143,8 @@ export default function ComicDetailPage() {
               </div>
             </section>
 
-            <section id="related-characters" className="my-5">
-              <div className="container my-5">
+            <section id="related-characters" className="">
+              <div className="container mt-5">
                 <div className="row row-cols-6 g-3">
                   {comic.characters.map((character) => {
                     return (
