@@ -3,7 +3,9 @@ import Slider from "../components/Slider";
 export default function HomePage() {
   return (
     <>
-      <Slider />
+      <section id="main-content">
+        <Slider />
+      </section>
     </>
   );
 }

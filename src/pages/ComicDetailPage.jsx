@@ -59,11 +59,11 @@ export default function ComicDetailPage() {
       )}
       {!isLoading && comic && (
         <>
-          <section className="bg-dark">
+          <section id="main-content">
             {/* <div className="container p-5"> */}
             <div className="container p-4">
               <div>
-                <Link to="/comics" className="text-light">
+                <Link to="/comics" className="text-dark">
                   <i className="bi bi-arrow-left me-2"></i>Torna ai fumetti
                 </Link>
               </div>

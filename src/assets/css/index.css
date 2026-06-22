@@ -172,3 +172,8 @@
   border: none;
   color: white;
 }
+
+#main-content {
+  min-height: calc(100vh - 56px - 65px);
+  width: 100%;
+}

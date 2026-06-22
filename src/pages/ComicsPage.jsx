@@ -41,7 +41,7 @@ export default function ComicsPage() {
   return (
     <>
       {/* Loader */}
-      <section>
+      <section id="main-content">
         <div className="container mt-5">
           {isLoading && (
             <div className="d-flex justify-content-center align-items-center vh-100">
