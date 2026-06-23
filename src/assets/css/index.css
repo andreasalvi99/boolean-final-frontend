@@ -211,3 +211,8 @@
   position: absolute;
   transform: translateY(-50%);
 }
+
+.navbar-logo {
+  height: 70px;
+  width: 75px;
+}

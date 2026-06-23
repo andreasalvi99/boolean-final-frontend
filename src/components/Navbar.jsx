@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom";
+import logo from "../assets/img/logo.png";
 
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
       <div className="container">
-        <a className="navbar-brand" href="#">
-          Navbar
-        </a>
+        <NavLink to="/">
+          <img src={logo} alt="" className="navbar-logo" />
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -20,11 +21,6 @@ export default function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" to="/">
-                Home
-              </NavLink>
-            </li>
             <li className="nav-item">
               <NavLink to="/comics" className="nav-link">
                 Fumetti
