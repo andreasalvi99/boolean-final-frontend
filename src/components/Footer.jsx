@@ -6,16 +6,16 @@ export default function Footer() {
       <section id="footer" className="bg-dark text-light mt-5">
         <div className="container">
           <div className="row">
-            <div className="col-3">
+            <div className="col-lg-3 col-12">
               <div className="d-flex justify-content-center align-items-center">
                 <img
                   src={logo}
                   alt=""
-                  style={{ height: "250px", width: "250px" }}
+                  style={{ minHeightheight: "250px", minWidthwidth: "250px" }}
                 />
               </div>
             </div>
-            <div className="col-3">
+            <div className="col-4 col-lg-3">
               <div className="d-flex justify-content-center align-items-center flex-column gap-3 h-100">
                 <a href="#" className="text-decoration-none text-light">
                   Placeholder
@@ -34,7 +34,7 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-            <div className="col-3">
+            <div className="col-lg-3 col-4">
               <div className="d-flex justify-content-center align-items-center flex-column gap-3 h-100">
                 <a href="#" className="text-decoration-none text-light">
                   Placeholder
@@ -53,7 +53,7 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-            <div className="col-3">
+            <div className="col-lg-3 col-4">
               <div className="d-flex justify-content-center align-items-center flex-column gap-3 h-100">
                 <h4 className="text-decoration-none text-light">Social</h4>
                 <div className="d-flex justidy-content-between align-items-center gap-3 fs-2">
