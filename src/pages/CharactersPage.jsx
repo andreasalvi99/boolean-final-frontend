@@ -20,22 +20,16 @@ export default function CharactersPage() {
             {characters.map((character) => {
               return (
                 <div
-                  className="panel"
+                  className="panel related-character-card"
                   style={{
                     backgroundImage: `url(http://127.0.0.1:8000/storage/${character.character_img})`,
                   }}
                   key={character.id}
-                ></div>
-
-                // <div className="col" key={character.id}>
-                //   <div className="card h-100">
-                //     <img
-                //       src={`http://127.0.0.1:8000/storage/${character.character_img}`}
-                //       className="card-img-top h-100"
-                //       alt="..."
-                //     />
-                //   </div>
-                // </div>
+                >
+                  <div className="card-body related-character-info">
+                    <p className="card-text text-center">{character.name}</p>
+                  </div>
+                </div>
               );
             })}
           </div>

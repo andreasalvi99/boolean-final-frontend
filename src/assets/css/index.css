@@ -18,7 +18,7 @@
   color: white;
   font-weight: 800;
   transform: translateY(500%);
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 .related-character-card {
   position: relative;
