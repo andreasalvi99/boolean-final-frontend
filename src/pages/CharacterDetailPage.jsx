@@ -16,7 +16,9 @@ export default function CharacterDetailPage() {
 
   return (
     <>
-      <section id="main-content">.container.mt-5</section>
+      <section id="main-content">
+        <div className="container mt-5"></div>
+      </section>
     </>
   );
 }
