@@ -30,6 +30,11 @@ export default function Navbar() {
                 Fumetti
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink to="/characters" className="nav-link">
+                Personaggi
+              </NavLink>
+            </li>
           </ul>
           <form className="d-flex" role="search">
             <input
