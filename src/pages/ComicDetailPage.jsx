@@ -20,7 +20,7 @@ export default function ComicDetailPage() {
       });
   }
 
-  console.log("comic", comic);
+  // console.log("comic", comic);
   //   console.log(`http://127.0.0.1:8000/storage/${comic.cover_img}`);
   useEffect(fetchComic, [id]);
 

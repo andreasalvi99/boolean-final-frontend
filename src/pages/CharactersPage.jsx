@@ -7,7 +7,7 @@ export default function CharactersPage() {
 
   function fetchCharacters() {
     axios.get("http://127.0.0.1:8000/api/characters").then((response) => {
-      //   console.log(response.data.results);
+      console.log(response.data.results);
       setCharacters(response.data.results);
     });
   }

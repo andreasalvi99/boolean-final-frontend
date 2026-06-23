@@ -202,3 +202,12 @@
   flex: 4;
   filter: grayscale(0%);
 }
+
+.character-info {
+  position: relative;
+}
+
+.character-img {
+  position: absolute;
+  transform: translateY(-50%);
+}
