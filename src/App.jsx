@@ -14,7 +14,7 @@ export default function App() {
 
           <Route path="/comics">
             <Route index element={<ComicsPage />} />
-            <Route path="/:id" element={<ComicDetailPage />} />
+            <Route path=":id" element={<ComicDetailPage />} />
           </Route>
 
           <Route path="/characters">
