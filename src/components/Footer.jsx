@@ -1,18 +1,72 @@
+import logo from "../assets/img/logo.png";
+
 export default function Footer() {
   return (
     <>
       <section id="footer" className="bg-dark text-light mt-5">
-        <hr />
         <div className="container">
-          <div className="row row-cols-3 text-center">
-            <div className="col">Placeholder</div>
-            <div className="col">Placeholder</div>
-            <div className="col">Placeholder</div>
-          </div>
-          <div className="row row-cols-3 text-center">
-            <div className="col">Placeholder</div>
-            <div className="col">Placeholder</div>
-            <div className="col">Placeholder</div>
+          <div className="row">
+            <div className="col-3">
+              <div className="d-flex justify-content-center align-items-center">
+                <img
+                  src={logo}
+                  alt=""
+                  style={{ height: "250px", width: "250px" }}
+                />
+              </div>
+            </div>
+            <div className="col-3">
+              <div className="d-flex justify-content-center align-items-center flex-column gap-3 h-100">
+                <a href="" className="text-decoration-none text-light">
+                  Placeholder
+                </a>
+                <a href="" className="text-decoration-none text-light">
+                  Placeholder
+                </a>
+                <a href="" className="text-decoration-none text-light">
+                  Placeholder
+                </a>
+                <a href="" className="text-decoration-none text-light">
+                  Placeholder
+                </a>
+                <a href="" className="text-decoration-none text-light">
+                  Placeholder
+                </a>
+              </div>
+            </div>
+            <div className="col-3">
+              <div className="d-flex justify-content-center align-items-center flex-column gap-3 h-100">
+                <a href="" className="text-decoration-none text-light">
+                  Placeholder
+                </a>
+                <a href="" className="text-decoration-none text-light">
+                  Placeholder
+                </a>
+                <a href="" className="text-decoration-none text-light">
+                  Placeholder
+                </a>
+                <a href="" className="text-decoration-none text-light">
+                  Placeholder
+                </a>
+                <a href="" className="text-decoration-none text-light">
+                  Placeholder
+                </a>
+              </div>
+            </div>
+            <div className="col-3">
+              <div className="d-flex justify-content-center align-items-center flex-column gap-3 h-100">
+                <h5 href="" className="text-decoration-none text-light">
+                  Social
+                </h5>
+                <div className="d-flex justidy-content-between align-items-center gap-3">
+                  <span>Icon</span>
+                  <span>Icon</span>
+                  <span>Icon</span>
+                  <span>Icon</span>
+                  <span>Icon</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

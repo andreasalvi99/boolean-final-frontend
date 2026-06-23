@@ -86,8 +86,8 @@ export default function ComicDetailPage() {
                       />
                     </div>
                     <div className="col-md-8">
-                      <div className="card-body p-5 d-flex flex-column justify-content-between h-100">
-                        <h5 className="card-title">{comic.title}</h5>
+                      <div className="card-body ps-5 d-flex flex-column justify-content-between h-100">
+                        <h3 className="card-title">{comic.title}</h3>
                         <p
                           className="card-text overflow-auto"
                           style={{ minHeight: "100px" }}
@@ -133,7 +133,7 @@ export default function ComicDetailPage() {
                             }}
                           />
                           <p className="align-self-end m-0 fs-1 fw-semibold">
-                            <i>&euro;{comic.price}</i>
+                            <i>&euro; {comic.price}</i>
                           </p>
                         </div>
                       </div>
