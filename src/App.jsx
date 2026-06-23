@@ -4,6 +4,7 @@ import ComicsPage from "./pages/ComicsPage";
 import DefaultLayout from "./layouts/DefaultLayout";
 import ComicDetailPage from "./pages/ComicDetailPage";
 import CharactersPage from "./pages/CharactersPage";
+import CharacterDetailPage from "./pages/CharacterDetailPage";
 
 export default function App() {
   return (
@@ -19,7 +20,7 @@ export default function App() {
 
           <Route path="/characters">
             <Route index element={<CharactersPage />} />
-            <Route path=":id" element={<CharactersPage />} />
+            <Route path=":id" element={<CharacterDetailPage />} />
           </Route>
         </Route>
       </Routes>

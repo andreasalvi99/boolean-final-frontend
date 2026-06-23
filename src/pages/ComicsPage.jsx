@@ -69,7 +69,6 @@ export default function ComicsPage() {
             </div>
           )}
 
-          {/* Carousel */}
           {!isLoading && comics && (
             <>
               {/* DC Comics */}

@@ -5,7 +5,7 @@ import dateFormat from "dateformat";
 
 export default function ComicDetailPage() {
   const { id } = useParams();
-  const [comic, setComic] = useState();
+  const [comic, setComic] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   function fetchComic() {
