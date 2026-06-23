@@ -177,3 +177,25 @@
   min-height: calc(100vh - 65px - 56px);
   width: 100%;
 }
+
+.gallery {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  height: 400px;
+}
+
+.panel {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  cursor: pointer;
+  filter: grayscale(80%);
+  transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.panel:hover {
+  flex: 4;
+  filter: grayscale(0%);
+}
