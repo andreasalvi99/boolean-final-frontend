@@ -11,9 +11,15 @@ export default function App() {
       <Routes>
         <Route element={<DefaultLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="/comics" element={<ComicsPage />} />
-          <Route path="/comics/:id" element={<ComicDetailPage />} />
-          <Route path="/characters/" element={<CharactersPage />} />
+
+          <Route path="/comics">
+            <Route index element={<ComicsPage />} />
+            <Route path="/:id" element={<ComicDetailPage />} />
+          </Route>
+
+          <Route path="/characters">
+            <Route index element={<CharactersPage />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
