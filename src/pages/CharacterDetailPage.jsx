@@ -96,18 +96,25 @@ export default function CharacterDetailPage() {
               <div className="row row-cols-5">
                 {character.comics?.map((comic) => {
                   return (
-                    <div className="col" key={comic.id}>
-                      <div className="card related-character-card h-100">
-                        <img
-                          src={`http://127.0.0.1:8000/storage/${comic.cover_img}`}
-                          className="card-img-top h-100"
-                          alt="..."
-                        />
-                        <div className="card-body related-character-info">
-                          <p className="card-text text-center">{comic.title}</p>
+                    <Link
+                      key={comic.id}
+                      to={`http://localhost:5174/comics/${comic.id}`}
+                    >
+                      <div className="col">
+                        <div className="card related-character-card h-100">
+                          <img
+                            src={`http://127.0.0.1:8000/storage/${comic.cover_img}`}
+                            className="card-img-top h-100"
+                            alt="..."
+                          />
+                          <div className="card-body related-character-info">
+                            <p className="card-text text-center">
+                              {comic.title}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>

@@ -216,3 +216,7 @@
   height: 70px;
   width: 75px;
 }
+
+.card.related-character-card {
+  aspect-ratio: 7/11;
+}
