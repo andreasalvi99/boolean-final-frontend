@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 
 export default function CharacterDetailPage() {
@@ -25,6 +25,11 @@ export default function CharacterDetailPage() {
   return (
     <>
       <section id="main-content">
+        <div className="container p-4">
+          <Link to="/characters" className="text-dark">
+            <i className="bi bi-arrow-left me-2"></i>Torna ai personaggi
+          </Link>
+        </div>
         <div
           style={{
             backgroundImage: `url(http://127.0.0.1:8000/storage/${character.banner})`,
@@ -35,6 +40,7 @@ export default function CharacterDetailPage() {
         ></div>
         <div className="container mt-5 character-info">
           {/* Loader */}
+
           {isLoading && (
             <div className="d-flex justify-content-center align-items-center vh-100">
               <div
@@ -79,13 +85,31 @@ export default function CharacterDetailPage() {
                   <div className="col-md-10">
                     <div className="card-body ms-5">
                       <h2 className="card-title">{character.name}</h2>
-
-                      <p className="card-text">
-                        <ReactMarkdown>{character.description}</ReactMarkdown>
-                      </p>
+                      <ReactMarkdown>{character.description}</ReactMarkdown>
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Related Comics */}
+              <h1 className="mb-5">Related Comics:</h1>
+              <div className="row row-cols-5">
+                {character.comics?.map((comic) => {
+                  return (
+                    <div className="col" key={comic.id}>
+                      <div className="card related-character-card h-100">
+                        <img
+                          src={`http://127.0.0.1:8000/storage/${comic.cover_img}`}
+                          className="card-img-top h-100"
+                          alt="..."
+                        />
+                        <div className="card-body related-character-info">
+                          <p className="card-text text-center">{comic.title}</p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </>
           )}

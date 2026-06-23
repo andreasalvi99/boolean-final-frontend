@@ -146,7 +146,7 @@ export default function ComicDetailPage() {
             <section id="related-characters" className="">
               <div className="container mt-5">
                 <div className="row row-cols-6 g-3">
-                  {comic.characters.map((character) => {
+                  {comic.characters?.map((character) => {
                     return (
                       <Link
                         key={character.id}
