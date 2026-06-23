@@ -74,7 +74,7 @@ export default function ComicsPage() {
               {/* DC Comics */}
 
               <section id="DC" className="">
-                <div className="row row-cols-5 g-3">
+                <div className="row row-cols-md-3 row-cols-lg-5 g-3">
                   {dcComicsSliced.map((dcComic) => {
                     return (
                       <Link
@@ -107,7 +107,7 @@ export default function ComicsPage() {
               {/* Marvel Comics */}
 
               <section id="Marvel" className="mt-5">
-                <div className="row row-cols-5 g-3">
+                <div className="row row-cols-md-3 row-cols-lg-5 g-3">
                   {marvelComicsSliced.map((marvelComic) => {
                     return (
                       <Link
