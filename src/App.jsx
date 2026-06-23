@@ -19,6 +19,7 @@ export default function App() {
 
           <Route path="/characters">
             <Route index element={<CharactersPage />} />
+            <Route path=":id" element={<CharactersPage />} />
           </Route>
         </Route>
       </Routes>

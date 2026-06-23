@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function CharactersPage() {
   const [characters, setCharacters] = useState([]);
@@ -14,22 +15,23 @@ export default function CharactersPage() {
   useEffect(fetchCharacters, []);
   return (
     <>
-      <section>
-        <div className="container">
+      <section id="main-content">
+        <div className="container mt-5">
           <div className="gallery">
             {characters.map((character) => {
               return (
-                <div
+                <Link
                   className="panel related-character-card"
+                  key={character.id}
+                  to={`/characters/${character.id}`}
                   style={{
                     backgroundImage: `url(http://127.0.0.1:8000/storage/${character.character_img})`,
                   }}
-                  key={character.id}
                 >
                   <div className="card-body related-character-info">
                     <p className="card-text text-center">{character.name}</p>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>
