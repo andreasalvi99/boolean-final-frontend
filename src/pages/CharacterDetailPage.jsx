@@ -93,7 +93,7 @@ export default function CharacterDetailPage() {
 
               {/* Related Comics */}
               <h1 className="mb-5">Related Comics:</h1>
-              <div className="row row-cols-5">
+              <div className="row row-cols-5 g-3">
                 {character.comics?.map((comic) => {
                   return (
                     <Link
