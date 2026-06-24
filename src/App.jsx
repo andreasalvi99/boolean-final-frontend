@@ -14,17 +14,16 @@ export default function App() {
       <Routes>
         <Route element={<DefaultLayout />}>
           <Route index element={<HomePage />} />
-
           <Route path="/comics">
             <Route index element={<ComicsPage />} />
             <Route path=":id" element={<ComicDetailPage />} />
           </Route>
-
           <Route path="/characters">
             <Route index element={<CharactersPage />} />
             <Route path=":id" element={<CharacterDetailPage />} />
           </Route>
 
+          {/*route per visualizzare risultati ricerca*/}
           <Route path="/search" element={<SearchResultsPage />} />
         </Route>
       </Routes>

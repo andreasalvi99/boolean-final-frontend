@@ -10,11 +10,7 @@ export default function ComicsPage() {
 
   function fetchComics() {
     axios
-      .get("http://127.0.0.1:8000/api/comics", {
-        params: {
-          search: search,
-        },
-      })
+      .get("http://127.0.0.1:8000/api/comics")
       .then((response) => {
         //   console.log(response.data.data);
         setComics(response.data.data);
