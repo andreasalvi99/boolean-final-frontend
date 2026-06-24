@@ -6,9 +6,15 @@ export default function ComicsPage() {
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const search = searchParams.get("search");
+
   function fetchComics() {
     axios
-      .get("http://127.0.0.1:8000/api/comics")
+      .get("http://127.0.0.1:8000/api/comics", {
+        params: {
+          search: search,
+        },
+      })
       .then((response) => {
         //   console.log(response.data.data);
         setComics(response.data.data);
@@ -36,7 +42,7 @@ export default function ComicsPage() {
   //   console.log(marvelComics);
   //   console.log(dcComics);
 
-  useEffect(fetchComics, []);
+  useEffect(fetchComics, [search]);
 
   return (
     <>

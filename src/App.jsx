@@ -5,6 +5,8 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import ComicDetailPage from "./pages/ComicDetailPage";
 import CharactersPage from "./pages/CharactersPage";
 import CharacterDetailPage from "./pages/CharacterDetailPage";
+import SearchResults from "./pages/SearchResultsPage";
+import SearchResultsPage from "./pages/SearchResultsPage";
 
 export default function App() {
   return (
@@ -22,6 +24,8 @@ export default function App() {
             <Route index element={<CharactersPage />} />
             <Route path=":id" element={<CharacterDetailPage />} />
           </Route>
+
+          <Route path="/search" element={<SearchResultsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
