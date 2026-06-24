@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 
 export default function CharacterDetailPage() {
   const { id } = useParams();
   const [character, setCharacter] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+  const url = window.location.href;
+  console.log(url);
 
   function fetchCharacterInfo() {
     axios
@@ -26,9 +29,9 @@ export default function CharacterDetailPage() {
     <>
       <section id="main-content">
         <div className="container p-4">
-          <Link to="/characters" className="text-dark">
-            <i className="bi bi-arrow-left me-2"></i>Torna ai personaggi
-          </Link>
+          <button className="text-dark" onClick={() => navigate(-1)}>
+            <i className="bi bi-arrow-left me-2"></i>Torna indietro
+          </button>
         </div>
         <div
           style={{
@@ -94,6 +97,7 @@ export default function CharacterDetailPage() {
               <hr />
 
               {/* Related Comics */}
+
               <h1 className="mb-5">Related Comics:</h1>
               <div className="row row-cols-5 g-3">
                 {character.comics?.map((comic) => {

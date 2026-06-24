@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import dateFormat from "dateformat";
 
 export default function ComicDetailPage() {
   const { id } = useParams();
   const [comic, setComic] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   function fetchComic() {
     axios
@@ -63,9 +64,9 @@ export default function ComicDetailPage() {
             {/* <div className="container p-5"> */}
             <div className="container p-4">
               <div>
-                <Link to="/comics" className="text-dark">
-                  <i className="bi bi-arrow-left me-2"></i>Torna ai fumetti
-                </Link>
+                <button className="text-dark" onClick={() => navigate(-1)}>
+                  <i className="bi bi-arrow-left me-2"></i>Torna indietro
+                </button>
               </div>
             </div>
             <section

@@ -1,12 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function ComicsPage() {
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const search = searchParams.get("search");
 
   function fetchComics() {
     axios
@@ -38,7 +36,7 @@ export default function ComicsPage() {
   //   console.log(marvelComics);
   //   console.log(dcComics);
 
-  useEffect(fetchComics, [search]);
+  useEffect(fetchComics, []);
 
   return (
     <>
