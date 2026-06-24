@@ -91,6 +91,8 @@ export default function CharacterDetailPage() {
                 </div>
               </div>
 
+              <hr />
+
               {/* Related Comics */}
               <h1 className="mb-5">Related Comics:</h1>
               <div className="row row-cols-5 g-3">

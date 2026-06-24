@@ -72,7 +72,7 @@ export default function ComicDetailPage() {
               style={{
                 backgroundImage: `url(http://127.0.0.1:8000/storage/${comic.cover_img})`,
               }}
-              className="p-5"
+              className="p-5 mb-5"
               id="comic-detail"
             >
               <div className="container">
@@ -142,6 +142,8 @@ export default function ComicDetailPage() {
                 </div>
               </div>
             </section>
+
+            <hr />
 
             <section id="related-characters" className="">
               <div className="container mt-5">
