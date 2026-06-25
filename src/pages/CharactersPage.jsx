@@ -28,7 +28,7 @@ export default function CharactersPage() {
 
           {isLoading && <Loader />}
 
-          {/* Cards */}
+          {/* Characters cards */}
 
           {characters && (
             <>

@@ -34,6 +34,8 @@ export default function ComicDetailPage() {
 
           {isLoading && <Loader />}
 
+          {/* Comic */}
+
           {comic && (
             <>
               <div className="container p-4">
@@ -117,6 +119,8 @@ export default function ComicDetailPage() {
                   </div>
                 </div>
               </section>
+
+              {/* Related characters */}
 
               <section id="related-characters" className="">
                 <div className="container mt-5">
