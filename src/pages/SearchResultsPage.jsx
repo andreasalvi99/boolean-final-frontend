@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import Loader from "../components/Loader";
 
 export default function SearchResultsPage() {
   const [searchParams] = useSearchParams(); // hook per recuperare il valore cercato nel search
@@ -39,31 +40,7 @@ export default function SearchResultsPage() {
         <div className="container mt-5">
           {/* Loader */}
 
-          {isLoading && (
-            <div className="d-flex justify-content-center align-items-center vh-100">
-              <div
-                className="spinner-grow mx-2"
-                style={{ width: "3rem", height: "3rem" }}
-                role="status"
-              >
-                <span className="visually-hidden">Loading...</span>
-              </div>
-              <div
-                className="spinner-grow mx-2"
-                style={{ width: "3rem", height: "3rem" }}
-                role="status"
-              >
-                <span className="visually-hidden">Loading...</span>
-              </div>
-              <div
-                className="spinner-grow mx-2"
-                style={{ width: "3rem", height: "3rem" }}
-                role="status"
-              >
-                <span className="visually-hidden">Loading...</span>
-              </div>
-            </div>
-          )}
+          {isLoading && <Loader />}
 
           {/* Characters results */}
 
