@@ -1,5 +1,5 @@
-import first from "../assets/img/93OX40.jpg";
-import second from "../assets/img/injustice-superman-batman-wonder-woman-dc-comics-animation-3440x1440-6709.jpg";
+import first from "../../assets/img/93OX40.jpg";
+import second from "../../assets/img/injustice-superman-batman-wonder-woman-dc-comics-animation-3440x1440-6709.jpg";
 
 export default [
   {

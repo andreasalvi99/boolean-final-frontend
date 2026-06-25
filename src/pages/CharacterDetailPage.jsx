@@ -1,16 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import Loader from "../components/Loader";
+import GoBackBtn from "../components/GoBackBtn";
 
 export default function CharacterDetailPage() {
   const { id } = useParams();
   const [character, setCharacter] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
-  const url = window.location.href;
-  console.log(url);
 
   function fetchCharacterInfo() {
     axios
@@ -42,11 +40,7 @@ export default function CharacterDetailPage() {
 
       {character && (
         <>
-          <div className="container p-4">
-            <button className="text-dark" onClick={() => navigate(-1)}>
-              <i className="bi bi-arrow-left me-2"></i>Torna indietro
-            </button>
-          </div>
+          <GoBackBtn />
           <div
             style={{
               backgroundImage: `url(http://127.0.0.1:8000/storage/${character.banner})`,
