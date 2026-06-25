@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import dateFormat from "dateformat";
 import Loader from "../components/Loader";
+import GoBackBtn from "../components/GoBackBtn";
 
 export default function ComicDetailPage() {
   const { id } = useParams();
   const [comic, setComic] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
 
   function fetchComic() {
     axios
@@ -38,13 +38,7 @@ export default function ComicDetailPage() {
 
           {comic && (
             <>
-              <div className="container p-4">
-                <div>
-                  <button className="text-dark" onClick={() => navigate(-1)}>
-                    <i className="bi bi-arrow-left me-2"></i>Torna indietro
-                  </button>
-                </div>
-              </div>
+              <GoBackBtn />
               <section
                 style={{
                   backgroundImage: `url(http://127.0.0.1:8000/storage/${comic.cover_img})`,
