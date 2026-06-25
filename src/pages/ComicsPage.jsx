@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
+import ComicCard from "../components/ComicCard";
 
 export default function ComicsPage() {
   const [comics, setComics] = useState([]);
@@ -55,28 +56,11 @@ export default function ComicsPage() {
                 <div className="row row-cols-md-3 row-cols-lg-5 g-3">
                   {dcComicsSliced.map((dcComic) => {
                     return (
-                      <Link
-                        to={`/comics/${dcComic.id}`}
-                        className="text-decoration-none"
-                        key={dcComic.id}
-                      >
-                        <div className="col">
-                          <div className="card h-100 border-0">
-                            <div style={{ height: "379px" }}>
-                              <img
-                                src={`http://127.0.0.1:8000/storage/${dcComic.cover_img}`}
-                                className="card-img-top h-100 overflow-hidden"
-                                alt="..."
-                              />
-                            </div>
-                            <div className="card-body h-25">
-                              <p className="card-text text-center fw-semibold">
-                                {dcComic.title}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
+                      <ComicCard
+                        id={dcComic.id}
+                        cover={dcComic.cover_img}
+                        title={dcComic.title}
+                      />
                     );
                   })}
                 </div>
