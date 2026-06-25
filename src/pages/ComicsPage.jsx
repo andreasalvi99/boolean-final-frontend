@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Loader from "../components/Loader";
 
 export default function ComicsPage() {
   const [comics, setComics] = useState([]);
@@ -40,34 +41,11 @@ export default function ComicsPage() {
 
   return (
     <>
-      {/* Loader */}
       <section id="main-content">
         <div className="container mt-5">
-          {isLoading && (
-            <div className="d-flex justify-content-center align-items-center vh-100">
-              <div
-                className="spinner-grow mx-2"
-                style={{ width: "3rem", height: "3rem" }}
-                role="status"
-              >
-                <span className="visually-hidden">Loading...</span>
-              </div>
-              <div
-                className="spinner-grow mx-2"
-                style={{ width: "3rem", height: "3rem" }}
-                role="status"
-              >
-                <span className="visually-hidden">Loading...</span>
-              </div>
-              <div
-                className="spinner-grow mx-2"
-                style={{ width: "3rem", height: "3rem" }}
-                role="status"
-              >
-                <span className="visually-hidden">Loading...</span>
-              </div>
-            </div>
-          )}
+          {/* Loader */}
+
+          {isLoading && <Loader />}
 
           {!isLoading && comics && (
             <>
