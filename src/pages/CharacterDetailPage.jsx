@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import Loader from "../components/Loader";
 
 export default function CharacterDetailPage() {
   const { id } = useParams();
@@ -27,53 +28,35 @@ export default function CharacterDetailPage() {
 
   return (
     <>
-      <section id="main-content">
-        <div className="container p-4">
-          <button className="text-dark" onClick={() => navigate(-1)}>
-            <i className="bi bi-arrow-left me-2"></i>Torna indietro
-          </button>
-        </div>
-        <div
-          style={{
-            backgroundImage: `url(http://127.0.0.1:8000/storage/${character.banner})`,
-            backgroundPosition: "top",
-            backgroundSize: "cover",
-            height: "600px",
-          }}
-        ></div>
-        <div className="container mt-5 character-info">
-          {/* Loader */}
+      {/* Loader */}
 
-          {isLoading && (
-            <div className="d-flex justify-content-center align-items-center vh-100">
-              <div
-                className="spinner-grow mx-2"
-                style={{ width: "3rem", height: "3rem" }}
-                role="status"
-              >
-                <span className="visually-hidden">Loading...</span>
-              </div>
-              <div
-                className="spinner-grow mx-2"
-                style={{ width: "3rem", height: "3rem" }}
-                role="status"
-              >
-                <span className="visually-hidden">Loading...</span>
-              </div>
-              <div
-                className="spinner-grow mx-2"
-                style={{ width: "3rem", height: "3rem" }}
-                role="status"
-              >
-                <span className="visually-hidden">Loading...</span>
-              </div>
-            </div>
-          )}
+      {isLoading && (
+        <section id="main-content">
+          <div className="container">
+            <Loader />\
+          </div>
+        </section>
+      )}
 
-          {/* Character info */}
+      {/* Character info */}
 
-          {character && (
-            <>
+      {character && (
+        <>
+          <div className="container p-4">
+            <button className="text-dark" onClick={() => navigate(-1)}>
+              <i className="bi bi-arrow-left me-2"></i>Torna indietro
+            </button>
+          </div>
+          <div
+            style={{
+              backgroundImage: `url(http://127.0.0.1:8000/storage/${character.banner})`,
+              backgroundPosition: "top",
+              backgroundSize: "cover",
+              height: "600px",
+            }}
+          ></div>
+          <section id="main-content">
+            <div className="container mt-5 character-info">
               <div className="card mb-3 border-0">
                 <div className="row g-0">
                   <div className="col-md-2 character-info">
@@ -121,10 +104,10 @@ export default function CharacterDetailPage() {
                   );
                 })}
               </div>
-            </>
-          )}
-        </div>
-      </section>
+            </div>
+          </section>
+        </>
+      )}
     </>
   );
 }
