@@ -3,7 +3,7 @@ import logo from "../assets/img/logo.png";
 export default function Footer() {
   return (
     <>
-      <section id="footer" className="bg-dark text-light mt-5">
+      <section id="footer" className="bg-dark text-light">
         <div className="container">
           <div className="row">
             <div className="col-lg-3 col-12">
