@@ -7,6 +7,7 @@ import CharactersPage from "./pages/CharactersPage";
 import CharacterDetailPage from "./pages/CharacterDetailPage";
 import SearchResults from "./pages/SearchResultsPage";
 import SearchResultsPage from "./pages/SearchResultsPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
   return (
@@ -25,6 +26,9 @@ export default function App() {
 
           {/*route per visualizzare risultati ricerca*/}
           <Route path="/search" element={<SearchResultsPage />} />
+
+          {/* Route per error 404 */}
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
