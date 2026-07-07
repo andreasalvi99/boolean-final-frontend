@@ -53,7 +53,7 @@ export default function CharactersPage() {
           {characters && (
             <div className="d-flex justify-content-between gap-2 align-items-center">
               <button onClick={prevPage}>
-                <i class="bi bi-caret-left-fill"></i>
+                <i className="bi bi-caret-left-fill"></i>
               </button>
               <div className="gallery">
                 {visibleCharacters.map((character) => {
@@ -76,7 +76,7 @@ export default function CharactersPage() {
                 })}
               </div>
               <button onClick={nextPage}>
-                <i class="bi bi-caret-right-fill"></i>
+                <i className="bi bi-caret-right-fill"></i>
               </button>
             </div>
           )}
