@@ -5,7 +5,27 @@ import Loader from "../components/Loader";
 
 export default function CharactersPage() {
   const [characters, setCharacters] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+
+  const charactersPerPage = 10;
+
+  const startIndex = currentPage * charactersPerPage;
+  const endIndex = startIndex + charactersPerPage;
+
+  const visibleCharacters = characters.slice(startIndex, endIndex);
+
+  const nextPage = () => {
+    if (endIndex < characters.length) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
 
   function fetchCharacters() {
     axios
@@ -31,9 +51,12 @@ export default function CharactersPage() {
           {/* Characters cards */}
 
           {characters && (
-            <>
+            <div className="d-flex justify-content-between gap-2 align-items-center">
+              <button onClick={prevPage}>
+                <i class="bi bi-caret-left-fill"></i>
+              </button>
               <div className="gallery">
-                {characters.map((character) => {
+                {visibleCharacters.map((character) => {
                   return (
                     <Link
                       className="panel related-character-card"
@@ -52,7 +75,10 @@ export default function CharactersPage() {
                   );
                 })}
               </div>
-            </>
+              <button onClick={nextPage}>
+                <i class="bi bi-caret-right-fill"></i>
+              </button>
+            </div>
           )}
         </div>
       </section>
