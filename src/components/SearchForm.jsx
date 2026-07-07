@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SearchForm() {
   const [search, setSearch] = useState(""); // stato che controlla l'input di ricerca
@@ -56,21 +56,35 @@ export default function SearchForm() {
             <div className="search-dropdown">
               {charactersSearchResults.length > 0 && (
                 <>
-                  <ul>
+                  <ul className="m-0 p-0">
                     {charactersSearchResults.map((character) => (
-                      <li key={character.id}>{character.name}</li>
+                      <li key={character.id}>
+                        <Link
+                          to={`/characters/${character.id}`}
+                          className="text-decoration-none text-dark"
+                        >
+                          {character.name}
+                        </Link>
+                      </li>
                     ))}
                   </ul>
                 </>
               )}
 
               {charactersSearchResults.length > 0 &&
-                comicsSearchResults.length > 0 && <hr />}
+                comicsSearchResults.length > 0 && <hr className="m-0" />}
 
               {comicsSearchResults.length > 0 && (
-                <ul>
+                <ul className="m-0 p-0">
                   {comicsSearchResults.map((comic) => (
-                    <li key={comic.id}>{comic.title}</li>
+                    <li key={comic.id}>
+                      <Link
+                        to={`/comics/${comic.id}`}
+                        className="text-decoration-none text-dark"
+                      >
+                        {comic.title}
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               )}
