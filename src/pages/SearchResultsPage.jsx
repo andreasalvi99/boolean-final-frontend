@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Loader from "../components/Loader";
+import NoResults from "../components/NoResults";
 
 export default function SearchResultsPage() {
   const [searchParams] = useSearchParams(); // hook per recuperare il valore cercato nel search
@@ -33,6 +34,13 @@ export default function SearchResultsPage() {
         setIsLoading(false);
       });
   }, [query]); //l'array delle dipendenze è quello del valore cercato, quando cambia cambiano i risultati->si aggiorna la pagina
+
+  if (
+    comicsSearchResults.length === 0 &&
+    charactersSearchResults.length === 0
+  ) {
+    return <NoResults />;
+  }
 
   return (
     <>
