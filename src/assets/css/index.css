@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+.related-character-card img {
+  transition: 0.3s all ease;
+}
+
+.related-character-card:hover img {
+  transform: scale(1.2);
+}
+
 .related-character-card:hover .related-character-info {
   transform: translateY(240%);
   color: white;
