@@ -23,12 +23,14 @@ export default function ComicDetailCard({
         <div className="col-md-8">
           <div className="card-body ps-5 d-flex flex-column justify-content-between h-100">
             <h3 className="card-title">{title}</h3>
-            <p
-              className="card-text overflow-auto"
-              style={{ minHeight: "100px" }}
-            >
-              <ReactMarkdown>{description}</ReactMarkdown>
-            </p>
+            <ReactMarkdown>
+              {/* <p
+                className="card-text overflow-auto"
+                style={{ minHeight: "100px" }}
+              > */}
+              {description}
+              {/* </p> */}
+            </ReactMarkdown>
             <p className="card-text">
               Pubblicazione:
               <span className="text-light">
