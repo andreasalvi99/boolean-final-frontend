@@ -50,7 +50,7 @@ export default function CharacterDetailPage() {
             }}
           ></div>
           <section id="main-content">
-            <div className="container mt-5 character-info">
+            <div className="container mt-5 character-info p-5">
               <div className="card mb-3 border-0">
                 <div className="row g-0">
                   <div className="col-md-2 character-info">

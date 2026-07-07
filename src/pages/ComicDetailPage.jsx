@@ -29,7 +29,7 @@ export default function ComicDetailPage() {
   return (
     <>
       <section id="main-content">
-        <div className="container p-5">
+        <div className="container">
           {/* Loader */}
 
           {isLoading && <Loader />}

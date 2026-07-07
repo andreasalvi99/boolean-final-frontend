@@ -1,4 +1,5 @@
 import dateFormat from "dateformat";
+import ReactMarkdown from "react-markdown";
 
 export default function ComicDetailCard({
   cover,
@@ -26,7 +27,7 @@ export default function ComicDetailCard({
               className="card-text overflow-auto"
               style={{ minHeight: "100px" }}
             >
-              {description}
+              <ReactMarkdown>{description}</ReactMarkdown>
             </p>
             <p className="card-text">
               Pubblicazione:
