@@ -57,6 +57,7 @@ export default function ComicsPage() {
                   {dcComicsSliced.map((dcComic) => {
                     return (
                       <ComicCard
+                        key={dcComic.id}
                         id={dcComic.id}
                         cover={dcComic.cover_img}
                         title={dcComic.title}
@@ -73,6 +74,7 @@ export default function ComicsPage() {
                   {marvelComicsSliced.map((marvelComic) => {
                     return (
                       <ComicCard
+                        key={marvelComic.id}
                         id={marvelComic.id}
                         cover={marvelComic.cover_img}
                         title={marvelComic.title}

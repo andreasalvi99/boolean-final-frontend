@@ -4,10 +4,31 @@ import { useNavigate } from "react-router-dom";
 
 export default function SearchForm() {
   const [search, setSearch] = useState(""); // stato che controlla l'input di ricerca
+  const [comicsSearchResults, setComicsSearchResults] = useState([]); //stato dei comics come risultato della ricerca
+  const [charactersSearchResults, setCharactersSearchResults] = useState([]); //
   const navigate = useNavigate(); // hook per effettuare un redirect
 
   function handleSearch(e) {
     setSearch(e.target.value); // funzione che setta il valore di search sul valore inserito dall'utente
+    console.log(e.target.value);
+    const comics = axios.get(
+      `http://127.0.0.1:8000/api/comics?search=${e.target.value}`, //effettuo chiamata al db dei comics col valore cercato
+    );
+
+    const characters = axios.get(
+      `http://127.0.0.1:8000/api/characters?search=${e.target.value}`, //effettuo chiamata al db dei personaggi col valore cercato
+    );
+
+    Promise.all([comics, characters]).then(
+      ([comicsResponse, charactersResponse]) => {
+        //promise per sincronizzare le due chiamate
+        console.log(comicsResponse);
+        console.log(charactersResponse);
+
+        setComicsSearchResults(comicsResponse.data.data);
+        setCharactersSearchResults(charactersResponse.data.results);
+      },
+    );
   }
 
   function handleSubmit(e) {
@@ -20,21 +41,49 @@ export default function SearchForm() {
 
   return (
     <form className="d-flex" role="search">
-      <input
-        onChange={handleSearch}
-        value={search}
-        className="form-control me-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
+      <div className="search-container">
+        <input
+          onChange={handleSearch}
+          value={search}
+          className="form-control me-2"
+          type="search"
+          placeholder="Cerca"
+          aria-label="Cerca"
+        />
+        {search !== "" &&
+          (charactersSearchResults.length > 0 ||
+            comicsSearchResults.length > 0) && (
+            <div className="search-dropdown">
+              {charactersSearchResults.length > 0 && (
+                <>
+                  <ul>
+                    {charactersSearchResults.map((character) => (
+                      <li key={character.id}>{character.name}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
+              {charactersSearchResults.length > 0 &&
+                comicsSearchResults.length > 0 && <hr />}
+
+              {comicsSearchResults.length > 0 && (
+                <ul>
+                  {comicsSearchResults.map((comic) => (
+                    <li key={comic.id}>{comic.title}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
+      </div>
 
       <button
         className="btn btn-outline-success"
         type="submit"
         onClick={handleSubmit}
       >
-        Search
+        Cerca
       </button>
     </form>
   );
