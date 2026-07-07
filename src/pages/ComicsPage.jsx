@@ -7,6 +7,17 @@ import ComicCard from "../components/ComicCard";
 export default function ComicsPage() {
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+
+  function handleSwitch() {
+    if (isVisible) {
+      return setIsVisible(false);
+    }
+
+    if (!isVisible) {
+      return setIsVisible(true);
+    }
+  }
 
   function fetchComics() {
     axios
@@ -48,11 +59,24 @@ export default function ComicsPage() {
 
           {isLoading && <Loader />}
 
-          {!isLoading && comics && (
+          {comics && (
             <>
               {/* DC Comics */}
+              <div className="form-check form-switch my-3">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="checkNativeSwitch"
+                  switch
+                  onClick={handleSwitch}
+                />
+                <label className="form-check-label" for="checkNativeSwitch">
+                  Mostra fumetti: {!isVisible ? "DC" : "Marvel"}
+                </label>
+              </div>
 
-              <section id="DC" className="">
+              <section id="DC" className={isVisible ? "" : "d-none"}>
                 <div className="row row-cols-md-3 row-cols-lg-5 g-3">
                   {dcComicsSliced.map((dcComic) => {
                     return (
@@ -69,7 +93,7 @@ export default function ComicsPage() {
 
               {/* Marvel Comics */}
 
-              <section id="Marvel" className="mt-5">
+              <section id="Marvel" className={isVisible ? "d-none" : ""}>
                 <div className="row row-cols-md-3 row-cols-lg-5 g-3">
                   {marvelComicsSliced.map((marvelComic) => {
                     return (
