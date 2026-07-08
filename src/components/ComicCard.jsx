@@ -14,7 +14,9 @@ export default function ComicCard({ id, cover, title }) {
               />
             </div>
             <div className="card-body h-25">
-              <p className="card-text text-center fw-semibold">{title}</p>
+              <p className="card-text text-center fw-semibold bebas-neue-regular">
+                {title}
+              </p>
             </div>
           </div>
         </div>

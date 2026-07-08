@@ -1,5 +1,6 @@
 import dateFormat from "dateformat";
 import ReactMarkdown from "react-markdown";
+import { Link } from "react-router-dom";
 
 export default function ComicDetailCard({
   cover,
@@ -21,7 +22,7 @@ export default function ComicDetailCard({
           />
         </div>
         <div className="col-md-8">
-          <div className="card-body ps-5 d-flex flex-column justify-content-between h-100 p-0">
+          <div className="card-body ps-5 d-flex flex-column justify-content-between h-100 p-0 oswald-special">
             <h3 className="card-title bangers-regular">{title}</h3>
             <ReactMarkdown>
               {/* <p
@@ -38,15 +39,18 @@ export default function ComicDetailCard({
               </span>
             </p>
             <div>
-              Featuring:
+              Featuring:{" "}
               <span>
-                {characters?.map((character, index) => {
-                  return (
-                    " " +
-                    character.name +
-                    (index < characters.length - 1 ? ", " : "")
-                  );
-                })}
+                {characters?.map((character, index) => (
+                  <Link
+                    key={character.id}
+                    to={`/characters/${character.id}`}
+                    className="text-light fw-semibold"
+                  >
+                    {character.name}
+                    {index < characters.length - 1 && ", "}
+                  </Link>
+                ))}
               </span>
             </div>
             <div className="d-flex justify-content-between align-items-end">

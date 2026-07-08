@@ -4,7 +4,7 @@ import SearchForm from "./SearchForm";
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top bebas-neue-regular">
       <div className="container">
         <NavLink to="/">
           <img src={logo} alt="" className="navbar-logo" />

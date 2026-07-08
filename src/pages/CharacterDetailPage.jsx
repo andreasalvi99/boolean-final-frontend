@@ -63,7 +63,7 @@ export default function CharacterDetailPage() {
                     </figure>
                   </div>
                   <div className="col-md-10">
-                    <div className="card-body ms-5">
+                    <div className="card-body ms-5 oswald-special">
                       <h2 className="card-title bangers-regular h1">
                         {character.name}
                       </h2>

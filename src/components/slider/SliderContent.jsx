@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function SliderContent({ activeIndex, sliderImage }) {
   return (
     <section className="slider-wrapper">
@@ -14,12 +16,19 @@ export default function SliderContent({ activeIndex, sliderImage }) {
             <img src={slide.imgUrl} alt="" className="slide-image" />
 
             <div className="info-container d-flex flex-column justify-content-between text-center gap-4 align-items-center">
-              <h1 className="slide-title">{slide.title}</h1>
+              <h1 className="slide-title bangers-regular">{slide.title}</h1>
 
               <p className="slide-text">{slide.paragraph}</p>
 
-              <button className="btn btn-outline-light rounded-pill align-self-stretch mx-5 fw-bold">
-                {slide.btnText}
+              <button
+                className={`btn btn-outline-${slide.title.includes("Marvel") ? "danger" : "primary"} rounded-pill align-self-stretch mx-5 fw-bold`}
+              >
+                <Link
+                  to={"/comics"}
+                  className="text-decoration-none text-light"
+                >
+                  {slide.btnText}
+                </Link>
               </button>
             </div>
           </div>
