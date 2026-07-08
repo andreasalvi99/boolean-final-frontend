@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import GoBackBtn from "../components/GoBackBtn";
 import ComicDetailCard from "../components/ComicDetailCard";
@@ -11,6 +11,20 @@ export default function ComicDetailPage() {
   const [previous, setPrevious] = useState(null);
   const [next, setNext] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  // Hook che restituisce info sulla pagina corrente
+  const location = useLocation();
+
+  // Prendi searchResults da location.state e se non esiste (?) prendi un array vuoto
+  const searchResults = location.state?.searchResults ?? [];
+  // Estrapolo l'indice a cui corrisponde l'id(parsato) presente nell'url
+  const currentIndex = searchResults.indexOf(Number(id));
+  // Se l'indice attuale è > 0 allora vado indietro di un elemento nell'array
+  const previousId = currentIndex > 0 ? searchResults[currentIndex - 1] : null;
+  // Se l'indice attuale è < della lunghezza dell'array della ricerca -1 allora vado avanti di un elemento nell'array
+  const nextId =
+    currentIndex < searchResults.length - 1
+      ? searchResults[currentIndex + 1]
+      : null;
 
   function fetchComic() {
     axios
@@ -42,16 +56,21 @@ export default function ComicDetailPage() {
 
           {comic && (
             <>
-              <GoBackBtn destination="/comics" />
+              <GoBackBtn />
               <div className="d-flex align-items-center justify-content-between gap-3">
-                {!previous && (
+                {!previousId && (
                   <button className="text-dark opacity-25" disabled>
                     <i className="bi bi-arrow-left-circle-fill fs-3"></i>
                   </button>
                 )}
 
-                {previous && (
-                  <Link to={`/comics/${previous.id}`} className="text-dark">
+                {previousId && (
+                  <Link
+                    to={`/comics/${previousId}`}
+                    className="text-dark"
+                    // Vado alla pagina successiva e mi porto dietro i dati con cui sono arrivato su questa pagina
+                    state={location.state}
+                  >
                     <i className="bi bi-arrow-left-circle-fill fs-3"></i>
                   </Link>
                 )}
@@ -76,14 +95,18 @@ export default function ComicDetailPage() {
                   </div>
                 </section>
 
-                {!next && (
+                {!nextId && (
                   <button className="text-dark opacity-25" disabled>
                     <i className="bi bi-arrow-right-circle-fill fs-3"></i>
                   </button>
                 )}
 
-                {next && (
-                  <Link to={`/comics/${next.id}`} className="text-dark">
+                {nextId && (
+                  <Link
+                    to={`/comics/${nextId}`}
+                    className="text-dark"
+                    state={location.state}
+                  >
                     <i className="bi bi-arrow-right-circle-fill fs-3"></i>
                   </Link>
                 )}

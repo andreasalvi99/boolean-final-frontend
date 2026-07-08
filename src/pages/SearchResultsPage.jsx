@@ -51,6 +51,10 @@ export default function SearchResultsPage() {
 
           {isLoading && <Loader />}
 
+          <h3 className="h1 bangers-regular mb-5">
+            risultati di ricerca per "{query}":
+          </h3>
+
           {/* Characters results */}
 
           {charactersSearchResults && (
@@ -99,6 +103,10 @@ export default function SearchResultsPage() {
                       to={`/comics/${comic.id}`}
                       className="text-decoration-none"
                       key={comic.id}
+                      // Uso lo state per passare i dati alla pagina di destinazione (l'id dei comics che escono dalla ricerca)
+                      state={{
+                        searchResults: comicsSearchResults.map((c) => c.id),
+                      }}
                     >
                       <div className="col">
                         <div className="card h-100 border-0 to-animate">
