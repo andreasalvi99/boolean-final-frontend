@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="container">
           <div className="row">
             <div className="col-lg-3 col-12">
-              <div className="d-flex justify-content-center align-items-center">
+              <div className="d-flex justify-content-center align-items-start">
                 <img
                   src={logo}
                   alt=""
@@ -16,18 +16,18 @@ export default function Footer() {
               </div>
             </div>
             <div className="col-4 col-lg-3">
-              <div className="d-flex justify-content-center align-items-center flex-column gap-3 h-100">
+              <div className="d-flex justify-content-center align-items-start flex-column gap-3 h-100">
                 <a href="#" className="text-decoration-none text-light">
-                  Placeholder
+                  Lavora con noi
                 </a>
                 <a href="#" className="text-decoration-none text-light">
-                  Placeholder
+                  Dove siamo
                 </a>
                 <a href="#" className="text-decoration-none text-light">
-                  Placeholder
+                  About us
                 </a>
                 <a href="#" className="text-decoration-none text-light">
-                  Placeholder
+                  FAQs
                 </a>
                 <a href="#" className="text-decoration-none text-light">
                   Placeholder
@@ -35,7 +35,7 @@ export default function Footer() {
               </div>
             </div>
             <div className="col-lg-3 col-4">
-              <div className="d-flex justify-content-center align-items-center flex-column gap-3 h-100">
+              <div className="d-flex justify-content-center align-items-start flex-column gap-3 h-100">
                 <a href="#" className="text-decoration-none text-light">
                   Placeholder
                 </a>
@@ -57,21 +57,21 @@ export default function Footer() {
               <div className="d-flex justify-content-center align-items-center flex-column gap-3 h-100">
                 <h4 className="text-decoration-none text-light">Social</h4>
                 <div className="d-flex justify-content-between align-items-center gap-3 fs-2 flex-wrap">
-                  <span>
+                  <a href="#" className="text-decoration-none text-light">
                     <i className="bi bi-instagram"></i>
-                  </span>
-                  <span>
+                  </a>
+                  <a href="#" className="text-decoration-none text-light">
                     <i className="bi bi-facebook"></i>
-                  </span>
-                  <span>
+                  </a>
+                  <a href="#" className="text-decoration-none text-light">
                     <i className="bi bi-twitter-x"></i>
-                  </span>
-                  <span>
+                  </a>
+                  <a href="#" className="text-decoration-none text-light">
                     <i className="bi bi-reddit"></i>
-                  </span>
-                  <span>
+                  </a>
+                  <a href="#" className="text-decoration-none text-light">
                     <i className="bi bi-discord"></i>
-                  </span>
+                  </a>
                 </div>
               </div>
             </div>

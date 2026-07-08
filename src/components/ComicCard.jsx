@@ -5,7 +5,7 @@ export default function ComicCard({ id, cover, title }) {
     <>
       <Link to={`/comics/${id}`} className="text-decoration-none" key={id}>
         <div className="col">
-          <div className="card h-100 border-0">
+          <div className="card h-100 border-0 to-animate">
             <div style={{ height: "379px" }}>
               <img
                 src={`http://127.0.0.1:8000/storage/${cover}`}

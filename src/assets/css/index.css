@@ -270,3 +270,26 @@
 .search-dropdown li:hover {
   background: #f1f1f1;
 }
+
+.to-animate {
+  transition: 0.3s all ease;
+  overflow: hidden;
+}
+
+.to-animate:hover {
+  transform: scale(1.2);
+  box-shadow: 6px 8px rgba(159, 159, 159, 0.305);
+  z-index: 100;
+}
+
+.to-animate img {
+  transition: 0.3s all ease;
+}
+
+.to-animate:hover img {
+  transform: scale(1.07);
+}
+
+.to-animate:hover .card-body {
+  transform: scale(1.1);
+}
