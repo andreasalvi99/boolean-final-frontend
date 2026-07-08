@@ -8,21 +8,25 @@ import ComicDetailCard from "../components/ComicDetailCard";
 export default function ComicDetailPage() {
   const { id } = useParams();
   const [comic, setComic] = useState({});
+  const [previous, setPrevious] = useState(null);
+  const [next, setNext] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   function fetchComic() {
     axios
       .get(`http://127.0.0.1:8000/api/comics/${id}`)
       .then((response) => {
-        //   console.log(response.data.data);
+        console.log("response", response.data);
         setComic(response.data.data);
+        setPrevious(response.data.previous);
+        setNext(response.data.next);
       })
       .finally(() => {
         setIsLoading(false);
       });
   }
 
-  // console.log("comic", comic);
+  console.log("comic", comic);
   //   console.log(`http://127.0.0.1:8000/storage/${comic.cover_img}`);
   useEffect(fetchComic, [id]);
 
@@ -39,25 +43,39 @@ export default function ComicDetailPage() {
           {comic && (
             <>
               <GoBackBtn />
-              <section
-                style={{
-                  backgroundImage: `url(http://127.0.0.1:8000/storage/${comic.cover_img})`,
-                }}
-                className="p-5 mb-5"
-                id="comic-detail"
-              >
-                <div className="container">
-                  <ComicDetailCard
-                    cover={comic.cover_img}
-                    title={comic.title}
-                    description={comic.description}
-                    release_date={comic.release_date}
-                    characters={comic.characters}
-                    brand={comic.brand}
-                    price={comic.price}
-                  />
-                </div>
-              </section>
+              <div className="d-flex align-items-center justify-content-between gap-3">
+                {previous && (
+                  <Link to={`/comics/${previous.id}`} className="text-dark">
+                    <i className="bi bi-arrow-left-circle-fill fs-3"></i>
+                  </Link>
+                )}
+
+                <section
+                  style={{
+                    backgroundImage: `url(http://127.0.0.1:8000/storage/${comic.cover_img})`,
+                  }}
+                  className="p-5 mb-5"
+                  id="comic-detail"
+                >
+                  <div className="container">
+                    <ComicDetailCard
+                      cover={comic.cover_img}
+                      title={comic.title}
+                      description={comic.description}
+                      release_date={comic.release_date}
+                      characters={comic.characters}
+                      brand={comic.brand}
+                      price={comic.price}
+                    />
+                  </div>
+                </section>
+
+                {next && (
+                  <Link to={`/comics/${next.id}`} className="text-dark">
+                    <i className="bi bi-arrow-right-circle-fill fs-3"></i>
+                  </Link>
+                )}
+              </div>
 
               {/* Related characters */}
 
