@@ -40,7 +40,7 @@ export default function CharacterDetailPage() {
 
       {character && (
         <>
-          <GoBackBtn />
+          <GoBackBtn destination="/characters" />
           <div
             style={{
               backgroundImage: `url(http://127.0.0.1:8000/storage/${character.banner})`,

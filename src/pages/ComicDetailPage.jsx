@@ -42,7 +42,7 @@ export default function ComicDetailPage() {
 
           {comic && (
             <>
-              <GoBackBtn />
+              <GoBackBtn destination="/comics" />
               <div className="d-flex align-items-center justify-content-between gap-3">
                 {previous && (
                   <Link to={`/comics/${previous.id}`} className="text-dark">
@@ -54,7 +54,7 @@ export default function ComicDetailPage() {
                   style={{
                     backgroundImage: `url(http://127.0.0.1:8000/storage/${comic.cover_img})`,
                   }}
-                  className="p-5 flex-grow-1"
+                  className="p-5 flex-grow-1 rounded-2"
                   id="comic-detail"
                 >
                   <div className="container">
