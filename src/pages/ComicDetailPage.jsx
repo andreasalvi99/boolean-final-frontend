@@ -44,6 +44,12 @@ export default function ComicDetailPage() {
             <>
               <GoBackBtn destination="/comics" />
               <div className="d-flex align-items-center justify-content-between gap-3">
+                {!previous && (
+                  <button className="text-dark opacity-25" disabled>
+                    <i className="bi bi-arrow-left-circle-fill fs-3"></i>
+                  </button>
+                )}
+
                 {previous && (
                   <Link to={`/comics/${previous.id}`} className="text-dark">
                     <i className="bi bi-arrow-left-circle-fill fs-3"></i>
@@ -69,6 +75,12 @@ export default function ComicDetailPage() {
                     />
                   </div>
                 </section>
+
+                {!next && (
+                  <button className="text-dark opacity-25" disabled>
+                    <i className="bi bi-arrow-right-circle-fill fs-3"></i>
+                  </button>
+                )}
 
                 {next && (
                   <Link to={`/comics/${next.id}`} className="text-dark">
