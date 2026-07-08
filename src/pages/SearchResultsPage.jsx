@@ -37,7 +37,8 @@ export default function SearchResultsPage() {
 
   if (
     comicsSearchResults.length === 0 &&
-    charactersSearchResults.length === 0
+    charactersSearchResults.length === 0 &&
+    !isLoading
   ) {
     return <NoResults />;
   }
@@ -54,7 +55,7 @@ export default function SearchResultsPage() {
 
           {charactersSearchResults && (
             <>
-              <h1 className="mb-4">
+              <h1 className="mb-4 bangers-regular">
                 Personaggi ({charactersSearchResults.length})
               </h1>
               <div className="row row-cols-6 g-3 mb-4">
@@ -88,7 +89,7 @@ export default function SearchResultsPage() {
 
           {comicsSearchResults && (
             <>
-              <h2 className="h1 mb-4">
+              <h2 className="h1 mb-4 bangers-regular">
                 Fumetti ({comicsSearchResults.length})
               </h2>
               <div className="row row-cols-md-3 row-cols-lg-5 g-3">
@@ -100,7 +101,7 @@ export default function SearchResultsPage() {
                       key={comic.id}
                     >
                       <div className="col">
-                        <div className="card h-100 border-0">
+                        <div className="card h-100 border-0 to-animate">
                           <div style={{ height: "379px" }}>
                             <img
                               src={`http://127.0.0.1:8000/storage/${comic.cover_img}`}
@@ -109,7 +110,7 @@ export default function SearchResultsPage() {
                             />
                           </div>
                           <div className="card-body h-25">
-                            <p className="card-text text-center fw-semibold">
+                            <p className="card-text text-center fw-semibold bebas-neue-regular">
                               {comic.title}
                             </p>
                           </div>
