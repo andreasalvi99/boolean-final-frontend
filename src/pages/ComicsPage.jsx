@@ -7,17 +7,17 @@ import ComicCard from "../components/ComicCard";
 export default function ComicsPage() {
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isVisible, setIsVisible] = useState(false);
+  // const [isVisible, setIsVisible] = useState(false);
 
-  function handleSwitch() {
-    if (isVisible) {
-      return setIsVisible(false);
-    }
+  // function handleSwitch() {
+  //   if (isVisible) {
+  //     return setIsVisible(false);
+  //   }
 
-    if (!isVisible) {
-      return setIsVisible(true);
-    }
-  }
+  //   if (!isVisible) {
+  //     return setIsVisible(true);
+  //   }
+  // }
 
   function fetchComics() {
     axios
@@ -39,15 +39,15 @@ export default function ComicsPage() {
     return comic.brand_id === 1;
   });
 
-  //# Faccio slice per mostrare solo alcuni dei fumetti per ogni brand
-  const marvelComicsSliced = marvelComics.slice(2, 7);
-  //   console.log(marvelComicsSliced);
+  // //# Faccio slice per mostrare solo alcuni dei fumetti per ogni brand
+  // const marvelComicsSliced = marvelComics.slice(2, 7);
+  // //   console.log(marvelComicsSliced);
 
-  const dcComicsSliced = dcComics.slice(2, 7);
-  //   console.log(dcComicsSliced);
+  // const dcComicsSliced = dcComics.slice(2, 7);
+  // //   console.log(dcComicsSliced);
 
-  //   console.log(marvelComics);
-  //   console.log(dcComics);
+  // //   console.log(marvelComics);
+  // //   console.log(dcComics);
 
   useEffect(fetchComics, []);
 
@@ -62,23 +62,26 @@ export default function ComicsPage() {
           {comics && (
             <>
               {/* DC Comics */}
-              <div className="form-check form-switch my-3">
+              {/* <div className="form-check form-switch my-3">
                 <input
                   className="form-check-input"
                   type="checkbox"
+                  role="switch"
                   value=""
-                  id="checkNativeSwitch"
+                  id="switchCheckChecked"
                   switch
                   onClick={handleSwitch}
                 />
-                <label className="form-check-label" for="checkNativeSwitch">
+                <label className="form-check-label" for="switchCheckChecked">
                   Mostra fumetti: {!isVisible ? "DC" : "Marvel"}
                 </label>
-              </div>
+              </div> */}
 
-              <section id="DC" className={isVisible ? "" : "d-none"}>
+              {/* <section id="DC" className={isVisible ? "" : "d-none"}> */}
+              <section id="DC" className="">
+                <h2 className="my-3 text-center">Marvel</h2>
                 <div className="row row-cols-md-3 row-cols-lg-5 g-3">
-                  {dcComicsSliced.map((dcComic) => {
+                  {dcComics.map((dcComic) => {
                     return (
                       <ComicCard
                         key={dcComic.id}
@@ -93,9 +96,11 @@ export default function ComicsPage() {
 
               {/* Marvel Comics */}
 
-              <section id="Marvel" className={isVisible ? "d-none" : ""}>
+              {/* <section id="Marvel" className={isVisible ? "d-none" : ""}> */}
+              <section id="Marvel" className="">
+                <h2 className="my-3 text-center">DC</h2>
                 <div className="row row-cols-md-3 row-cols-lg-5 g-3">
-                  {marvelComicsSliced.map((marvelComic) => {
+                  {marvelComics.map((marvelComic) => {
                     return (
                       <ComicCard
                         key={marvelComic.id}
