@@ -80,7 +80,7 @@ export default function ComicsPage() {
               {/* <section id="DC" className={isVisible ? "" : "d-none"}> */}
               <section id="DC" className="">
                 <h2 className="my-3 text-center bangers-regular h1">Marvel</h2>
-                <div className="row row-cols-md-3 row-cols-lg-5 g-3">
+                <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                   {dcComics.map((dcComic) => {
                     return (
                       <ComicCard
@@ -99,7 +99,7 @@ export default function ComicsPage() {
               {/* <section id="Marvel" className={isVisible ? "d-none" : ""}> */}
               <section id="Marvel" className="">
                 <h2 className="my-3 text-center bangers-regular h1">DC</h2>
-                <div className="row row-cols-md-3 row-cols-lg-5 g-3">
+                <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                   {marvelComics.map((marvelComic) => {
                     return (
                       <ComicCard

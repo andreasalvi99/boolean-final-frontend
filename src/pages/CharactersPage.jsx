@@ -8,7 +8,7 @@ export default function CharactersPage() {
   const [currentPage, setCurrentPage] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
-  const charactersPerPage = 10;
+  const charactersPerPage = 7;
 
   const startIndex = currentPage * charactersPerPage;
   const endIndex = startIndex + charactersPerPage;

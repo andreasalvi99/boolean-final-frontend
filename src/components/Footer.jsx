@@ -56,7 +56,7 @@ export default function Footer() {
             <div className="col-lg-3 col-4">
               <div className="d-flex justify-content-center align-items-center flex-column gap-3 h-100">
                 <h4 className="text-decoration-none text-light">Social</h4>
-                <div className="d-flex justidy-content-between align-items-center gap-3 fs-2">
+                <div className="d-flex justify-content-between align-items-center gap-3 fs-2 flex-wrap">
                   <span>
                     <i className="bi bi-instagram"></i>
                   </span>
