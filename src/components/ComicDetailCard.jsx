@@ -22,7 +22,7 @@ export default function ComicDetailCard({
         </div>
         <div className="col-md-8">
           <div className="card-body ps-5 d-flex flex-column justify-content-between h-100 p-0">
-            <h3 className="card-title">{title}</h3>
+            <h3 className="card-title bangers-regular">{title}</h3>
             <ReactMarkdown>
               {/* <p
                 className="card-text overflow-auto"

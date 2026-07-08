@@ -64,7 +64,9 @@ export default function CharacterDetailPage() {
                   </div>
                   <div className="col-md-10">
                     <div className="card-body ms-5">
-                      <h2 className="card-title">{character.name}</h2>
+                      <h2 className="card-title bangers-regular h1">
+                        {character.name}
+                      </h2>
                       <ReactMarkdown>{character.description}</ReactMarkdown>
                     </div>
                   </div>
@@ -75,7 +77,7 @@ export default function CharacterDetailPage() {
 
               {/* Related Comics */}
 
-              <h1 className="mb-5">Related Comics:</h1>
+              <h1 className="mb-5 bangers-regular">Related Comics:</h1>
               <div className="row row-cols-5 g-3">
                 {character.comics?.map((comic) => {
                   return (

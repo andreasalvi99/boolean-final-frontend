@@ -64,7 +64,7 @@ export default function ComicDetailPage() {
               <section id="related-characters" className="">
                 <div className="container mt-5">
                   <hr />
-                  <h2 className="my-5">Related Characters:</h2>
+                  <h2 className="my-5 bangers-regular">Related Characters:</h2>
                   <div className="row row-cols-6 g-3">
                     {comic.characters?.map((character) => {
                       return (
