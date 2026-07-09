@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
 
-export default function ComicCard({ id, cover, title }) {
+export default function ComicCard({ id, cover, title, comicIds }) {
   return (
     <>
-      <Link to={`/comics/${id}`} className="text-decoration-none" key={id}>
+      <Link
+        to={`/comics/${id}`}
+        className="text-decoration-none"
+        key={id}
+        state={{ comicIds }}
+      >
         <div className="col">
           <div className="card h-100 border-0 to-animate">
             <div style={{ height: "379px" }}>

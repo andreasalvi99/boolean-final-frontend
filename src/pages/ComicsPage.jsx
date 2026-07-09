@@ -39,6 +39,9 @@ export default function ComicsPage() {
     return comic.brand_id === 1;
   });
 
+  const dcComicIds = dcComics.map((comic) => comic.id);
+  const marvelComicIds = marvelComics.map((comic) => comic.id);
+
   // //# Faccio slice per mostrare solo alcuni dei fumetti per ogni brand
   // const marvelComicsSliced = marvelComics.slice(2, 7);
   // //   console.log(marvelComicsSliced);
@@ -79,7 +82,7 @@ export default function ComicsPage() {
 
               {/* <section id="DC" className={isVisible ? "" : "d-none"}> */}
               <section id="DC" className="">
-                <h2 className="my-3 text-center bangers-regular h1">Marvel</h2>
+                <h2 className="my-3 text-center bangers-regular h1">DC</h2>
                 <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                   {dcComics.map((dcComic) => {
                     return (
@@ -88,6 +91,7 @@ export default function ComicsPage() {
                         id={dcComic.id}
                         cover={dcComic.cover_img}
                         title={dcComic.title}
+                        comicIds={dcComicIds}
                       />
                     );
                   })}
@@ -98,7 +102,7 @@ export default function ComicsPage() {
 
               {/* <section id="Marvel" className={isVisible ? "d-none" : ""}> */}
               <section id="Marvel" className="">
-                <h2 className="my-3 text-center bangers-regular h1">DC</h2>
+                <h2 className="my-3 text-center bangers-regular h1">MARVEL</h2>
                 <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                   {marvelComics.map((marvelComic) => {
                     return (
@@ -107,6 +111,7 @@ export default function ComicsPage() {
                         id={marvelComic.id}
                         cover={marvelComic.cover_img}
                         title={marvelComic.title}
+                        comicIds={marvelComicIds}
                       />
                     );
                   })}

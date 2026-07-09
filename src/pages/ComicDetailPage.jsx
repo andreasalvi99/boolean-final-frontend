@@ -14,19 +14,17 @@ export default function ComicDetailPage() {
 
   // Hook che restituisce info sulla pagina corrente
   const location = useLocation();
-  // Prendi searchResults da location.state e se non esiste (?) prendi un array vuoto
-  const searchResults = location.state?.searchResults ?? [];
+  // Prendi comicIds da location.state e se non esiste (?) prendi un array vuoto
+  const comicIds = location.state?.comicIds ?? [];
   // Estrapolo l'indice a cui corrisponde l'id(parsato) presente nell'url
-  const currentIndex = searchResults.indexOf(Number(id));
+  const currentIndex = comicIds.indexOf(Number(id));
   // Se l'indice attuale è > 0 allora vado indietro di un elemento nell'array
-  const previousId = currentIndex > 0 ? searchResults[currentIndex - 1] : null;
+  const previousId = currentIndex > 0 ? comicIds[currentIndex - 1] : null;
   // Se l'indice attuale è < della lunghezza dell'array della ricerca -1 allora vado avanti di un elemento nell'array
   const nextId =
-    currentIndex < searchResults.length - 1
-      ? searchResults[currentIndex + 1]
-      : null;
+    currentIndex < comicIds.length - 1 ? comicIds[currentIndex + 1] : null;
   // Variabile che mi dice se sono arrivato al dettaglio da una ricerca o dalla pagina dei fumetti
-  const hasSearchResults = searchResults.length > 0;
+  const hasSearchResults = comicIds.length > 0;
   // Se arrivo dalla ricerca allora previousId, altrimenti previous?.id;
   const prevComicId = hasSearchResults ? previousId : previous?.id;
   // Se arrivo dalla ricerca allora nextId, altrimenti next?.id;
