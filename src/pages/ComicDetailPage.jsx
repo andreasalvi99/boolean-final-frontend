@@ -11,9 +11,9 @@ export default function ComicDetailPage() {
   const [previous, setPrevious] = useState(null);
   const [next, setNext] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
   // Hook che restituisce info sulla pagina corrente
   const location = useLocation();
-
   // Prendi searchResults da location.state e se non esiste (?) prendi un array vuoto
   const searchResults = location.state?.searchResults ?? [];
   // Estrapolo l'indice a cui corrisponde l'id(parsato) presente nell'url
@@ -25,6 +25,12 @@ export default function ComicDetailPage() {
     currentIndex < searchResults.length - 1
       ? searchResults[currentIndex + 1]
       : null;
+  // Variabile che mi dice se sono arrivato al dettaglio da una ricerca o dalla pagina dei fumetti
+  const hasSearchResults = searchResults.length > 0;
+  // Se arrivo dalla ricerca allora previousId, altrimenti previous?.id;
+  const prevComicId = hasSearchResults ? previousId : previous?.id;
+  // Se arrivo dalla ricerca allora nextId, altrimenti next?.id;
+  const nextComicId = hasSearchResults ? nextId : next?.id;
 
   function fetchComic() {
     axios
@@ -58,18 +64,18 @@ export default function ComicDetailPage() {
             <>
               <GoBackBtn />
               <div className="d-flex align-items-center justify-content-between gap-3">
-                {!previousId && (
+                {!prevComicId && (
                   <button className="text-dark opacity-25" disabled>
                     <i className="bi bi-arrow-left-circle-fill fs-3"></i>
                   </button>
                 )}
 
-                {previousId && (
+                {prevComicId && (
                   <Link
-                    to={`/comics/${previousId}`}
+                    to={`/comics/${prevComicId}`}
                     className="text-dark"
                     // Vado alla pagina successiva e mi porto dietro i dati con cui sono arrivato su questa pagina
-                    state={location.state}
+                    state={hasSearchResults ? location.state : undefined}
                   >
                     <i className="bi bi-arrow-left-circle-fill fs-3"></i>
                   </Link>
@@ -95,17 +101,17 @@ export default function ComicDetailPage() {
                   </div>
                 </section>
 
-                {!nextId && (
+                {!nextComicId && (
                   <button className="text-dark opacity-25" disabled>
                     <i className="bi bi-arrow-right-circle-fill fs-3"></i>
                   </button>
                 )}
 
-                {nextId && (
+                {nextComicId && (
                   <Link
-                    to={`/comics/${nextId}`}
+                    to={`/comics/${nextComicId}`}
                     className="text-dark"
-                    state={location.state}
+                    state={hasSearchResults ? location.state : undefined}
                   >
                     <i className="bi bi-arrow-right-circle-fill fs-3"></i>
                   </Link>
