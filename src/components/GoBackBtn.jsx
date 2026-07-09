@@ -1,12 +1,10 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
-const location = useLocation();
-const navigate = useNavigate();
-
-const destination = location.state?.from;
-
 export default function GoBackBtn() {
+  const location = useLocation();
   const navigate = useNavigate();
+
+  const destination = location.state?.from;
   return (
     <div className="container p-4">
       <div>
