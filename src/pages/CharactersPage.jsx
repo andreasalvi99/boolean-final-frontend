@@ -65,6 +65,7 @@ export default function CharactersPage() {
                       style={{
                         backgroundImage: `url(http://127.0.0.1:8000/storage/${character.character_img})`,
                       }}
+                      state={"/characters"}
                     >
                       <div className="card-body related-character-info">
                         <p className="card-text text-center">

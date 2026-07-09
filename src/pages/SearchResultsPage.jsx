@@ -106,6 +106,7 @@ export default function SearchResultsPage() {
                       // Uso lo state per passare i dati alla pagina di destinazione (l'id dei comics che escono dalla ricerca)
                       state={{
                         comicIds: comicsSearchResults.map((c) => c.id),
+                        from: `/search?query=${query}`,
                       }}
                     >
                       <div className="col">

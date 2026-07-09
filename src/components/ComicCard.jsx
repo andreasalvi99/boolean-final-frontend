@@ -7,7 +7,7 @@ export default function ComicCard({ id, cover, title, comicIds }) {
         to={`/comics/${id}`}
         className="text-decoration-none"
         key={id}
-        state={{ comicIds }}
+        state={{ comicIds, from: "/comics" }}
       >
         <div className="col">
           <div className="card h-100 border-0 to-animate">
