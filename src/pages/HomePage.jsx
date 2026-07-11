@@ -3,9 +3,11 @@ import Header from "../components/Header";
 import Slider from "../components/slider/Slider";
 import axios from "axios";
 import ComicCard from "../components/ComicCard";
+import Loader from "../components/Loader";
 
 export default function HomePage() {
   const [latestComics, setLatestComics] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   function fetchLatestComics() {
     axios.get("http://127.0.0.1:8000/api/comics").then((response) => {
@@ -27,11 +29,13 @@ export default function HomePage() {
   useEffect(fetchLatestComics, []);
 
   return (
-    <>
-      <section id="main-content">
-        <Slider />
+    <section id="main-content">
+      {isLoading && <Loader />}
 
-        {latestComics && (
+      {latestComics && (
+        <>
+          <Slider />
+
           <section id="latest-comics" className="p-4">
             <div className="container">
               <h1 className="bangers-regular">Ultimi arrivi:</h1>
@@ -50,8 +54,8 @@ export default function HomePage() {
               </div>
             </div>
           </section>
-        )}
-      </section>
-    </>
+        </>
+      )}
+    </section>
   );
 }
