@@ -10,16 +10,21 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
 
   function fetchLatestComics() {
-    axios.get("http://127.0.0.1:8000/api/comics").then((response) => {
-      // console.log(response);
+    axios
+      .get("http://127.0.0.1:8000/api/comics")
+      .then((response) => {
+        // console.log(response);
 
-      const results = response.data.data;
+        const results = response.data.data;
 
-      const filteredLatest = results.filter((result) => result.is_new === 1);
-      // console.log("filteredLatest", filteredLatest);
+        const filteredLatest = results.filter((result) => result.is_new === 1);
+        // console.log("filteredLatest", filteredLatest);
 
-      setLatestComics(filteredLatest);
-    });
+        setLatestComics(filteredLatest);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   const comicIds = latestComics.map((comic) => comic.id);
