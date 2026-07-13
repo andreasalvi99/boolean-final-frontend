@@ -68,7 +68,7 @@ export default function CharactersPage() {
                       state={"/characters"}
                     >
                       <div className="card-body related-character-info">
-                        <p className="card-text text-center">
+                        <p className="card-text text-center bebas-neue-regular fw-bold">
                           {character.name}
                         </p>
                       </div>

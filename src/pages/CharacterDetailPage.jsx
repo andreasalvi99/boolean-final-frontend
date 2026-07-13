@@ -105,7 +105,7 @@ export default function CharacterDetailPage() {
                             alt="..."
                           />
                           <div className="card-body related-character-info">
-                            <p className="card-text text-center">
+                            <p className="card-text text-center oswald-special fw-bold">
                               {comic.title}
                             </p>
                           </div>

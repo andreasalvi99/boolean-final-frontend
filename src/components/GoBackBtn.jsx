@@ -6,7 +6,7 @@ export default function GoBackBtn() {
 
   const destination = location.state?.from;
   return (
-    <div className="container p-4">
+    <div className="container p-4 oswald-special">
       <div>
         <button
           className="text-dark"
