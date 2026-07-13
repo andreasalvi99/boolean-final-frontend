@@ -110,7 +110,22 @@ export default function SearchResultsPage() {
                       }}
                     >
                       <div className="col">
-                        <div className="card h-100 border-0 to-animate">
+                        <div className="card h-100 border-0 to-animate position-relative">
+                          {comic.is_new === 1 && (
+                            <span className="status-badge text-bg-primary bebas-neue-regular">
+                              <span className="mx-2"> New!</span>
+                            </span>
+                          )}
+                          {comic.is_preorder === 1 && (
+                            <span className="status-badge text-bg-info bebas-neue-regular">
+                              <span className="mx-2"> Soon!</span>
+                            </span>
+                          )}
+                          {comic.discount > 0 && (
+                            <span className="status-badge text-bg-danger bebas-neue-regular">
+                              <span className="mx-2">-{comic.discount}%</span>
+                            </span>
+                          )}
                           <div style={{ height: "379px" }}>
                             <img
                               src={`http://127.0.0.1:8000/storage/${comic.cover_img}`}
