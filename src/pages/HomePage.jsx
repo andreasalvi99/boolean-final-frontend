@@ -51,63 +51,93 @@ export default function HomePage() {
           <Slider />
 
           <section id="latest-comics" className="p-4">
-            <div className="container">
-              <h1 className="bangers-regular">Ultimi arrivi:</h1>
-              <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
-                {latestComics.map((comic) => {
-                  return (
-                    <ComicCard
-                      id={comic.id}
-                      key={comic.id}
-                      cover={comic.cover_img}
-                      title={comic.title}
-                      comicIds={comicIds}
-                      isNew={comic.is_new}
-                    />
-                  );
-                })}
+            {/* <div className="container"> */}
+            <div className="d-flex justify-content-center align-items-center gap-4">
+              <button className="go-prev">
+                <i class="bi bi-caret-left-fill"></i>
+              </button>
+              <div>
+                <h1 className="bangers-regular">Ultimi arrivi:</h1>
+                <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+                  {latestComics.map((comic) => {
+                    return (
+                      <ComicCard
+                        id={comic.id}
+                        key={comic.id}
+                        cover={comic.cover_img}
+                        title={comic.title}
+                        comicIds={comicIds}
+                        isNew={comic.is_new}
+                      />
+                    );
+                  })}
+                </div>
               </div>
+              <button className="go-next">
+                <i class="bi bi-caret-right-fill"></i>
+              </button>
             </div>
+            {/* </div> */}
           </section>
 
-          <section id="preorder-comics" className="p-4">
-            <div className="container">
-              <h1 className="bangers-regular">Preorder:</h1>
-              <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
-                {preorderComics.map((comic) => {
-                  return (
-                    <ComicCard
-                      id={comic.id}
-                      key={comic.id}
-                      cover={comic.cover_img}
-                      title={comic.title}
-                      comicIds={comicIds}
-                      isPreorder={comic.is_preorder}
-                    />
-                  );
-                })}
+          <section id="latest-comics" className="p-4">
+            {/* <div className="container"> */}
+            <div className="d-flex justify-content-center align-items-center gap-4">
+              <button className="go-prev">
+                <i class="bi bi-caret-left-fill"></i>
+              </button>
+              <div>
+                <h1 className="bangers-regular">Preordini:</h1>
+                <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+                  {preorderComics.map((comic) => {
+                    return (
+                      <ComicCard
+                        id={comic.id}
+                        key={comic.id}
+                        cover={comic.cover_img}
+                        title={comic.title}
+                        comicIds={comicIds}
+                        isPreorder={comic.is_preorder}
+                      />
+                    );
+                  })}
+                </div>
               </div>
+              <button className="go-next">
+                <i class="bi bi-caret-right-fill"></i>
+              </button>
             </div>
+            {/* </div> */}
           </section>
 
-          <section id="discount-comics" className="p-4">
-            <div className="container">
-              <h1 className="bangers-regular">Scontati:</h1>
-              <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
-                {discountComics.map((comic) => {
-                  return (
-                    <ComicCard
-                      id={comic.id}
-                      key={comic.id}
-                      cover={comic.cover_img}
-                      title={comic.title}
-                      comicIds={comicIds}
-                      isDiscount={comic.discount}
-                    />
-                  );
-                })}
+          <section id="latest-comics" className="p-4">
+            {/* <div className="container"> */}
+            <div className="d-flex justify-content-center align-items-center gap-4">
+              <button className="go-prev">
+                <i class="bi bi-caret-left-fill"></i>
+              </button>
+              <div>
+                <h1 className="bangers-regular">Scontati:</h1>
+                <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+                  {discountComics.map((comic) => {
+                    return (
+                      <ComicCard
+                        id={comic.id}
+                        key={comic.id}
+                        cover={comic.cover_img}
+                        title={comic.title}
+                        comicIds={comicIds}
+                        isDiscount={comic.discount}
+                      />
+                    );
+                  })}
+                </div>
               </div>
+              <button className="go-next">
+                <i class="bi bi-caret-right-fill"></i>
+              </button>
             </div>
+            {/* </div> */}
           </section>
         </>
       )}

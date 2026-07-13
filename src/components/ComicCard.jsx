@@ -11,14 +11,17 @@ export default function ComicCard({
 }) {
   return (
     <>
-      <Link
-        to={`/comics/${id}`}
-        className="text-decoration-none"
-        key={id}
-        state={{ comicIds, from: "/comics" }}
-      >
-        <div className="col">
-          <div className="card h-100 border-0 to-animate position-relative">
+      <div className="col">
+        <Link
+          to={`/comics/${id}`}
+          className="text-decoration-none"
+          key={id}
+          state={{ comicIds, from: "/comics" }}
+        >
+          <div
+            className="card h-100 border-0 to-animate position-relative"
+            // style={{ maxWidth: "253px" }}
+          >
             {isNew === 1 && (
               <span className="status-badge text-bg-primary bebas-neue-regular">
                 <span className="mx-2"> New!</span>
@@ -31,7 +34,7 @@ export default function ComicCard({
             )}
             {isDiscount > 0 && (
               <span className="status-badge text-bg-danger bebas-neue-regular">
-                <span className="mx-2">- {isDiscount}%</span>
+                <span className="mx-2">-{isDiscount}%</span>
               </span>
             )}
             <div style={{ height: "379px" }}>
@@ -47,8 +50,8 @@ export default function ComicCard({
               </p>
             </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </>
   );
 }
