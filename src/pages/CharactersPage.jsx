@@ -5,25 +5,25 @@ import Loader from "../components/Loader";
 
 export default function CharactersPage() {
   const [characters, setCharacters] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [startIndex, setStartIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   const charactersPerPage = 7;
 
-  const startIndex = currentPage * charactersPerPage;
-  const endIndex = startIndex + charactersPerPage;
-
-  const visibleCharacters = characters.slice(startIndex, endIndex);
+  const visibleCharacters = characters.slice(
+    startIndex,
+    startIndex + charactersPerPage,
+  );
 
   const nextPage = () => {
-    if (endIndex < characters.length) {
-      setCurrentPage((prev) => prev + 1);
+    if (startIndex + charactersPerPage < characters.length) {
+      setStartIndex((prev) => prev + 1);
     }
   };
 
   const prevPage = () => {
-    if (currentPage > 0) {
-      setCurrentPage((prev) => prev - 1);
+    if (startIndex > 0) {
+      setStartIndex((prev) => prev - 1);
     }
   };
 
