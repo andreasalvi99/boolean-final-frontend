@@ -35,14 +35,6 @@ export default function SearchResultsPage() {
       });
   }, [query]); //l'array delle dipendenze è quello del valore cercato, quando cambia cambiano i risultati->si aggiorna la pagina
 
-  // if (
-  //   comicsSearchResults.length === 0 &&
-  //   charactersSearchResults.length === 0 &&
-  //   !isLoading
-  // ) {
-  //   return ;
-  // }
-
   return (
     <>
       <section id="main-content">
