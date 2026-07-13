@@ -37,7 +37,7 @@ export default function ComicCard({
                 <span className="mx-2">-{isDiscount}%</span>
               </span>
             )}
-            <div style={{ height: "379px" }}>
+            <div style={{ height: "370px" }}>
               <img
                 src={`http://127.0.0.1:8000/storage/${cover}`}
                 className="card-img-top h-100 overflow-hidden"

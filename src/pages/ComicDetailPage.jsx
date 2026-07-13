@@ -95,6 +95,9 @@ export default function ComicDetailPage() {
                       characters={comic.characters}
                       brand={comic.brand}
                       price={comic.price}
+                      isNew={comic.is_new}
+                      isPreorder={comic.is_preorder}
+                      isDiscount={comic.discount}
                     />
                   </div>
                 </section>

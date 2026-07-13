@@ -10,6 +10,9 @@ export default function ComicDetailCard({
   characters,
   brand,
   price,
+  isNew,
+  isPreorder,
+  isDiscount,
 }) {
   return (
     <div className="card mb-3 comic-card">
@@ -23,7 +26,24 @@ export default function ComicDetailCard({
         </div>
         <div className="col-md-8">
           <div className="card-body ps-5 d-flex flex-column justify-content-between h-100 p-0 oswald-special">
-            <h3 className="card-title bangers-regular">{title}</h3>
+            <div className="d-flex justify-content-between">
+              <h3 className="card-title bangers-regular">{title}</h3>
+              {isNew === 1 && (
+                <span className="status-badge text-bg-primary bebas-neue-regular fs-5">
+                  <span className="mx-2"> New!</span>
+                </span>
+              )}
+              {isPreorder === 1 && (
+                <span className="status-badge text-bg-info bebas-neue-regular fs-5">
+                  <span className="mx-2"> Soon!</span>
+                </span>
+              )}
+              {isDiscount > 0 && (
+                <span className="status-badge text-bg-danger bebas-neue-regular fs-5">
+                  <span className="mx-2">-{isDiscount}%</span>
+                </span>
+              )}
+            </div>
             <ReactMarkdown>
               {/* <p
                 className="card-text overflow-auto"
