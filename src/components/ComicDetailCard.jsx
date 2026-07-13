@@ -14,6 +14,14 @@ export default function ComicDetailCard({
   isPreorder,
   isDiscount,
 }) {
+  function calcDiscountedPrice(price, discountValue) {
+    const discount = (price * discountValue) / 100;
+
+    const finalPrice = Math.round(price - discount).toFixed(2);
+
+    return finalPrice;
+  }
+
   return (
     <div className="card mb-3 comic-card">
       <div className="row g-0">
@@ -38,20 +46,8 @@ export default function ComicDetailCard({
                   <span className="mx-2"> Soon!</span>
                 </span>
               )}
-              {isDiscount > 0 && (
-                <span className="status-badge text-bg-danger bebas-neue-regular fs-5">
-                  <span className="mx-2">-{isDiscount}%</span>
-                </span>
-              )}
             </div>
-            <ReactMarkdown>
-              {/* <p
-                className="card-text overflow-auto"
-                style={{ minHeight: "100px" }}
-              > */}
-              {description}
-              {/* </p> */}
-            </ReactMarkdown>
+            <ReactMarkdown>{description}</ReactMarkdown>
             <p className="card-text">
               Pubblicazione:
               <span className="text-light">
@@ -82,9 +78,29 @@ export default function ComicDetailCard({
                   width: brand?.name === "Marvel Comics" ? "200px" : "100px",
                 }}
               />
-              <p className="align-self-end m-0 fs-1 fw-semibold">
-                <i>&euro; {price}</i>
-              </p>
+              {!isDiscount && (
+                <p className="align-self-end m-0 fs-2 fw-semibold oswald-special">
+                  &euro; {price}
+                </p>
+              )}
+
+              {isDiscount > 0 && (
+                <>
+                  <div>
+                    <p className="align-self-end m-0 fs-2 fw-semibold position-relative">
+                      <span className="text-decoration-line-through oswald-special">
+                        &euro; {price}
+                      </span>
+                      <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger fs-5">
+                        -{isDiscount}%
+                      </span>
+                      <span className="d-block oswald-special text-danger">
+                        &euro; {calcDiscountedPrice(price, isDiscount)}
+                      </span>
+                    </p>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
