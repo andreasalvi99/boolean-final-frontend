@@ -37,14 +37,14 @@ export default function HomePage() {
     <section id="main-content">
       {isLoading && <Loader />}
 
-      {latestComics && (
+      {latestComics.length > 0 && (
         <>
           <Slider />
 
           <section id="latest-comics" className="p-4">
             <div className="container">
               <h1 className="bangers-regular">Ultimi arrivi:</h1>
-              <div className="row row-cols-5">
+              <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                 {latestComics.map((comic) => {
                   return (
                     <ComicCard
@@ -53,6 +53,7 @@ export default function HomePage() {
                       cover={comic.cover_img}
                       title={comic.title}
                       comicIds={comicIds}
+                      isNew={comic.is_new}
                     />
                   );
                 })}

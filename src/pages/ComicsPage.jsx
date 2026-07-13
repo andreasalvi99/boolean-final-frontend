@@ -92,6 +92,7 @@ export default function ComicsPage() {
                         cover={dcComic.cover_img}
                         title={dcComic.title}
                         comicIds={dcComicIds}
+                        isNew={dcComic.is_new}
                       />
                     );
                   })}
@@ -112,6 +113,7 @@ export default function ComicsPage() {
                         cover={marvelComic.cover_img}
                         title={marvelComic.title}
                         comicIds={marvelComicIds}
+                        isNew={marvelComic.is_new}
                       />
                     );
                   })}
