@@ -80,7 +80,7 @@ export default function HomePage() {
             {/* </div> */}
           </section>
 
-          <section id="latest-comics" className="p-4">
+          <section id="preoder-comics" className="p-4">
             {/* <div className="container"> */}
             <div className="d-flex justify-content-center align-items-center gap-4">
               <button className="go-prev">
@@ -110,7 +110,7 @@ export default function HomePage() {
             {/* </div> */}
           </section>
 
-          <section id="latest-comics" className="p-4">
+          <section id="discount-comics" className="p-4">
             {/* <div className="container"> */}
             <div className="d-flex justify-content-center align-items-center gap-4">
               <button className="go-prev">
