@@ -62,7 +62,7 @@ export default function ComicsPage() {
 
           {isLoading && <Loader />}
 
-          {comics && (
+          {comics.length > 0 && (
             <>
               {/* DC Comics */}
               {/* <div className="form-check form-switch my-3">
