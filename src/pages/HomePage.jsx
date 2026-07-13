@@ -92,7 +92,7 @@ export default function HomePage() {
               </button> */}
               {/* </div> */}
               <div className="d-flex justify-content-center">
-                <button class="button-49" role="button">
+                <button className="button-49" role="button">
                   LET'S GO
                 </button>
               </div>
@@ -136,7 +136,7 @@ export default function HomePage() {
               </button> */}
               {/* </div> */}
               <div className="d-flex justify-content-center">
-                <button class="button-49" role="button">
+                <button className="button-49" role="button">
                   LET'S GO
                 </button>
               </div>
@@ -179,7 +179,7 @@ export default function HomePage() {
               </button> */}
               {/* </div> */}
               <div className="d-flex justify-content-center">
-                <button class="button-49" role="button">
+                <button className="button-49" role="button">
                   LET'S GO
                 </button>
               </div>

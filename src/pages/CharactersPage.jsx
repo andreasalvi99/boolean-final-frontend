@@ -5,10 +5,13 @@ import Loader from "../components/Loader";
 
 export default function CharactersPage() {
   const [characters, setCharacters] = useState([]);
-  const [startIndex, setStartIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   const charactersPerPage = 7;
+
+  const startIndex = currentPage * charactersPerPage;
+  const endIndex = startIndex + charactersPerPage;
 
   const visibleCharacters = characters.slice(
     startIndex,
@@ -16,14 +19,14 @@ export default function CharactersPage() {
   );
 
   const nextPage = () => {
-    if (startIndex + charactersPerPage < characters.length) {
-      setStartIndex((prev) => prev + 1);
+    if (endIndex < characters.length) {
+      setCurrentPage((prev) => prev + 1);
     }
   };
 
   const prevPage = () => {
-    if (startIndex > 0) {
-      setStartIndex((prev) => prev - 1);
+    if (currentPage > 0) {
+      setCurrentPage((prev) => prev - 1);
     }
   };
 
@@ -31,7 +34,6 @@ export default function CharactersPage() {
     axios
       .get("http://127.0.0.1:8000/api/characters")
       .then((response) => {
-        console.log(response.data.results);
         setCharacters(response.data.results);
       })
       .finally(() => {
@@ -51,35 +53,38 @@ export default function CharactersPage() {
           {/* Characters cards */}
 
           {characters && (
-            <div className="d-flex justify-content-between gap-2 align-items-center">
-              <button onClick={prevPage} className="go-prev">
-                <i className="bi bi-caret-left-fill"></i>
-              </button>
-              <div className="gallery">
-                {visibleCharacters.map((character) => {
-                  return (
-                    <Link
-                      className="panel related-character-card"
-                      key={character.id}
-                      to={`/characters/${character.id}`}
-                      style={{
-                        backgroundImage: `url(http://127.0.0.1:8000/storage/${character.character_img})`,
-                      }}
-                      state={"/characters"}
-                    >
-                      <div className="card-body related-character-info">
-                        <p className="card-text text-center bebas-neue-regular fw-bold">
-                          {character.name}
-                        </p>
-                      </div>
-                    </Link>
-                  );
-                })}
+            <>
+              <h1 className="ms-5 bangers-regular">LISTA DEI PERSONAGGI</h1>
+              <div className="d-flex justify-content-between gap-2 align-items-center">
+                <button onClick={prevPage} className="go-prev">
+                  <i className="bi bi-caret-left-fill"></i>
+                </button>
+                <div className="gallery">
+                  {visibleCharacters.map((character) => {
+                    return (
+                      <Link
+                        className="panel related-character-card"
+                        key={character.id}
+                        to={`/characters/${character.id}`}
+                        style={{
+                          backgroundImage: `url(http://127.0.0.1:8000/storage/${character.character_img})`,
+                        }}
+                        state={"/characters"}
+                      >
+                        <div className="card-body related-character-info">
+                          <p className="card-text text-center bebas-neue-regular fw-bold">
+                            {character.name}
+                          </p>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+                <button onClick={nextPage} className="go-next">
+                  <i className="bi bi-caret-right-fill"></i>
+                </button>
               </div>
-              <button onClick={nextPage} className="go-next">
-                <i className="bi bi-caret-right-fill"></i>
-              </button>
-            </div>
+            </>
           )}
         </div>
       </section>
