@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 
-export default function ComicCard({ id, cover, title, comicIds, isNew }) {
-  console.log(isNew, typeof isNew);
-
+export default function ComicCard({
+  id,
+  cover,
+  title,
+  comicIds,
+  isNew,
+  isPreorder,
+}) {
   return (
     <>
       <Link
@@ -16,6 +21,11 @@ export default function ComicCard({ id, cover, title, comicIds, isNew }) {
             {isNew === 1 && (
               <span className="status-badge text-bg-danger bebas-neue-regular">
                 <span className="mx-2"> New!</span>
+              </span>
+            )}
+            {isPreorder === 1 && (
+              <span className="status-badge text-bg-danger bebas-neue-regular">
+                <span className="mx-2"> Soon!</span>
               </span>
             )}
             <div style={{ height: "379px" }}>

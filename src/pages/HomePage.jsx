@@ -7,20 +7,22 @@ import Loader from "../components/Loader";
 
 export default function HomePage() {
   const [latestComics, setLatestComics] = useState([]);
+  const [preorderComics, setPreorderComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  function fetchLatestComics() {
+  function fetchSpecialComics() {
     axios
       .get("http://127.0.0.1:8000/api/comics")
       .then((response) => {
-        // console.log(response);
-
         const results = response.data.data;
 
         const filteredLatest = results.filter((result) => result.is_new === 1);
-        // console.log("filteredLatest", filteredLatest);
-
         setLatestComics(filteredLatest);
+
+        const filteredPreorder = results.filter(
+          (result) => result.is_preorder === 1,
+        );
+        setPreorderComics(filteredPreorder);
       })
       .finally(() => {
         setIsLoading(false);
@@ -31,7 +33,7 @@ export default function HomePage() {
 
   console.log(latestComics);
 
-  useEffect(fetchLatestComics, []);
+  useEffect(fetchSpecialComics, []);
 
   return (
     <section id="main-content">
@@ -54,6 +56,26 @@ export default function HomePage() {
                       title={comic.title}
                       comicIds={comicIds}
                       isNew={comic.is_new}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
+          <section id="preorder-comics" className="p-4">
+            <div className="container">
+              <h1 className="bangers-regular">Preorder:</h1>
+              <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+                {preorderComics.map((comic) => {
+                  return (
+                    <ComicCard
+                      id={comic.id}
+                      key={comic.id}
+                      cover={comic.cover_img}
+                      title={comic.title}
+                      comicIds={comicIds}
+                      isPreorder={comic.is_preorder}
                     />
                   );
                 })}
