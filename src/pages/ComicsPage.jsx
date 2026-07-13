@@ -82,7 +82,13 @@ export default function ComicsPage() {
 
               {/* <section id="DC" className={isVisible ? "" : "d-none"}> */}
               <section id="DC" className="">
-                <h2 className="my-3 text-center bangers-regular h1">DC</h2>
+                <h2 className="my-3 bangers-regular h1">DC</h2>
+                <p className="bebas-neue-regular">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Officiis eligendi, itaque tempore voluptate iusto tempora
+                  neque accusamus excepturi fugit non dignissimos quae sapiente
+                  nemo recusandae quis error enim accusantium repellat?
+                </p>
                 <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                   {dcComics.map((dcComic) => {
                     return (
@@ -105,7 +111,13 @@ export default function ComicsPage() {
 
               {/* <section id="Marvel" className={isVisible ? "d-none" : ""}> */}
               <section id="Marvel" className="">
-                <h2 className="my-3 text-center bangers-regular h1">MARVEL</h2>
+                <h2 className="my-3 bangers-regular h1">MARVEL</h2>
+                <p className="bebas-neue-regular">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Officiis eligendi, itaque tempore voluptate iusto tempora
+                  neque accusamus excepturi fugit non dignissimos quae sapiente
+                  nemo recusandae quis error enim accusantium repellat?
+                </p>
                 <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                   {marvelComics.map((marvelComic) => {
                     return (
