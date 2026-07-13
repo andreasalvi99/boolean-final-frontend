@@ -7,6 +7,7 @@ export default function ComicCard({
   comicIds,
   isNew,
   isPreorder,
+  isDiscount,
 }) {
   return (
     <>
@@ -19,13 +20,18 @@ export default function ComicCard({
         <div className="col">
           <div className="card h-100 border-0 to-animate position-relative">
             {isNew === 1 && (
-              <span className="status-badge text-bg-danger bebas-neue-regular">
+              <span className="status-badge text-bg-primary bebas-neue-regular">
                 <span className="mx-2"> New!</span>
               </span>
             )}
             {isPreorder === 1 && (
-              <span className="status-badge text-bg-danger bebas-neue-regular">
+              <span className="status-badge text-bg-info bebas-neue-regular">
                 <span className="mx-2"> Soon!</span>
+              </span>
+            )}
+            {isDiscount > 0 && (
+              <span className="status-badge text-bg-danger bebas-neue-regular">
+                <span className="mx-2">- {isDiscount}%</span>
               </span>
             )}
             <div style={{ height: "379px" }}>

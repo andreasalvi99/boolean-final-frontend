@@ -94,6 +94,7 @@ export default function ComicsPage() {
                         comicIds={dcComicIds}
                         isNew={dcComic.is_new}
                         isPreorder={dcComic.is_preorder}
+                        isDiscount={dcComic.discount}
                       />
                     );
                   })}
@@ -116,6 +117,7 @@ export default function ComicsPage() {
                         comicIds={marvelComicIds}
                         isNew={marvelComic.is_new}
                         isPreorder={marvelComic.is_preorder}
+                        isDiscount={marvelComic.discount}
                       />
                     );
                   })}
