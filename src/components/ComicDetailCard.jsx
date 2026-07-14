@@ -47,7 +47,10 @@ export default function ComicDetailCard({
                 </span>
               )}
             </div>
-            <ReactMarkdown>{description}</ReactMarkdown>
+            <div className="fs-6">
+              <ReactMarkdown>{description}</ReactMarkdown>
+            </div>
+
             <p className="card-text">
               Pubblicazione:
               <span className="text-light">

@@ -82,12 +82,15 @@ export default function ComicsPage() {
 
               {/* <section id="DC" className={isVisible ? "" : "d-none"}> */}
               <section id="DC" className="">
-                <h2 className="my-3 bangers-regular h1">DC</h2>
+                <h2 className="my-3 bangers-regular h1">DC Universe</h2>
                 <p className="bebas-neue-regular">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Officiis eligendi, itaque tempore voluptate iusto tempora
-                  neque accusamus excepturi fugit non dignissimos quae sapiente
-                  nemo recusandae quis error enim accusantium repellat?
+                  Entra nell'universo DC e scopri le avventure dei suoi eroi e
+                  villain più iconici. Da Gotham City a Metropolis, esplora una
+                  selezione di fumetti che raccontano le imprese di Batman,
+                  Superman, Wonder Woman, Flash e molti altri protagonisti che
+                  hanno fatto la storia dei comics. Che tu sia un collezionista
+                  o un nuovo lettore, qui troverai storie capaci di emozionare,
+                  sorprendere e lasciare il segno.
                 </p>
                 <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                   {dcComics.map((dcComic) => {
@@ -111,12 +114,15 @@ export default function ComicsPage() {
 
               {/* <section id="Marvel" className={isVisible ? "d-none" : ""}> */}
               <section id="Marvel" className="">
-                <h2 className="my-3 bangers-regular h1">MARVEL</h2>
+                <h2 className="my-3 bangers-regular h1">MARVEL Universe</h2>
                 <p className="bebas-neue-regular">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Officiis eligendi, itaque tempore voluptate iusto tempora
-                  neque accusamus excepturi fugit non dignissimos quae sapiente
-                  nemo recusandae quis error enim accusantium repellat?
+                  Scopri il mondo Marvel attraverso una selezione di fumetti
+                  dedicati ai suoi eroi più leggendari. Dalle strade di New York
+                  alle profondità dello spazio, segui le avventure di
+                  Spider-Man, Iron Man, Captain America, gli Avengers, gli X-Men
+                  e molti altri protagonisti. Azione, colpi di scena e storie
+                  indimenticabili ti aspettano per arricchire la tua collezione
+                  con il meglio dell'universo Marvel.
                 </p>
                 <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                   {marvelComics.map((marvelComic) => {
