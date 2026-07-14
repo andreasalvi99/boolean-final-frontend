@@ -54,7 +54,7 @@ export default function CharactersPage() {
 
           {characters && (
             <>
-              <h1 className="ms-5 bangers-regular">LISTA DEI PERSONAGGI</h1>
+              <h1 className="ms-5 bangers-regular">ROSTER DEI PERSONAGGI</h1>
               <div className="d-flex justify-content-between gap-2 align-items-center">
                 <button onClick={prevPage} className="go-prev">
                   <i className="bi bi-caret-left-fill"></i>
