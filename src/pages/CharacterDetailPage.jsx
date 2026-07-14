@@ -78,7 +78,7 @@ export default function CharacterDetailPage() {
               {/* Related Comics */}
 
               <h1 className="mb-5 bangers-regular">Fumetti Correlati:</h1>
-              <div className="row row-cols-5 g-3">
+              <div className="row row-cols-lg-5 row-cols-md-3 row-cols-2 g-3">
                 {character.comics?.map((comic) => {
                   return (
                     <div className="col" key={comic.id}>
