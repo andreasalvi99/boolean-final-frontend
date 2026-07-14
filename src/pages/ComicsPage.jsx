@@ -83,7 +83,7 @@ export default function ComicsPage() {
               {/* <section id="DC" className={isVisible ? "" : "d-none"}> */}
               <section id="DC" className="">
                 <h2 className="my-3 bangers-regular h1">DC Universe</h2>
-                <p className="bebas-neue-regular">
+                <p className="bebas-neue-regular fs-5">
                   Entra nell'universo DC e scopri le avventure dei suoi eroi e
                   villain più iconici. Da Gotham City a Metropolis, esplora una
                   selezione di fumetti che raccontano le imprese di Batman,
@@ -115,7 +115,7 @@ export default function ComicsPage() {
               {/* <section id="Marvel" className={isVisible ? "d-none" : ""}> */}
               <section id="Marvel" className="">
                 <h2 className="my-3 bangers-regular h1">MARVEL Universe</h2>
-                <p className="bebas-neue-regular">
+                <p className="bebas-neue-regular fs-5">
                   Scopri il mondo Marvel attraverso una selezione di fumetti
                   dedicati ai suoi eroi più leggendari. Dalle strade di New York
                   alle profondità dello spazio, segui le avventure di

@@ -60,7 +60,7 @@ export default function HomePage() {
               </button> */}
               {/* <div> */}
               <h1 className="bangers-regular">Ultimi arrivi</h1>
-              <p className="bebas-neue-regular">
+              <p className="bebas-neue-regular fs-5">
                 Scopri le ultime novità dal mondo dei fumetti Marvel e DC: nuove
                 storie, grandi eroi e avventure imperdibili sono appena arrivati
                 nella nostra collezione. Dalle battaglie epiche dei più potenti
@@ -107,7 +107,7 @@ export default function HomePage() {
               </button> */}
               {/* <div> */}
               <h1 className="bangers-regular">Preordini</h1>
-              <p className="bebas-neue-regular">
+              <p className="bebas-neue-regular fs-5">
                 Anticipa tutti e prenota i fumetti Marvel e DC in uscita. I
                 nostri preordini ti permettono di riservare le nuove
                 pubblicazioni prima della disponibilità ufficiale, senza
@@ -151,7 +151,7 @@ export default function HomePage() {
               </button> */}
               {/* <div> */}
               <h1 className="bangers-regular">Scontati</h1>
-              <p className="bebas-neue-regular">
+              <p className="bebas-neue-regular fs-5">
                 La tua collezione merita sempre nuove avventure. Abbiamo
                 selezionato una serie di fumetti Marvel e DC disponibili in
                 offerta, con titoli dedicati agli eroi più iconici e alle saghe

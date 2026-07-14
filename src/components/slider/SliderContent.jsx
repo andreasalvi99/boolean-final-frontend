@@ -18,27 +18,9 @@ export default function SliderContent({ activeIndex, sliderImage }) {
             <div className="info-container d-flex flex-column justify-content-between text-center gap-4 align-items-center">
               <h1 className="slide-title bangers-regular">{slide.title}</h1>
 
-              <p className="slide-text d-none d-lg-block oswald-special">
+              <p className="slide-text d-none d-lg-block oswald-special fs-5">
                 {slide.paragraph}
               </p>
-
-              {/* <button
-                className={`btn btn-outline-${slide.title.includes("Marvel") ? "danger" : "primary"} rounded-pill align-self-stretch mx-5 fw-bold`}
-              >
-                <Link
-                  to={"/comics"}
-                  className="text-decoration-none text-light d-md-none"
-                >
-                  Vai
-                </Link>
-                <Link
-                  to={"/comics"}
-                  className="text-decoration-none text-light d-none d-md-block oswald-special"
-                >
-                  {slide.btnText}
-                </Link>
-              </button> */}
-
               <Link to={"/comics"} className="text-decoration-none text-light">
                 <button className="cta">
                   <span className="span oswald-special">{slide.btnText}</span>
