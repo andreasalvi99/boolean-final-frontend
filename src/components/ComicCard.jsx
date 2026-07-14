@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function ComicCard({
   id,
@@ -9,6 +9,7 @@ export default function ComicCard({
   isPreorder,
   isDiscount,
 }) {
+  const location = useLocation();
   return (
     <>
       <div className="col">
@@ -16,7 +17,7 @@ export default function ComicCard({
           to={`/comics/${id}`}
           className="text-decoration-none"
           key={id}
-          state={{ comicIds, from: "/comics" }}
+          state={{ comicIds, from: location.pathname + location.search }}
         >
           <div
             className="card h-100 border-0 to-animate position-relative"
