@@ -235,9 +235,17 @@
   position: relative;
 }
 
-.character-img {
+/* .character-img {
   position: absolute;
+  top: 0;
+  left: 0;
   transform: translateY(-50%);
+} */
+
+.character-img {
+  margin-top: -150px;
+  position: relative;
+  z-index: 2;
 }
 
 .navbar-logo {

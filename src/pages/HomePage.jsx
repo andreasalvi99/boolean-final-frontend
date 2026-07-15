@@ -72,7 +72,7 @@ export default function HomePage() {
                 comics. Esplora i nuovi arrivi, scegli il tuo prossimo fumetto e
                 porta a casa un pezzo dell'universo Marvel e DC.
               </p>
-              <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+              <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
                 {latestComics.map((comic) => {
                   return (
                     <ComicCard
@@ -116,7 +116,7 @@ export default function HomePage() {
                 stanno per entrare nella tua collezione. Preparati al prossimo
                 capitolo della storia e assicurati la tua copia in anticipo.
               </p>
-              <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+              <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
                 {preorderComics.map((comic) => {
                   return (
                     <ComicCard
@@ -159,7 +159,7 @@ export default function HomePage() {
                 attive, risparmia sui tuoi prossimi acquisti e aggiungi alla tua
                 libreria nuovi capitoli dell'universo Marvel e DC.
               </p>
-              <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+              <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
                 {discountComics.map((comic) => {
                   return (
                     <ComicCard
