@@ -53,7 +53,7 @@ export default function CharacterDetailPage() {
             <div className="container mt-5 character-info p-5">
               <div className="card mb-3 border-0">
                 <div className="row g-0">
-                  <div className="col-md-2 col-10 character-info">
+                  <div className="col-md-2 col-10 character-info mx-auto">
                     <figure className="character-img p-2 bg-light">
                       <img
                         src={`http://192.168.1.252:8000/storage/${character.character_img}`}
