@@ -129,7 +129,9 @@ export default function ComicDetailPage() {
                   <h2 className="my-5 bangers-regular">
                     Personaggi correlati:
                   </h2>
-                  <div className="row row-cols-lg-6 row-cols-4 g-3">
+                  <div
+                    className={`row row-cols-lg-6 ${comic.characters?.length > 2 ? "row-cols-3" : "row-cols-2"} g-3`}
+                  >
                     {comic.characters?.map((character) => {
                       return (
                         <div className="col" key={character.id}>

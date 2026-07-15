@@ -513,3 +513,13 @@
     fill: white;
   }
 }
+
+.marvel-logo {
+  width: 80px;
+}
+
+@media (min-width: 768px) {
+  .marvel-logo {
+    width: 150px;
+  }
+}
