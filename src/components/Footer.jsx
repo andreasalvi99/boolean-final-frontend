@@ -11,7 +11,7 @@ export default function Footer() {
                 <img
                   src={logo}
                   alt=""
-                  style={{ minHeightheight: "250px", minWidthwidth: "250px" }}
+                  style={{ minHeight: "250px", minWidth: "250px" }}
                 />
               </div>
             </div>

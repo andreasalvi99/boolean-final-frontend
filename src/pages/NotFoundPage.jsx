@@ -4,7 +4,7 @@ export default function NotFoundPage() {
   return (
     <>
       <section id="main-content">
-        <div className="container d-flex justify-content-center gap-5">
+        <div className="container d-flex flex-column flex-md-row justify-content-center gap-5">
           <h3 className="align-self-center bebas-neue-regular">
             Ops.... sembra che la tua ricerca non sia andata a buon fine
           </h3>

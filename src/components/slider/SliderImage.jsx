@@ -6,14 +6,14 @@ export default [
     title: "Vieni a scoprire la nostra collezione Marvel",
     paragraph:
       "Immergiti alla scoperta di centinaia di fumetti di uno dei brand più famosi di sempre",
-    btnText: "Scopri di più",
+    btnText: "Scopri",
     imgUrl: first,
   },
   {
     title: "Vieni a scoprire la nostra collezione DC",
     paragraph:
       "Immergiti alla scoperta di centinaia di fumetti di uno dei brand più famosi di sempre",
-    btnText: "Scopri di più",
+    btnText: "Scopri",
     imgUrl: second,
   },
 ];

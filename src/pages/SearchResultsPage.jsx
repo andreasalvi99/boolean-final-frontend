@@ -62,7 +62,7 @@ export default function SearchResultsPage() {
                 <h1 className="mb-4 bangers-regular">
                   Personaggi ({charactersSearchResults.length})
                 </h1>
-                <div className="row row-cols-6 g-3 mb-4">
+                <div className="row row-cols-lg-6 row-cols-2 g-3 mb-4">
                   {charactersSearchResults.map((character) => {
                     return (
                       <Link
@@ -99,7 +99,7 @@ export default function SearchResultsPage() {
                 <h2 className="h1 mb-4 bangers-regular">
                   Fumetti ({comicsSearchResults.length})
                 </h2>
-                <div className="row row-cols-md-3 row-cols-lg-5 g-3">
+                <div className="row row-cols-2 row-cols-lg-5 g-3">
                   {comicsSearchResults.map((comic) => {
                     return (
                       <Link
