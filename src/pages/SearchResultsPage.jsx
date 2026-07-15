@@ -14,11 +14,11 @@ export default function SearchResultsPage() {
 
   useEffect(() => {
     const comics = axios.get(
-      `http://127.0.0.1:8000/api/comics?search=${query}`, //effettuo chiamata al db dei comics col valore cercato
+      `http://192.168.1.252:8000/api/comics?search=${query}`, //effettuo chiamata al db dei comics col valore cercato
     );
 
     const characters = axios.get(
-      `http://127.0.0.1:8000/api/characters?search=${query}`, //effettuo chiamata al db dei personaggi col valore cercato
+      `http://192.168.1.252:8000/api/characters?search=${query}`, //effettuo chiamata al db dei personaggi col valore cercato
     );
 
     Promise.all([comics, characters])
@@ -72,7 +72,7 @@ export default function SearchResultsPage() {
                         <div className="col">
                           <div className="card border-0 related-character-card h-100">
                             <img
-                              src={`http://127.0.0.1:8000/storage/${character.character_img}`}
+                              src={`http://192.168.1.252:8000/storage/${character.character_img}`}
                               className="card-img-top h-100"
                               alt="..."
                             />
@@ -131,7 +131,7 @@ export default function SearchResultsPage() {
                             )}
                             <div style={{ height: "379px" }}>
                               <img
-                                src={`http://127.0.0.1:8000/storage/${comic.cover_img}`}
+                                src={`http://192.168.1.252:8000/storage/${comic.cover_img}`}
                                 className="card-img-top h-100 overflow-hidden"
                                 alt="..."
                               />
