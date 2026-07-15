@@ -9,7 +9,7 @@ export default function GoBackBtn() {
     <div className="container p-4 oswald-special">
       <div>
         <button
-          className="text-dark"
+          className="text-dark border-0 bg-transparent"
           onClick={() => {
             if (destination) {
               navigate(destination);

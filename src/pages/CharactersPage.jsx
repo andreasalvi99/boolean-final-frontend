@@ -56,7 +56,10 @@ export default function CharactersPage() {
             <>
               <h1 className="ms-5 bangers-regular">ROSTER DEI PERSONAGGI</h1>
               <div className="d-flex justify-content-between gap-2 align-items-center">
-                <button onClick={prevPage} className="go-prev">
+                <button
+                  onClick={prevPage}
+                  className="go-prev border-0 bg-transparent"
+                >
                   <i className="bi bi-caret-left-fill"></i>
                 </button>
                 <div className="gallery">
@@ -80,7 +83,10 @@ export default function CharactersPage() {
                     );
                   })}
                 </div>
-                <button onClick={nextPage} className="go-next">
+                <button
+                  onClick={nextPage}
+                  className="go-next border-0 bg-transparent"
+                >
                   <i className="bi bi-caret-right-fill"></i>
                 </button>
               </div>
