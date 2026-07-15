@@ -106,7 +106,9 @@ export default function CharacterDetailPage() {
                           />
                           <div className="card-body related-character-info">
                             <p className="card-text text-center oswald-special fw-bold">
-                              {comic.title}
+                              {comic.title.length > 31
+                                ? comic.title.slice(0, 30) + "..."
+                                : comic.title}
                             </p>
                           </div>
                         </div>
