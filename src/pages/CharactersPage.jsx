@@ -32,7 +32,7 @@ export default function CharactersPage() {
 
   function fetchCharacters() {
     axios
-      .get("http://192.168.1.252:8000/api/characters")
+      .get("https://laravel-final-backend.onrender.com/api/characters")
       .then((response) => {
         setCharacters(response.data.results);
       })
@@ -70,7 +70,7 @@ export default function CharactersPage() {
                         key={character.id}
                         to={`/characters/${character.id}`}
                         style={{
-                          backgroundImage: `url(http://192.168.1.252:8000/storage/${character.character_img})`,
+                          backgroundImage: `url(https://laravel-final-backend.onrender.com/${character.character_img})`,
                         }}
                         state={"/characters"}
                       >

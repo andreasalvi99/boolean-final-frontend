@@ -15,11 +15,11 @@ export default function SearchResultsPage() {
 
   useEffect(() => {
     const comics = axios.get(
-      `http://192.168.1.252:8000/api/comics?search=${query}`, //effettuo chiamata al db dei comics col valore cercato
+      `https://laravel-final-backend.onrender.com/api/comics?search=${query}`, //effettuo chiamata al db dei comics col valore cercato
     );
 
     const characters = axios.get(
-      `http://192.168.1.252:8000/api/characters?search=${query}`, //effettuo chiamata al db dei personaggi col valore cercato
+      `https://laravel-final-backend.onrender.com/api/characters?search=${query}`, //effettuo chiamata al db dei personaggi col valore cercato
     );
 
     Promise.all([comics, characters])
@@ -75,7 +75,7 @@ export default function SearchResultsPage() {
                         <div className="col">
                           <div className="card border-0 related-character-card h-100">
                             <img
-                              src={`http://192.168.1.252:8000/storage/${character.character_img}`}
+                              src={`https://laravel-final-backend.onrender.com/${character.character_img}`}
                               className="card-img-top h-100"
                               alt="..."
                             />
@@ -115,48 +115,6 @@ export default function SearchResultsPage() {
                         isPreorder={comic.is_preorder}
                         isDiscount={comic.discount}
                       />
-                      // <Link
-                      //   to={`/comics/${comic.id}`}
-                      //   className="text-decoration-none"
-                      //   key={comic.id}
-                      //   // Uso lo state per passare i dati alla pagina di destinazione (l'id dei comics che escono dalla ricerca)
-                      //   state={{
-                      //     comicIds: comicsSearchResults.map((c) => c.id),
-                      //     from: `/search?query=${query}`,
-                      //   }}
-                      // >
-                      //   <div className="col">
-                      //     <div className="card h-100 border-0 to-animate position-relative">
-                      //       {comic.is_new === 1 && (
-                      //         <span className="status-badge text-bg-primary bebas-neue-regular">
-                      //           <span className="mx-2"> New!</span>
-                      //         </span>
-                      //       )}
-                      //       {comic.is_preorder === 1 && (
-                      //         <span className="status-badge text-bg-info bebas-neue-regular">
-                      //           <span className="mx-2"> Soon!</span>
-                      //         </span>
-                      //       )}
-                      //       {comic.discount > 0 && (
-                      //         <span className="status-badge text-bg-danger bebas-neue-regular">
-                      //           <span className="mx-2">-{comic.discount}%</span>
-                      //         </span>
-                      //       )}
-                      //       <div style={{ height: "379px" }}>
-                      //         <img
-                      //           src={`http://192.168.1.252:8000/storage/${comic.cover_img}`}
-                      //           className="card-img-top h-100 overflow-hidden"
-                      //           alt="..."
-                      //         />
-                      //       </div>
-                      //       <div className="card-body h-25">
-                      //         <p className="card-text text-center fw-semibold bebas-neue-regular">
-                      //           {comic.title}
-                      //         </p>
-                      //       </div>
-                      //     </div>
-                      //   </div>
-                      // </Link>
                     );
                   })}
                 </div>

@@ -32,7 +32,7 @@ export default function ComicDetailPage() {
 
   function fetchComic() {
     axios
-      .get(`http://192.168.1.252:8000/api/comics/${id}`)
+      .get(`https://laravel-final-backend.onrender.com/api/comics/${id}`)
       .then((response) => {
         console.log("response", response.data);
         setComic(response.data.data);
@@ -81,7 +81,7 @@ export default function ComicDetailPage() {
 
                 <section
                   style={{
-                    backgroundImage: `url(http://192.168.1.252:8000/storage/${comic.cover_img})`,
+                    backgroundImage: `url(https://laravel-final-backend.onrender.com/${comic.cover_img})`,
                   }}
                   className="p-5 flex-grow-1 rounded-2"
                   id="comic-detail"
@@ -138,7 +138,7 @@ export default function ComicDetailPage() {
                           <Link to={`/characters/${character.id}`}>
                             <div className="card border-0 related-character-card h-100">
                               <img
-                                src={`http://192.168.1.252:8000/storage/${character.character_img}`}
+                                src={`https://laravel-final-backend.onrender.com/${character.character_img}`}
                                 className="card-img-top h-100"
                                 alt="..."
                               />

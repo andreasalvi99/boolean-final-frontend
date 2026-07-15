@@ -21,7 +21,7 @@ export default function ComicsPage() {
 
   function fetchComics() {
     axios
-      .get("http://192.168.1.252:8000/api/comics")
+      .get("https://laravel-final-backend.onrender.com/api/comics")
       .then((response) => {
         //   console.log(response.data.data);
         setComics(response.data.data);
