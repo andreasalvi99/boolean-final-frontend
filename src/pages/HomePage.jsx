@@ -13,7 +13,7 @@ export default function HomePage() {
 
   function fetchSpecialComics() {
     axios
-      .get("http://127.0.0.1:8000/api/comics")
+      .get("http://192.168.1.252:8000/api/comics")
       .then((response) => {
         const results = response.data.data;
         console.log(results);

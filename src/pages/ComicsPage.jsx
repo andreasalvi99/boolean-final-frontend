@@ -21,7 +21,7 @@ export default function ComicsPage() {
 
   function fetchComics() {
     axios
-      .get("http://127.0.0.1:8000/api/comics")
+      .get("http://192.168.1.252:8000/api/comics")
       .then((response) => {
         //   console.log(response.data.data);
         setComics(response.data.data);

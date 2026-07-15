@@ -40,7 +40,7 @@ export default function ComicCard({
             )}
             <div style={{ height: "370px" }}>
               <img
-                src={`http://127.0.0.1:8000/storage/${cover}`}
+                src={`http://192.168.1.252:8000/storage/${cover}`}
                 className="card-img-top h-100 overflow-hidden"
                 alt="..."
               />

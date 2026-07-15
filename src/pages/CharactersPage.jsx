@@ -32,7 +32,7 @@ export default function CharactersPage() {
 
   function fetchCharacters() {
     axios
-      .get("http://127.0.0.1:8000/api/characters")
+      .get("http://192.168.1.252:8000/api/characters")
       .then((response) => {
         setCharacters(response.data.results);
       })
@@ -67,7 +67,7 @@ export default function CharactersPage() {
                         key={character.id}
                         to={`/characters/${character.id}`}
                         style={{
-                          backgroundImage: `url(http://127.0.0.1:8000/storage/${character.character_img})`,
+                          backgroundImage: `url(http://192.168.1.252:8000/storage/${character.character_img})`,
                         }}
                         state={"/characters"}
                       >

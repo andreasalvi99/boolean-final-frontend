@@ -12,7 +12,7 @@ export default function CharacterDetailPage() {
 
   function fetchCharacterInfo() {
     axios
-      .get(`http://127.0.0.1:8000/api/characters/${id}`)
+      .get(`http://192.168.1.252:8000/api/characters/${id}`)
       .then((response) => {
         console.log(response.data.results);
         setCharacter(response.data.results);
@@ -43,7 +43,7 @@ export default function CharacterDetailPage() {
           <GoBackBtn />
           <div
             style={{
-              backgroundImage: `url(http://127.0.0.1:8000/storage/${character.banner})`,
+              backgroundImage: `url(http://192.168.1.252:8000/storage/${character.banner})`,
               backgroundPosition: "top",
               backgroundSize: "cover",
               height: "600px",
@@ -56,7 +56,7 @@ export default function CharacterDetailPage() {
                   <div className="col-md-2 col-10 character-info">
                     <figure className="character-img p-2 bg-light">
                       <img
-                        src={`http://127.0.0.1:8000/storage/${character.character_img}`}
+                        src={`http://192.168.1.252:8000/storage/${character.character_img}`}
                         className="img-fluid rounded-start h-100 w-100"
                         alt="..."
                       />
@@ -100,7 +100,7 @@ export default function CharacterDetailPage() {
                             </span>
                           )}
                           <img
-                            src={`http://127.0.0.1:8000/storage/${comic.cover_img}`}
+                            src={`http://192.168.1.252:8000/storage/${comic.cover_img}`}
                             className="card-img-top h-100"
                             alt="..."
                           />

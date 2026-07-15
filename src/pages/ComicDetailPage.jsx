@@ -32,7 +32,7 @@ export default function ComicDetailPage() {
 
   function fetchComic() {
     axios
-      .get(`http://127.0.0.1:8000/api/comics/${id}`)
+      .get(`http://192.168.1.252:8000/api/comics/${id}`)
       .then((response) => {
         console.log("response", response.data);
         setComic(response.data.data);
@@ -81,24 +81,26 @@ export default function ComicDetailPage() {
 
                 <section
                   style={{
-                    backgroundImage: `url(http://127.0.0.1:8000/storage/${comic.cover_img})`,
+                    backgroundImage: `url(http://192.168.1.252:8000/storage/${comic.cover_img})`,
                   }}
                   className="p-5 flex-grow-1 rounded-2"
                   id="comic-detail"
                 >
                   <div className="container">
-                    <ComicDetailCard
-                      cover={comic.cover_img}
-                      title={comic.title}
-                      description={comic.description}
-                      release_date={comic.release_date}
-                      characters={comic.characters}
-                      brand={comic.brand}
-                      price={comic.price}
-                      isNew={comic.is_new}
-                      isPreorder={comic.is_preorder}
-                      isDiscount={comic.discount}
-                    />
+                    <div className="row">
+                      <ComicDetailCard
+                        cover={comic.cover_img}
+                        title={comic.title}
+                        description={comic.description}
+                        release_date={comic.release_date}
+                        characters={comic.characters}
+                        brand={comic.brand}
+                        price={comic.price}
+                        isNew={comic.is_new}
+                        isPreorder={comic.is_preorder}
+                        isDiscount={comic.discount}
+                      />
+                    </div>
                   </div>
                 </section>
 
@@ -127,14 +129,14 @@ export default function ComicDetailPage() {
                   <h2 className="my-5 bangers-regular">
                     Personaggi correlati:
                   </h2>
-                  <div className="row row-cols-6 g-3">
+                  <div className="row row-cols-lg-6 row-cols-4 g-3">
                     {comic.characters?.map((character) => {
                       return (
                         <div className="col" key={character.id}>
                           <Link to={`/characters/${character.id}`}>
                             <div className="card border-0 related-character-card h-100">
                               <img
-                                src={`http://127.0.0.1:8000/storage/${character.character_img}`}
+                                src={`http://192.168.1.252:8000/storage/${character.character_img}`}
                                 className="card-img-top h-100"
                                 alt="..."
                               />
