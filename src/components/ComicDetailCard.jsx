@@ -23,7 +23,7 @@ export default function ComicDetailCard({
   }
 
   return (
-    <div className="card mb-3 comic-card">
+    <div className="card mb-3 comic-card p-0">
       <div className="row g-0">
         <div className="col-md-4">
           <img
