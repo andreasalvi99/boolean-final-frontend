@@ -76,7 +76,7 @@ export default function ComicDetailCard({
             </div>
             <div className="d-flex justify-content-between align-items-end mt-3 mt-md-0">
               <img
-                src={`http://192.168.1.252:8000/storage/${brand?.logo}`}
+                src={`https://laravel-final-backend.onrender.com/${brand?.logo}`}
                 alt=""
                 style={{
                   height: brand?.name === "DC Comics" ? "80px" : "80px",
