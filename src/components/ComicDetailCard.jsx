@@ -27,7 +27,7 @@ export default function ComicDetailCard({
       <div className="row g-0">
         <div className="col-md-4">
           <img
-            src={`http://192.168.1.252:8000/storage/${cover}`}
+            src={`https://laravel-final-backend.onrender.com/${cover}`}
             className="img-fluid rounded-start w-100 h-100"
             alt={title}
           />
