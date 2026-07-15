@@ -13,7 +13,7 @@ export default function HomePage() {
 
   function fetchSpecialComics() {
     axios
-      .get("http://192.168.1.252:8000/api/comics")
+      .get("https://boolean-final-frontend.vercel.app/api/comics")
       .then((response) => {
         const results = response.data.data;
         console.log(results);
