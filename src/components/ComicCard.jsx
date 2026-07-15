@@ -40,7 +40,7 @@ export default function ComicCard({
             )}
             <div style={{ height: "370px" }}>
               <img
-                src={`https://laravel-final-backend.onrender.com/storage/${cover}`}
+                src={`https://laravel-final-backend.onrender.com/${cover}`}
                 className="card-img-top h-100 overflow-hidden"
                 alt="..."
               />
