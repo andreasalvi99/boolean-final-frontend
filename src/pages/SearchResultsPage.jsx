@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import NoResults from "../components/NoResults";
+import ComicCard from "../components/ComicCard";
 
 export default function SearchResultsPage() {
   const [searchParams] = useSearchParams(); // hook per recuperare il valore cercato nel search
@@ -34,6 +35,8 @@ export default function SearchResultsPage() {
         setIsLoading(false);
       });
   }, [query]); //l'array delle dipendenze è quello del valore cercato, quando cambia cambiano i risultati->si aggiorna la pagina
+
+  const comicIds = comicsSearchResults.map((comic) => comic.id);
 
   return (
     <>
@@ -99,51 +102,61 @@ export default function SearchResultsPage() {
                 <h2 className="h1 mb-4 bangers-regular">
                   Fumetti ({comicsSearchResults.length})
                 </h2>
-                <div className="row row-cols-2 row-cols-lg-5 g-3">
+                <div className="row row-cols-1 row-cols-lg-5 g-3">
                   {comicsSearchResults.map((comic) => {
                     return (
-                      <Link
-                        to={`/comics/${comic.id}`}
-                        className="text-decoration-none"
+                      <ComicCard
                         key={comic.id}
-                        // Uso lo state per passare i dati alla pagina di destinazione (l'id dei comics che escono dalla ricerca)
-                        state={{
-                          comicIds: comicsSearchResults.map((c) => c.id),
-                          from: `/search?query=${query}`,
-                        }}
-                      >
-                        <div className="col">
-                          <div className="card h-100 border-0 to-animate position-relative">
-                            {comic.is_new === 1 && (
-                              <span className="status-badge text-bg-primary bebas-neue-regular">
-                                <span className="mx-2"> New!</span>
-                              </span>
-                            )}
-                            {comic.is_preorder === 1 && (
-                              <span className="status-badge text-bg-info bebas-neue-regular">
-                                <span className="mx-2"> Soon!</span>
-                              </span>
-                            )}
-                            {comic.discount > 0 && (
-                              <span className="status-badge text-bg-danger bebas-neue-regular">
-                                <span className="mx-2">-{comic.discount}%</span>
-                              </span>
-                            )}
-                            <div style={{ height: "379px" }}>
-                              <img
-                                src={`http://192.168.1.252:8000/storage/${comic.cover_img}`}
-                                className="card-img-top h-100 overflow-hidden"
-                                alt="..."
-                              />
-                            </div>
-                            <div className="card-body h-25">
-                              <p className="card-text text-center fw-semibold bebas-neue-regular">
-                                {comic.title}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
+                        id={comic.id}
+                        cover={comic.cover_img}
+                        title={comic.title}
+                        comicIds={comicIds}
+                        isNew={comic.is_new}
+                        isPreorder={comic.is_preorder}
+                        isDiscount={comic.discount}
+                      />
+                      // <Link
+                      //   to={`/comics/${comic.id}`}
+                      //   className="text-decoration-none"
+                      //   key={comic.id}
+                      //   // Uso lo state per passare i dati alla pagina di destinazione (l'id dei comics che escono dalla ricerca)
+                      //   state={{
+                      //     comicIds: comicsSearchResults.map((c) => c.id),
+                      //     from: `/search?query=${query}`,
+                      //   }}
+                      // >
+                      //   <div className="col">
+                      //     <div className="card h-100 border-0 to-animate position-relative">
+                      //       {comic.is_new === 1 && (
+                      //         <span className="status-badge text-bg-primary bebas-neue-regular">
+                      //           <span className="mx-2"> New!</span>
+                      //         </span>
+                      //       )}
+                      //       {comic.is_preorder === 1 && (
+                      //         <span className="status-badge text-bg-info bebas-neue-regular">
+                      //           <span className="mx-2"> Soon!</span>
+                      //         </span>
+                      //       )}
+                      //       {comic.discount > 0 && (
+                      //         <span className="status-badge text-bg-danger bebas-neue-regular">
+                      //           <span className="mx-2">-{comic.discount}%</span>
+                      //         </span>
+                      //       )}
+                      //       <div style={{ height: "379px" }}>
+                      //         <img
+                      //           src={`http://192.168.1.252:8000/storage/${comic.cover_img}`}
+                      //           className="card-img-top h-100 overflow-hidden"
+                      //           alt="..."
+                      //         />
+                      //       </div>
+                      //       <div className="card-body h-25">
+                      //         <p className="card-text text-center fw-semibold bebas-neue-regular">
+                      //           {comic.title}
+                      //         </p>
+                      //       </div>
+                      //     </div>
+                      //   </div>
+                      // </Link>
                     );
                   })}
                 </div>

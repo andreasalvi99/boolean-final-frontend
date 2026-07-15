@@ -20,8 +20,8 @@ export default function ComicCard({
           state={{ comicIds, from: location.pathname + location.search }}
         >
           <div
-            className="card h-100 border-0 to-animate position-relative"
-            // style={{ maxWidth: "253px" }}
+            className="card h-100 border-0 to-animate position-relative mx-auto"
+            style={{ maxWidth: "253px" }}
           >
             {isNew === 1 && (
               <span className="status-badge text-bg-primary bebas-neue-regular">

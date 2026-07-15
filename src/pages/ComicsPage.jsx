@@ -92,7 +92,7 @@ export default function ComicsPage() {
                   o un nuovo lettore, qui troverai storie capaci di emozionare,
                   sorprendere e lasciare il segno.
                 </p>
-                <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-1 g-md-3">
+                <div className="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-1 g-md-3">
                   {dcComics.map((dcComic) => {
                     return (
                       <ComicCard
@@ -124,7 +124,7 @@ export default function ComicsPage() {
                   indimenticabili ti aspettano per arricchire la tua collezione
                   con il meglio dell'universo Marvel.
                 </p>
-                <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-1 g-md-3">
+                <div className="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-1 g-md-3">
                   {marvelComics.map((marvelComic) => {
                     return (
                       <ComicCard
