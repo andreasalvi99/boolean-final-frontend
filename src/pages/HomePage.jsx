@@ -13,7 +13,7 @@ export default function HomePage() {
 
   function fetchSpecialComics() {
     axios
-      .get("https://boolean-final-frontend.vercel.app/api/comics")
+      .get("https://laravel-final-backend.onrender.com//api/comics")
       .then((response) => {
         const results = response.data.data;
         console.log(results);
