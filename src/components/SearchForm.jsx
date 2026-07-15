@@ -11,6 +11,11 @@ export default function SearchForm() {
   function handleSearch(e) {
     setSearch(e.target.value); // funzione che setta il valore di search sul valore inserito dall'utente
     console.log(e.target.value);
+    if (e.target.value.trim() === "") {
+      setCharactersSearchResults([]);
+      setComicsSearchResults([]);
+      return;
+    }
     const comics = axios.get(
       `http://127.0.0.1:8000/api/comics?search=${e.target.value}`, //effettuo chiamata al db dei comics col valore cercato
     );
@@ -33,6 +38,10 @@ export default function SearchForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (search.trim() === "") {
+      return;
+    }
 
     navigate(`/search?query=${encodeURIComponent(search)}`); //al submit del form effettua redirect con navigate e setta valore del search su vuota
 
