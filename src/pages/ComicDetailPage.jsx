@@ -229,7 +229,7 @@ export default function ComicDetailPage() {
                     )}
                   </div>
                   <div className="col">
-                    <div>
+                    <div className="d-flex justify-content-between align-items-center">
                       <h1 className="bangers-regular">{comic.title}</h1>
                       {comic.is_new === 1 && (
                         <span className="status-badge text-bg-primary bebas-neue-regular fs-5">
