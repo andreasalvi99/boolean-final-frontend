@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import GoBackBtn from "../components/GoBackBtn";
 import ComicDetailCard from "../components/ComicDetailCard";
+import ReactMarkdown from "react-markdown";
 
 export default function ComicDetailPage() {
   const { id } = useParams();
@@ -164,23 +165,29 @@ export default function ComicDetailPage() {
 
         {comic && (
           <div
-            className="d-md-none comic-detail"
+            className="d-md-none comic-detail text-light"
             style={{
               backgroundImage: `url(https://laravel-final-backend.onrender.com/${comic.cover_img})`,
             }}
           >
-            <div className="row row-cols-1 g-0">
+            <div className="row row-cols-1 g-3">
               <div className="col">
                 <img
                   src={`https://laravel-final-backend.onrender.com/${comic.cover_img}`}
                   alt={comic.title}
+                  className="mx-auto"
                 />
               </div>
               <div className="col">
-                <h1>{comic.title}</h1>
-                <p>{comic.description}</p>
-                <p>Pubblicazione: {comic.release_date}</p>
-                <p>
+                <h1 className="bangers-regular">{comic.title}</h1>
+                <div className="oswald-special">
+                  <ReactMarkdown>{comic.description}</ReactMarkdown>
+                </div>
+
+                <p className="oswald-special">
+                  Pubblicazione: {comic.release_date}
+                </p>
+                <p className="oswald-special">
                   Featuring:{" "}
                   {comic.characters?.map((character, index) => (
                     <Link key={character.id} to={`/characters/${character.id}`}>
@@ -188,7 +195,7 @@ export default function ComicDetailPage() {
                     </Link>
                   ))}
                 </p>
-                <p>Brand: {comic.brand?.name}</p>
+                <p className="oswald-special">Brand: {comic.brand?.name}</p>
                 <p>Price: {comic.price}</p>
               </div>
             </div>
