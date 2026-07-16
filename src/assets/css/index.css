@@ -169,13 +169,13 @@
   overflow: hidden;
 }
 
-#comic-detail {
+.comic-detail {
   position: relative;
   overflow: hidden;
   background-size: cover;
 }
 
-#comic-detail::before {
+.comic-detail::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -190,7 +190,7 @@
   z-index: 0;
 }
 
-#comic-detail > * {
+.comic-detail > * {
   position: relative;
   z-index: 1;
 }

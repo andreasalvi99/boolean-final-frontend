@@ -87,8 +87,7 @@ export default function ComicDetailPage() {
                   style={{
                     backgroundImage: `url(https://laravel-final-backend.onrender.com/${comic.cover_img})`,
                   }}
-                  className="p-5 flex-grow-1 rounded-2"
-                  id="comic-detail"
+                  className="p-5 flex-grow-1 rounded-2 comic-detail"
                 >
                   <div className="container">
                     <div className="row">
@@ -161,6 +160,37 @@ export default function ComicDetailPage() {
               </section>
             </div>
           </>
+        )}
+
+        {comic && (
+          <div
+            className="d-md-none comic-detail"
+            style={{
+              backgroundImage: `url(https://laravel-final-backend.onrender.com/${comic.cover_img})`,
+            }}
+          >
+            <div className="row">
+              <div className="col">
+                <img
+                  src={`https://laravel-final-backend.onrender.com/${comic.comic_img}`}
+                  alt={comic.title}
+                />
+              </div>
+              <div className="col">
+                <h1>{comic.title}</h1>
+                <p>{comic.description}</p>
+                <p>Pubblicazione: {comic.release_date}</p>
+                <p>
+                  Featuring:{" "}
+                  {comic.characters?.map((character, index) => (
+                    <Link key={character.id} to={`/characters/${character.id}`}>
+                      {character.name}
+                    </Link>
+                  ))}
+                </p>
+              </div>
+            </div>
+          </div>
         )}
       </section>
     </>
