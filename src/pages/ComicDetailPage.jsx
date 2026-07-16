@@ -170,13 +170,16 @@ export default function ComicDetailPage() {
               backgroundImage: `url(https://laravel-final-backend.onrender.com/${comic.cover_img})`,
             }}
           >
+            <GoBackBtn />
             <div className="row row-cols-1 g-3">
               <div className="col">
-                <img
-                  src={`https://laravel-final-backend.onrender.com/${comic.cover_img}`}
-                  alt={comic.title}
-                  className="mx-auto"
-                />
+                <figure className="mx-auto">
+                  <img
+                    src={`https://laravel-final-backend.onrender.com/${comic.cover_img}`}
+                    alt={comic.title}
+                    className="img-fluid"
+                  />
+                </figure>
               </div>
               <div className="col">
                 <h1 className="bangers-regular">{comic.title}</h1>
