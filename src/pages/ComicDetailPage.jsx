@@ -230,14 +230,14 @@ export default function ComicDetailPage() {
                   </div>
                   <div className="col">
                     <div className="d-flex justify-content-between align-items-center">
-                      <h1 className="bangers-regular">{comic.title}</h1>
+                      <h1 className="bangers-regular m-0">{comic.title}</h1>
                       {comic.is_new === 1 && (
-                        <span className="status-badge text-bg-primary bebas-neue-regular fs-5">
+                        <span className="text-bg-primary bebas-neue-regular fs-5">
                           <span className="mx-2"> New!</span>
                         </span>
                       )}
                       {comic.is_preorder === 1 && (
-                        <span className="status-badge text-bg-info bebas-neue-regular fs-5">
+                        <span className="text-bg-info bebas-neue-regular fs-5">
                           <span className="mx-2"> Soon!</span>
                         </span>
                       )}
