@@ -51,15 +51,19 @@ export default function ComicDetailPage() {
   return (
     <>
       <section id="main-content">
-        <div className="container p-4">
-          {/* Loader */}
+        {/* Loader */}
 
-          {isLoading && <Loader />}
+        {isLoading && (
+          <div className="container p-4">
+            <Loader />
+          </div>
+        )}
 
-          {/* Comic */}
+        {/* Comic */}
 
-          {comic && (
-            <>
+        {comic && (
+          <>
+            <div className="container p-4">
               <GoBackBtn />
               <div className="d-flex align-items-center justify-content-between gap-3">
                 {!prevComicId && (
@@ -155,9 +159,9 @@ export default function ComicDetailPage() {
                   </div>
                 </div>
               </section>
-            </>
-          )}
-        </div>
+            </div>
+          </>
+        )}
       </section>
     </>
   );
