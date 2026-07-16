@@ -172,7 +172,7 @@ export default function ComicDetailPage() {
             <div className="row">
               <div className="col">
                 <img
-                  src={`https://laravel-final-backend.onrender.com/${comic.comic_img}`}
+                  src={`https://laravel-final-backend.onrender.com/${comic.cover_img}`}
                   alt={comic.title}
                 />
               </div>
@@ -188,6 +188,8 @@ export default function ComicDetailPage() {
                     </Link>
                   ))}
                 </p>
+                <p>Brand: {comic.brand?.name}</p>
+                <p>Price: {comic.price}</p>
               </div>
             </div>
           </div>
