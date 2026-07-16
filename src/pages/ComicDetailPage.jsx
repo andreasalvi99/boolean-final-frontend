@@ -45,6 +45,14 @@ export default function ComicDetailPage() {
       });
   }
 
+  function calcDiscountedPrice(price, discountValue) {
+    const discount = (price * discountValue) / 100;
+
+    const finalPrice = Math.round(price - discount).toFixed(2);
+
+    return finalPrice;
+  }
+
   console.log("comic", comic);
   //   console.log(`http://127.0.0.1:8000/storage/${comic.cover_img}`);
   useEffect(fetchComic, [id]);
@@ -221,7 +229,19 @@ export default function ComicDetailPage() {
                     )}
                   </div>
                   <div className="col">
-                    <h1 className="bangers-regular">{comic.title}</h1>
+                    <div>
+                      <h1 className="bangers-regular">{comic.title}</h1>
+                      {comic.is_new === 1 && (
+                        <span className="status-badge text-bg-primary bebas-neue-regular fs-5">
+                          <span className="mx-2"> New!</span>
+                        </span>
+                      )}
+                      {comic.is_preorder === 1 && (
+                        <span className="status-badge text-bg-info bebas-neue-regular fs-5">
+                          <span className="mx-2"> Soon!</span>
+                        </span>
+                      )}
+                    </div>
                     <div className="oswald-special">
                       <ReactMarkdown>{comic.description}</ReactMarkdown>
                     </div>
@@ -252,7 +272,33 @@ export default function ComicDetailPage() {
                         }}
                         className={`${comic.brand?.name === "Marvel Comics" ? "marvel-logo" : ""}`}
                       />
-                      <p className="fs-3">&euro; {comic.price}</p>
+                      {!comic.discount && (
+                        <p className="align-self-end m-0 fs-3 fw-semibold oswald-special">
+                          &euro; {price}
+                        </p>
+                      )}
+
+                      {comic.discount > 0 && (
+                        <>
+                          <div>
+                            <p className="align-self-end m-0 fs-3 fw-semibold position-relative">
+                              <span className="text-decoration-line-through oswald-special">
+                                &euro; {comic.price}
+                              </span>
+                              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger fs-6">
+                                -{comic.discount}%
+                              </span>
+                              <span className="d-block oswald-special text-danger">
+                                &euro;{" "}
+                                {calcDiscountedPrice(
+                                  comic.price,
+                                  comic.discount,
+                                )}
+                              </span>
+                            </p>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
