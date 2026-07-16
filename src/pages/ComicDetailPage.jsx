@@ -190,7 +190,7 @@ export default function ComicDetailPage() {
                 <p className="oswald-special">
                   Pubblicazione: {comic.release_date}
                 </p>
-                <p className="oswald-special">
+                <p className="oswald-special text-white">
                   Featuring:{" "}
                   {comic.characters?.map((character, index) => (
                     <Link key={character.id} to={`/characters/${character.id}`}>
