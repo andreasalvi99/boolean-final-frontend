@@ -241,8 +241,17 @@ export default function ComicDetailPage() {
                         </Link>
                       ))}
                     </p>
-                    <p className="oswald-special">Brand: {comic.brand?.name}</p>
-                    <p>Price: &euro; {comic.price}</p>
+                    <img
+                      src={`https://laravel-final-backend.onrender.com/${comic.brand?.logo}`}
+                      alt=""
+                      style={{
+                        height:
+                          comic.brand?.name === "DC Comics" ? "80px" : "80px",
+                        // width: brand?.name === "Marvel Comics" ? "80px" : "80px",
+                      }}
+                      className={`${comic.brand?.name === "Marvel Comics" ? "marvel-logo" : ""}`}
+                    />
+                    <p>&euro; {comic.price}</p>
                   </div>
                 </div>
               </div>
