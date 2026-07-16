@@ -164,45 +164,50 @@ export default function ComicDetailPage() {
         )}
 
         {comic && (
-          <div
-            className="d-md-none comic-detail text-light p-4"
-            style={{
-              backgroundImage: `url(https://laravel-final-backend.onrender.com/${comic.cover_img})`,
-            }}
-          >
+          <>
             <GoBackBtn />
-            <div className="row row-cols-1 g-3">
-              <div className="col">
-                <figure className="mx-auto">
-                  <img
-                    src={`https://laravel-final-backend.onrender.com/${comic.cover_img}`}
-                    alt={comic.title}
-                    className="img-fluid"
-                  />
-                </figure>
-              </div>
-              <div className="col">
-                <h1 className="bangers-regular">{comic.title}</h1>
-                <div className="oswald-special">
-                  <ReactMarkdown>{comic.description}</ReactMarkdown>
+            <div
+              className="d-md-none comic-detail text-light p-4"
+              style={{
+                backgroundImage: `url(https://laravel-final-backend.onrender.com/${comic.cover_img})`,
+              }}
+            >
+              <div className="row row-cols-1 g-3">
+                <div className="col">
+                  <figure className="text-center">
+                    <img
+                      src={`https://laravel-final-backend.onrender.com/${comic.cover_img}`}
+                      alt={comic.title}
+                      className="img-fluid"
+                    />
+                  </figure>
                 </div>
+                <div className="col">
+                  <h1 className="bangers-regular">{comic.title}</h1>
+                  <div className="oswald-special">
+                    <ReactMarkdown>{comic.description}</ReactMarkdown>
+                  </div>
 
-                <p className="oswald-special">
-                  Pubblicazione: {comic.release_date}
-                </p>
-                <p className="oswald-special text-white">
-                  Featuring:{" "}
-                  {comic.characters?.map((character, index) => (
-                    <Link key={character.id} to={`/characters/${character.id}`}>
-                      {character.name}
-                    </Link>
-                  ))}
-                </p>
-                <p className="oswald-special">Brand: {comic.brand?.name}</p>
-                <p>Price: {comic.price}</p>
+                  <p className="oswald-special">
+                    Pubblicazione: {comic.release_date}
+                  </p>
+                  <p className="oswald-special text-white">
+                    Featuring:{" "}
+                    {comic.characters?.map((character, index) => (
+                      <Link
+                        key={character.id}
+                        to={`/characters/${character.id}`}
+                      >
+                        {character.name}
+                      </Link>
+                    ))}
+                  </p>
+                  <p className="oswald-special">Brand: {comic.brand?.name}</p>
+                  <p>Price: {comic.price}</p>
+                </div>
               </div>
             </div>
-          </div>
+          </>
         )}
       </section>
     </>
