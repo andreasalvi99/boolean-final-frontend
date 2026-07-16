@@ -182,7 +182,7 @@ export default function ComicDetailPage() {
             >
               <div className="row row-cols-1 g-3">
                 <div className="col">
-                  <div className="d-flex justify-content-between align-items-center">
+                  <div className="d-flex justify-content-between align-items-center gap-2">
                     {!prevComicId && (
                       <button
                         className="text-dark border-0 bg-transparent"
