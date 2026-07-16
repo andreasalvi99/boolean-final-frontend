@@ -203,7 +203,7 @@ export default function ComicDetailPage() {
                     ))}
                   </p>
                   <p className="oswald-special">Brand: {comic.brand?.name}</p>
-                  <p>Price: {comic.price}</p>
+                  <p>Price: &euro; {comic.price}</p>
                 </div>
               </div>
             </div>
