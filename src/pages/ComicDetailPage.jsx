@@ -241,17 +241,19 @@ export default function ComicDetailPage() {
                         </Link>
                       ))}
                     </p>
-                    <img
-                      src={`https://laravel-final-backend.onrender.com/${comic.brand?.logo}`}
-                      alt=""
-                      style={{
-                        height:
-                          comic.brand?.name === "DC Comics" ? "80px" : "80px",
-                        // width: brand?.name === "Marvel Comics" ? "80px" : "80px",
-                      }}
-                      className={`${comic.brand?.name === "Marvel Comics" ? "marvel-logo" : ""}`}
-                    />
-                    <p className="fs-3">&euro; {comic.price}</p>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <img
+                        src={`https://laravel-final-backend.onrender.com/${comic.brand?.logo}`}
+                        alt=""
+                        style={{
+                          height:
+                            comic.brand?.name === "DC Comics" ? "70px" : "60px",
+                          // width: brand?.name === "Marvel Comics" ? "80px" : "80px",
+                        }}
+                        className={`${comic.brand?.name === "Marvel Comics" ? "marvel-logo" : ""}`}
+                      />
+                      <p className="fs-3">&euro; {comic.price}</p>
+                    </div>
                   </div>
                 </div>
               </div>
