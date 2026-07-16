@@ -176,7 +176,10 @@ export default function ComicDetailPage() {
                 <div className="col">
                   <div className="d-flex justify-content-between align-items-center">
                     {!prevComicId && (
-                      <button className="text-dark opacity-25" disabled>
+                      <button
+                        className="text-dark border-0 bg-transparent"
+                        disabled
+                      >
                         <i className="bi bi-arrow-left-circle-fill fs-3"></i>
                       </button>
                     )}
@@ -199,7 +202,10 @@ export default function ComicDetailPage() {
                       />
                     </figure>
                     {!nextComicId && (
-                      <button className="text-dark opacity-25" disabled>
+                      <button
+                        className="text-dark border-0 bg-transparent"
+                        disabled
+                      >
                         <i className="bi bi-arrow-right-circle-fill fs-3"></i>
                       </button>
                     )}
@@ -223,12 +229,13 @@ export default function ComicDetailPage() {
                     <p className="oswald-special">
                       Pubblicazione: {comic.release_date}
                     </p>
-                    <p className="oswald-special text-white">
+                    <p className="oswald-special">
                       Featuring:{" "}
                       {comic.characters?.map((character, index) => (
                         <Link
                           key={character.id}
                           to={`/characters/${character.id}`}
+                          className="text-light fw-semibold"
                         >
                           {character.name}
                         </Link>
@@ -244,7 +251,7 @@ export default function ComicDetailPage() {
             {/* Related characters */}
 
             <section id="related-characters" className="">
-              <div className="container mt-5">
+              <div className="container my-5">
                 <hr />
                 <h2 className="my-5 bangers-regular">Personaggi correlati:</h2>
                 <div
