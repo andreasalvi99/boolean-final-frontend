@@ -169,7 +169,7 @@ export default function ComicDetailPage() {
               backgroundImage: `url(https://laravel-final-backend.onrender.com/${comic.cover_img})`,
             }}
           >
-            <div className="row">
+            <div className="row row-cols-1 g-0">
               <div className="col">
                 <img
                   src={`https://laravel-final-backend.onrender.com/${comic.cover_img}`}
