@@ -63,7 +63,7 @@ export default function ComicDetailPage() {
 
         {comic && (
           <>
-            <div className="container p-4">
+            <div className="container p-4 d-none d-md-block">
               <GoBackBtn />
               <div className="d-flex align-items-center justify-content-between gap-3">
                 {!prevComicId && (
