@@ -174,67 +174,69 @@ export default function ComicDetailPage() {
             >
               <div className="row row-cols-1 g-3">
                 <div className="col">
-                  {!prevComicId && (
-                    <button className="text-dark opacity-25" disabled>
-                      <i className="bi bi-arrow-left-circle-fill fs-3"></i>
-                    </button>
-                  )}
+                  <div className="d-flex justify-content-between align-items-center">
+                    {!prevComicId && (
+                      <button className="text-dark opacity-25" disabled>
+                        <i className="bi bi-arrow-left-circle-fill fs-3"></i>
+                      </button>
+                    )}
 
-                  {prevComicId && (
-                    <Link
-                      to={`/comics/${prevComicId}`}
-                      className="text-dark"
-                      // Vado alla pagina successiva e mi porto dietro i dati con cui sono arrivato su questa pagina
-                      state={hasSearchResults ? location.state : undefined}
-                    >
-                      <i className="bi bi-arrow-left-circle-fill fs-3"></i>
-                    </Link>
-                  )}
-                  <figure className="text-center">
-                    <img
-                      src={`https://laravel-final-backend.onrender.com/${comic.cover_img}`}
-                      alt={comic.title}
-                      className="img-fluid"
-                    />
-                  </figure>
-                  {!nextComicId && (
-                    <button className="text-dark opacity-25" disabled>
-                      <i className="bi bi-arrow-right-circle-fill fs-3"></i>
-                    </button>
-                  )}
-
-                  {nextComicId && (
-                    <Link
-                      to={`/comics/${nextComicId}`}
-                      className="text-dark"
-                      state={hasSearchResults ? location.state : undefined}
-                    >
-                      <i className="bi bi-arrow-right-circle-fill fs-3"></i>
-                    </Link>
-                  )}
-                </div>
-                <div className="col">
-                  <h1 className="bangers-regular">{comic.title}</h1>
-                  <div className="oswald-special">
-                    <ReactMarkdown>{comic.description}</ReactMarkdown>
-                  </div>
-
-                  <p className="oswald-special">
-                    Pubblicazione: {comic.release_date}
-                  </p>
-                  <p className="oswald-special text-white">
-                    Featuring:{" "}
-                    {comic.characters?.map((character, index) => (
+                    {prevComicId && (
                       <Link
-                        key={character.id}
-                        to={`/characters/${character.id}`}
+                        to={`/comics/${prevComicId}`}
+                        className="text-dark"
+                        // Vado alla pagina successiva e mi porto dietro i dati con cui sono arrivato su questa pagina
+                        state={hasSearchResults ? location.state : undefined}
                       >
-                        {character.name}
+                        <i className="bi bi-arrow-left-circle-fill fs-3"></i>
                       </Link>
-                    ))}
-                  </p>
-                  <p className="oswald-special">Brand: {comic.brand?.name}</p>
-                  <p>Price: &euro; {comic.price}</p>
+                    )}
+                    <figure className="text-center">
+                      <img
+                        src={`https://laravel-final-backend.onrender.com/${comic.cover_img}`}
+                        alt={comic.title}
+                        className="img-fluid"
+                      />
+                    </figure>
+                    {!nextComicId && (
+                      <button className="text-dark opacity-25" disabled>
+                        <i className="bi bi-arrow-right-circle-fill fs-3"></i>
+                      </button>
+                    )}
+
+                    {nextComicId && (
+                      <Link
+                        to={`/comics/${nextComicId}`}
+                        className="text-dark"
+                        state={hasSearchResults ? location.state : undefined}
+                      >
+                        <i className="bi bi-arrow-right-circle-fill fs-3"></i>
+                      </Link>
+                    )}
+                  </div>
+                  <div className="col">
+                    <h1 className="bangers-regular">{comic.title}</h1>
+                    <div className="oswald-special">
+                      <ReactMarkdown>{comic.description}</ReactMarkdown>
+                    </div>
+
+                    <p className="oswald-special">
+                      Pubblicazione: {comic.release_date}
+                    </p>
+                    <p className="oswald-special text-white">
+                      Featuring:{" "}
+                      {comic.characters?.map((character, index) => (
+                        <Link
+                          key={character.id}
+                          to={`/characters/${character.id}`}
+                        >
+                          {character.name}
+                        </Link>
+                      ))}
+                    </p>
+                    <p className="oswald-special">Brand: {comic.brand?.name}</p>
+                    <p>Price: &euro; {comic.price}</p>
+                  </div>
                 </div>
               </div>
             </div>
