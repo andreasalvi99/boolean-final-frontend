@@ -251,7 +251,7 @@ export default function ComicDetailPage() {
                       }}
                       className={`${comic.brand?.name === "Marvel Comics" ? "marvel-logo" : ""}`}
                     />
-                    <p>&euro; {comic.price}</p>
+                    <p className="fs-3">&euro; {comic.price}</p>
                   </div>
                 </div>
               </div>
