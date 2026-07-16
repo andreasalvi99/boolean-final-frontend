@@ -5,6 +5,7 @@ import Loader from "../components/Loader";
 import GoBackBtn from "../components/GoBackBtn";
 import ComicDetailCard from "../components/ComicDetailCard";
 import ReactMarkdown from "react-markdown";
+import dateFormat from "dateformat";
 
 export default function ComicDetailPage() {
   const { id } = useParams();
