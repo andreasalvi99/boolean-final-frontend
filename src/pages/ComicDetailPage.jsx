@@ -174,6 +174,22 @@ export default function ComicDetailPage() {
             >
               <div className="row row-cols-1 g-3">
                 <div className="col">
+                  {!prevComicId && (
+                    <button className="text-dark opacity-25" disabled>
+                      <i className="bi bi-arrow-left-circle-fill fs-3"></i>
+                    </button>
+                  )}
+
+                  {prevComicId && (
+                    <Link
+                      to={`/comics/${prevComicId}`}
+                      className="text-dark"
+                      // Vado alla pagina successiva e mi porto dietro i dati con cui sono arrivato su questa pagina
+                      state={hasSearchResults ? location.state : undefined}
+                    >
+                      <i className="bi bi-arrow-left-circle-fill fs-3"></i>
+                    </Link>
+                  )}
                   <figure className="text-center">
                     <img
                       src={`https://laravel-final-backend.onrender.com/${comic.cover_img}`}
@@ -181,6 +197,21 @@ export default function ComicDetailPage() {
                       className="img-fluid"
                     />
                   </figure>
+                  {!nextComicId && (
+                    <button className="text-dark opacity-25" disabled>
+                      <i className="bi bi-arrow-right-circle-fill fs-3"></i>
+                    </button>
+                  )}
+
+                  {nextComicId && (
+                    <Link
+                      to={`/comics/${nextComicId}`}
+                      className="text-dark"
+                      state={hasSearchResults ? location.state : undefined}
+                    >
+                      <i className="bi bi-arrow-right-circle-fill fs-3"></i>
+                    </Link>
+                  )}
                 </div>
                 <div className="col">
                   <h1 className="bangers-regular">{comic.title}</h1>
@@ -207,6 +238,39 @@ export default function ComicDetailPage() {
                 </div>
               </div>
             </div>
+
+            {/* Related characters */}
+
+            <section id="related-characters" className="">
+              <div className="container mt-5">
+                <hr />
+                <h2 className="my-5 bangers-regular">Personaggi correlati:</h2>
+                <div
+                  className={`row row-cols-lg-6 ${comic.characters?.length > 2 ? "row-cols-3" : "row-cols-2"} g-3`}
+                >
+                  {comic.characters?.map((character) => {
+                    return (
+                      <div className="col" key={character.id}>
+                        <Link to={`/characters/${character.id}`}>
+                          <div className="card border-0 related-character-card h-100">
+                            <img
+                              src={`https://laravel-final-backend.onrender.com/${character.character_img}`}
+                              className="card-img-top h-100"
+                              alt="..."
+                            />
+                            <div className="card-body related-character-info">
+                              <p className="card-text text-center oswald-special fw-bold">
+                                {character.name}
+                              </p>
+                            </div>
+                          </div>
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
           </>
         )}
       </section>
