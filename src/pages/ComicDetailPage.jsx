@@ -274,7 +274,7 @@ export default function ComicDetailPage() {
                       />
                       {!comic.discount && (
                         <p className="align-self-end m-0 fs-3 fw-semibold oswald-special">
-                          &euro; {price}
+                          &euro; {comic.price}
                         </p>
                       )}
 
