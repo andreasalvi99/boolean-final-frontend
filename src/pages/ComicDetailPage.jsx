@@ -165,7 +165,7 @@ export default function ComicDetailPage() {
 
         {comic && (
           <div
-            className="d-md-none comic-detail text-light"
+            className="d-md-none comic-detail text-light p-4"
             style={{
               backgroundImage: `url(https://laravel-final-backend.onrender.com/${comic.cover_img})`,
             }}
