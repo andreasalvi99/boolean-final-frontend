@@ -250,7 +250,7 @@ export default function ComicDetailPage() {
                     <p className="oswald-special">
                       Pubblicazione:
                       <span className="text-light">
-                        {dateFormat(release_date, " dddd, mmmm dS, yyyy")}
+                        {dateFormat(comic.release_date, " dddd, mmmm dS, yyyy")}
                       </span>
                     </p>
                     <p className="oswald-special">
