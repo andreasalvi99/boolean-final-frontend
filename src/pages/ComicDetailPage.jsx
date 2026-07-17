@@ -174,7 +174,9 @@ export default function ComicDetailPage() {
 
         {comic && (
           <>
-            <GoBackBtn />
+            <div className="d-md-none">
+              <GoBackBtn />
+            </div>
             <div
               className="d-md-none comic-detail text-light p-4"
               style={{
