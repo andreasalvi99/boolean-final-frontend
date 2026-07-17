@@ -311,7 +311,7 @@ export default function ComicDetailPage() {
 
             {/* Related characters */}
 
-            <section id="related-characters" className="">
+            <section id="related-characters" className="d-md-none">
               <div className="container my-5">
                 <hr />
                 <h2 className="my-5 bangers-regular">Personaggi correlati:</h2>
