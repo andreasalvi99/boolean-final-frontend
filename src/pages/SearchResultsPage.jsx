@@ -75,7 +75,7 @@ export default function SearchResultsPage() {
                         <div className="col">
                           <div className="card border-0 related-character-card h-100">
                             <img
-                              src={`https://laravel-final-backend.onrender.com/${character.character_img}`}
+                              src={`https://laravel-final-backend.onrender.com/img/${character.character_img}`}
                               className="card-img-top h-100"
                               alt="..."
                             />

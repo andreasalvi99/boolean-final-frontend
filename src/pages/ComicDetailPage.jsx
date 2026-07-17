@@ -95,7 +95,7 @@ export default function ComicDetailPage() {
 
                 <section
                   style={{
-                    backgroundImage: `url(https://laravel-final-backend.onrender.com/${comic.cover_img})`,
+                    backgroundImage: `url(https://laravel-final-backend.onrender.com/img/${comic.cover_img})`,
                   }}
                   className="p-5 flex-grow-1 rounded-2 comic-detail"
                 >
@@ -151,7 +151,7 @@ export default function ComicDetailPage() {
                           <Link to={`/characters/${character.id}`}>
                             <div className="card border-0 related-character-card h-100">
                               <img
-                                src={`https://laravel-final-backend.onrender.com/${character.character_img}`}
+                                src={`https://laravel-final-backend.onrender.com/img/${character.character_img}`}
                                 className="card-img-top h-100"
                                 alt="..."
                               />
@@ -180,7 +180,7 @@ export default function ComicDetailPage() {
             <div
               className="d-md-none comic-detail text-light p-4"
               style={{
-                backgroundImage: `url(https://laravel-final-backend.onrender.com/${comic.cover_img})`,
+                backgroundImage: `url(https://laravel-final-backend.onrender.com/img/${comic.cover_img})`,
               }}
             >
               <div className="row row-cols-1 g-3">
@@ -207,7 +207,7 @@ export default function ComicDetailPage() {
                     )}
                     <figure className="text-center">
                       <img
-                        src={`https://laravel-final-backend.onrender.com/${comic.cover_img}`}
+                        src={`https://laravel-final-backend.onrender.com/img/${comic.cover_img}`}
                         alt={comic.title}
                         className="img-fluid"
                       />
@@ -269,7 +269,7 @@ export default function ComicDetailPage() {
                     </p>
                     <div className="d-flex justify-content-between align-items-center">
                       <img
-                        src={`https://laravel-final-backend.onrender.com/${comic.brand?.logo}`}
+                        src={`https://laravel-final-backend.onrender.com/img/${comic.brand?.logo}`}
                         alt=""
                         style={{
                           height:
@@ -326,7 +326,7 @@ export default function ComicDetailPage() {
                         <Link to={`/characters/${character.id}`}>
                           <div className="card border-0 related-character-card h-100">
                             <img
-                              src={`https://laravel-final-backend.onrender.com/${character.character_img}`}
+                              src={`https://laravel-final-backend.onrender.com/img/${character.character_img}`}
                               className="card-img-top h-100"
                               alt="..."
                             />

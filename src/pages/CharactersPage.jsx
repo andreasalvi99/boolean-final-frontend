@@ -70,7 +70,7 @@ export default function CharactersPage() {
                         key={character.id}
                         to={`/characters/${character.id}`}
                         style={{
-                          backgroundImage: `url(https://laravel-final-backend.onrender.com/${character.character_img})`,
+                          backgroundImage: `url(https://laravel-final-backend.onrender.com/img/${character.character_img})`,
                         }}
                         state={"/characters"}
                       >

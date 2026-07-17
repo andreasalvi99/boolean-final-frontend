@@ -43,7 +43,7 @@ export default function CharacterDetailPage() {
           <GoBackBtn />
           <div
             style={{
-              backgroundImage: `url(https://laravel-final-backend.onrender.com/${character.banner})`,
+              backgroundImage: `url(https://laravel-final-backend.onrender.com/img/${character.banner})`,
               backgroundPosition: "top",
               backgroundSize: "cover",
               height: "600px",
@@ -56,7 +56,7 @@ export default function CharacterDetailPage() {
                   <div className="col-md-2 col-10 character-info mx-auto">
                     <figure className="character-img p-2 bg-light">
                       <img
-                        src={`https://laravel-final-backend.onrender.com/${character.character_img}`}
+                        src={`https://laravel-final-backend.onrender.com/img/${character.character_img}`}
                         className="img-fluid rounded-start h-100 w-100"
                         alt="..."
                       />
@@ -100,7 +100,7 @@ export default function CharacterDetailPage() {
                             </span>
                           )}
                           <img
-                            src={`https://laravel-final-backend.onrender.com/${comic.cover_img}`}
+                            src={`https://laravel-final-backend.onrender.com/img/${comic.cover_img}`}
                             className="card-img-top h-100"
                             alt="..."
                           />

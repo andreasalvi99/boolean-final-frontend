@@ -27,7 +27,7 @@ export default function ComicDetailCard({
       <div className="row g-0">
         <div className="col-md-4">
           <img
-            src={`https://laravel-final-backend.onrender.com/${cover}`}
+            src={`https://laravel-final-backend.onrender.com/img/${cover}`}
             className="img-fluid rounded-start w-100 h-100"
             alt={title}
           />
@@ -76,7 +76,7 @@ export default function ComicDetailCard({
             </div>
             <div className="d-flex justify-content-between align-items-end mt-3 mt-md-0">
               <img
-                src={`https://laravel-final-backend.onrender.com/${brand?.logo}`}
+                src={`https://laravel-final-backend.onrender.com/img/${brand?.logo}`}
                 alt=""
                 style={{
                   height: brand?.name === "DC Comics" ? "80px" : "80px",
