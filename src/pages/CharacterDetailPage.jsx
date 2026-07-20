@@ -53,7 +53,7 @@ export default function CharacterDetailPage() {
             <div className="container mt-5 character-info p-5">
               <div className="card mb-3 border-0">
                 <div className="row g-0">
-                  <div className="col-md-2 col-10 character-info mx-auto">
+                  <div className="col-md-2 col-12 character-info mx-auto">
                     <figure className="character-img p-2 bg-light">
                       <img
                         src={`https://laravel-final-backend.onrender.com/img/${character.character_img}`}
@@ -63,7 +63,7 @@ export default function CharacterDetailPage() {
                     </figure>
                   </div>
                   <div className="col-md-10">
-                    <div className="card-body ms-5 oswald-special">
+                    <div className="card-body ms-lg-5 oswald-special">
                       <h2 className="card-title bangers-regular h1">
                         {character.name}
                       </h2>
