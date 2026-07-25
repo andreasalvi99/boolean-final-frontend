@@ -17,11 +17,11 @@ export default function SearchForm() {
       return;
     }
     const comics = axios.get(
-      `http://127.0.0.1:8000/api/comics?search=${e.target.value}`, //effettuo chiamata al db dei comics col valore cercato
+      `https://laravel-final-backend.onrender.com/api/comics?search=${e.target.value}`, //effettuo chiamata al db dei comics col valore cercato
     );
 
     const characters = axios.get(
-      `http://127.0.0.1:8000/api/characters?search=${e.target.value}`, //effettuo chiamata al db dei personaggi col valore cercato
+      `https://laravel-final-backend.onrender.com/api/characters?search=${e.target.value}`, //effettuo chiamata al db dei personaggi col valore cercato
     );
 
     Promise.all([comics, characters]).then(
