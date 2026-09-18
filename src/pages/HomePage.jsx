@@ -19,10 +19,27 @@ export default function HomePage() {
       quantity: 1
     }
 
-    if(cart.includes(cartItem)) {
-      cartItem.quantity += 1;
-  }
-    setCart([...cart, cartItem]);
+    const existingCartItem = cart.find((item) => {
+      return item.comic.id === cartItem.comic.id
+    }
+    )
+
+    if (existingCartItem) {
+  const updatedCart = cart.map((item) => {
+    if (item.comic.id === comic.id) {
+      return {
+        ...item,
+        quantity: item.quantity + 1
+      };
+    } else {
+      return item;
+    }
+  });
+
+  setCart(updatedCart);
+} else {
+  setCart([...cart, cartItem]);
+}
   }
 
   function fetchSpecialComics() {

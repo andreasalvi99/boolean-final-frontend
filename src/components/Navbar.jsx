@@ -80,13 +80,15 @@ export default function Navbar({ cart, setCart }) {
           <div className="card mb-3" style={{ maxWidth: "540px" }} key={item.comic.id}>
             <div className="row g-0">
               <div className="col-md-4">
-                <img src="..." className="img-fluid rounded-start" alt="..." />
+                <img src={`https://laravel-final-backend.onrender.com/img/${item.comic.cover_img}`} className="img-fluid rounded-start" alt="..." />
               </div>
               <div className="col-md-8">
-                <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
+                <div className="card-body d-flex flex-column justify-content-between h-100 pb-2">
+                  <h5 className="card-title fs-6">{item.comic.title}</h5>
+                  <div className="d-flex justify-content-between align-items-end">
+                    <p className="mb-0">Quantità: {item.quantity}</p>
+                    <p className="mb-0">&euro; {item.comic.price * item.quantity}</p>
+                  </div>
                 </div>
               </div>
             </div>
