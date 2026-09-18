@@ -1,27 +1,32 @@
 import { NavLink } from "react-router-dom";
 import logo from "../assets/img/logo.png";
 import SearchForm from "./SearchForm";
-import { useEffect } from "react";
-import { Collapse } from "bootstrap";
 
 export default function Navbar({ cart, setCart }) {
-  function report() {
-    return console.log("Hai premuto");
-
-    useEffect(() => {
-      const element = document.querySelector("#navbarSupportedContent");
-
-      new Collapse(element, {
-        toggle: false,
-      });
-    }, []);
-  }
 
   function removeFromCart(cartItem) {
     const updatedCart = cart.filter((item) => {
       return cartItem.comic.id !== item.comic.id
     })
     setCart(updatedCart);
+  }
+
+  function reduceQuantity(cartItem) {
+    cartItem.quantity -= 1;
+
+    if(cartItem.quantity === 0) {
+      removeFromCart(cartItem);
+    }else{
+      setCart([...cart]);
+    }
+
+    
+  }
+
+  function increaseQuantity(cartItem) {
+    cartItem.quantity += 1;
+
+    setCart([...cart]);
   }
 
   return (
@@ -39,7 +44,6 @@ export default function Navbar({ cart, setCart }) {
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
-            onClick={report}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -72,7 +76,7 @@ export default function Navbar({ cart, setCart }) {
               <button className="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                 <i className="bi bi-handbag position-relative">
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger fs-6">
-                  {cart.length > 0 ?cart.reduce((total, item) => total + item.quantity, 0) : ""}
+                  {cart.length > 0 ? cart.reduce((total, item) => total + item.quantity, 0) : ""}
                 </span>
                 </i>
               </button>
@@ -96,15 +100,24 @@ export default function Navbar({ cart, setCart }) {
               </div>
               <div className="col-md-8">
                 <div className="card-body d-flex flex-column justify-content-between h-100 pb-2">
-                  <div className="d-flex justify-content-between align-items-center">
+                  <div className="d-flex justify-content-between align-items-center gap-2">
                     <h5 className="card-title fs-6 m-0">{item.comic.title}</h5>
                     <button className="btn btn-danger btn-sm" type="button" onClick={() => removeFromCart(item)}>
                       <i className="bi bi-trash3-fill"></i>
                     </button>
                   </div>
                   <div className="d-flex justify-content-between align-items-end">
-                    <p className="mb-0">Quantità: {item.quantity}</p>
-                    <p className="mb-0">&euro; {item.comic.price * item.quantity.toFixed(2)}</p>
+                    <div className="mb-0 d-flex justify-content-center align-items-center gap-2">
+                      <span>
+                      Quantità: 
+                      </span>
+                      <div>
+                        <button className="btn btn-light btn-sm" type="button" onClick={() => reduceQuantity(item)}>-</button>
+                        <span className="mx-1">{item.quantity}</span>
+                        <button className="btn btn-light btn-sm" type="button" onClick={() => increaseQuantity(item)}>+</button>
+                      </div>
+                    </div>
+                    <p className="mb-0">&euro; {Math.round(item.comic.price * item.quantity * 100) / 100}</p>
                   </div>
                 </div>
               </div>
