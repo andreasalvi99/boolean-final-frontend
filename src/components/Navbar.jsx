@@ -19,8 +19,6 @@ export default function Navbar({ cart, setCart }) {
     }else{
       setCart([...cart]);
     }
-
-    
   }
 
   function increaseQuantity(cartItem) {
@@ -86,11 +84,14 @@ export default function Navbar({ cart, setCart }) {
       </nav>
 
       <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div className="offcanvas-header">
+    <div className="offcanvas-header pb-1">
       <h5 className="offcanvas-title bangers-regular" id="offcanvasRightLabel">Il tuo carrello</h5>
       <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div className="offcanvas-body bebas-neue-regular">
+    <div className="offcanvas-body bebas-neue-regular pt-1 fs-4">
+      <div className="d-flex justify-content-end align-items-center mb-2">
+        {cart.length > 0 ? <button className="btn btn-danger" type="button" onClick={() => setCart([])}>Svuota carrello</button> : ""}
+      </div>
       {cart.length === 0 ? "il tuo carrello è vuoto" : cart.map((item) => {
         return(
           <div className="card mb-3" style={{ maxHeight: "540px" }} key={item.comic.id}>
@@ -101,7 +102,7 @@ export default function Navbar({ cart, setCart }) {
               <div className="col-md-8">
                 <div className="card-body d-flex flex-column justify-content-between h-100 pb-2">
                   <div className="d-flex justify-content-between align-items-center gap-2">
-                    <h5 className="card-title fs-6 m-0">{item.comic.title}</h5>
+                    <h4 className="card-title m-0">{item.comic.title}</h4>
                     <button className="btn btn-danger btn-sm" type="button" onClick={() => removeFromCart(item)}>
                       <i className="bi bi-trash3-fill"></i>
                     </button>
