@@ -4,7 +4,7 @@ import SearchForm from "./SearchForm";
 import { useEffect } from "react";
 import { Collapse } from "bootstrap";
 
-export default function Navbar() {
+export default function Navbar({ cart, setCart }) {
   function report() {
     return console.log("Hai premuto");
 

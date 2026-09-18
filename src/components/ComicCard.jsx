@@ -50,7 +50,7 @@ export default function ComicCard({
                 {title}
               </p>
             </div>
-            <button className="btn btn-primary mx-auto" style={{ width: "93%" }}><i class="bi bi-bag-plus"></i> Aggiungi al carrello</button>
+            <button className="btn btn-primary mx-auto mb-2" style={{ width: "93%" }}><i class="bi bi-bag-plus"></i> Aggiungi al carrello</button>
           </div>
         </Link>
       </div>

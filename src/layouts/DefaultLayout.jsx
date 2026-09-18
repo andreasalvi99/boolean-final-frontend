@@ -1,10 +1,12 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useState } from "react-router-dom";
 import Header from "../components/Header";
 import { Carousel } from "bootstrap";
 import { useEffect } from "react";
 import Footer from "../components/Footer";
 
 export default function DefaultLayout() {
+  const [cart, setCart] = useState([]);
+
   function ScrollToTop() {
     const { pathname } = useLocation();
 
@@ -19,8 +21,8 @@ export default function DefaultLayout() {
     <>
       <ScrollToTop />
 
-      <Header />
-      <Outlet />
+      <Header cart={cart} setCart={setCart} />
+      <Outlet context={{ cart, setCart }} />
       <Footer />
     </>
   );
