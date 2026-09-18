@@ -58,7 +58,10 @@ export default function Navbar() {
               </NavLink>
             </li>
           </ul>
-          <SearchForm></SearchForm>
+          <div className="d-flex gap-4 align-items-center">
+            <SearchForm></SearchForm>
+            <i class="bi bi-handbag"></i>
+          </div>
         </div>
       </div>
     </nav>
