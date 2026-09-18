@@ -1,12 +1,26 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import Loader from "../components/Loader";
 import ComicCard from "../components/ComicCard";
 
 export default function ComicsPage() {
+  const { cart, setCart } = useOutletContext();
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  function addToCart(comic) {
+    const cartItem = {
+      comic: comic,
+      quantity: 1
+    }
+
+    if(cart.includes(cartItem)) {
+      cartItem.quantity += 1;
+  }
+    setCart([...cart, cartItem]);
+  }
+
   // const [isVisible, setIsVisible] = useState(false);
 
   // function handleSwitch() {
@@ -104,6 +118,8 @@ export default function ComicsPage() {
                         isNew={dcComic.is_new}
                         isPreorder={dcComic.is_preorder}
                         isDiscount={dcComic.discount}
+                        addToCart={addToCart}
+                        comic={dcComic}
                       />
                     );
                   })}
@@ -136,6 +152,8 @@ export default function ComicsPage() {
                         isNew={marvelComic.is_new}
                         isPreorder={marvelComic.is_preorder}
                         isDiscount={marvelComic.discount}
+                        addToCart={addToCart}
+                        comic={marvelComic}
                       />
                     );
                   })}

@@ -62,20 +62,37 @@ export default function Navbar({ cart, setCart }) {
             <div className="d-flex gap-4 align-items-center">
               <SearchForm></SearchForm>
               <button className="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                <i class="bi bi-handbag"></i>
+                <i className="bi bi-handbag"></i>
               </button>
             </div>
           </div>
         </div>
       </nav>
 
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasRightLabel">Il tuo carrello</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div className="offcanvas-header">
+      <h5 className="offcanvas-title" id="offcanvasRightLabel">Il tuo carrello</h5>
+      <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
-      ...
+    <div className="offcanvas-body">
+      {cart.length === 0 ? "il tuo carrello è vuoto" : cart.map((item) => {
+        return(
+          <div className="card mb-3" style={{ maxWidth: "540px" }} key={item.comic.id}>
+            <div className="row g-0">
+              <div className="col-md-4">
+                <img src="..." className="img-fluid rounded-start" alt="..." />
+              </div>
+              <div className="col-md-8">
+                <div className="card-body">
+                  <h5 className="card-title">Card title</h5>
+                  <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      })}
     </div>
   </div>
 </>

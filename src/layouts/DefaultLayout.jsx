@@ -1,7 +1,7 @@
-import { Outlet, useLocation, useState } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import { Carousel } from "bootstrap";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 
 export default function DefaultLayout() {

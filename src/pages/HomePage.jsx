@@ -4,12 +4,26 @@ import Slider from "../components/slider/Slider";
 import axios from "axios";
 import ComicCard from "../components/ComicCard";
 import Loader from "../components/Loader";
+import { useOutletContext } from "react-router-dom";
 
 export default function HomePage() {
   const [latestComics, setLatestComics] = useState([]);
   const [preorderComics, setPreorderComics] = useState([]);
   const [discountComics, setDiscountComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { cart, setCart } = useOutletContext();
+
+  function addToCart(comic) {
+    const cartItem = {
+      comic: comic,
+      quantity: 1
+    }
+
+    if(cart.includes(cartItem)) {
+      cartItem.quantity += 1;
+  }
+    setCart([...cart, cartItem]);
+  }
 
   function fetchSpecialComics() {
     axios
@@ -82,6 +96,8 @@ export default function HomePage() {
                       title={comic.title}
                       comicIds={latestComicIds}
                       isNew={comic.is_new}
+                      addToCart={addToCart}
+                      comic={comic}
                     />
                   );
                 })}
@@ -126,6 +142,8 @@ export default function HomePage() {
                       title={comic.title}
                       comicIds={preorderComicIds}
                       isPreorder={comic.is_preorder}
+                      addToCart={addToCart}
+                      comic={comic}
                     />
                   );
                 })}
@@ -169,6 +187,8 @@ export default function HomePage() {
                       title={comic.title}
                       comicIds={discountComicIds}
                       isDiscount={comic.discount}
+                      addToCart={addToCart}
+                      comic={comic}
                     />
                   );
                 })}
