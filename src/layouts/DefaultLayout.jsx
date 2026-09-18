@@ -4,18 +4,19 @@ import { Carousel } from "bootstrap";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    console.log("SCROLL TO TOP", pathname);
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 export default function DefaultLayout() {
   const [cart, setCart] = useState([]);
-
-  function ScrollToTop() {
-    const { pathname } = useLocation();
-
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-
-    return null;
-  }
 
   return (
     <>

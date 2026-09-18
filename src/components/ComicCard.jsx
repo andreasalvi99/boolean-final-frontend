@@ -55,7 +55,7 @@ export default function ComicCard({
                 {title}
               </p>
             </div>
-            <button className="btn btn-primary mx-auto mb-2" style={{ width: "93%" }}
+            <button type="button" className="btn btn-primary mx-auto mb-2" style={{ width: "93%" }}
                     onClick={() => addToCart(comic)}><i className="bi bi-bag-plus"></i> Aggiungi al carrello</button>
           </div>
       </div>

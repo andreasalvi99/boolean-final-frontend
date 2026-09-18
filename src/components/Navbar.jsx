@@ -62,7 +62,11 @@ export default function Navbar({ cart, setCart }) {
             <div className="d-flex gap-4 align-items-center">
               <SearchForm></SearchForm>
               <button className="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                <i className="bi bi-handbag"></i>
+                <i className="bi bi-handbag position-relative">
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger fs-6">
+                  {cart.length > 0 ? cart.length : ""}
+                </span>
+                </i>
               </button>
             </div>
           </div>
