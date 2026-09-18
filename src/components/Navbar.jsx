@@ -16,6 +16,14 @@ export default function Navbar({ cart, setCart }) {
       });
     }, []);
   }
+
+  function removeFromCart(cartItem) {
+    const updatedCart = cart.filter((item) => {
+      return cartItem.comic.id !== item.comic.id
+    })
+    setCart(updatedCart);
+  }
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top bebas-neue-regular">
@@ -88,7 +96,12 @@ export default function Navbar({ cart, setCart }) {
               </div>
               <div className="col-md-8">
                 <div className="card-body d-flex flex-column justify-content-between h-100 pb-2">
-                  <h5 className="card-title fs-6">{item.comic.title}</h5>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <h5 className="card-title fs-6 m-0">{item.comic.title}</h5>
+                    <button className="btn btn-danger btn-sm" type="button" onClick={() => removeFromCart(item)}>
+                      <i className="bi bi-trash3-fill"></i>
+                    </button>
+                  </div>
                   <div className="d-flex justify-content-between align-items-end">
                     <p className="mb-0">Quantità: {item.quantity}</p>
                     <p className="mb-0">&euro; {item.comic.price * item.quantity.toFixed(2)}</p>
@@ -100,9 +113,14 @@ export default function Navbar({ cart, setCart }) {
         )
       })}
     </div>
-    <div className="offcanvas-header d-flex justify-content-between">
-      <h4 className="offcanvas-title bangers-regular" id="offcanvasRightLabel">Totale</h4>
-      <span className="offcanvas-title bangers-regular fs-4">&euro; {cart.reduce((total, item) => total + (item.comic.price * item.quantity), 0).toFixed(2)}</span>
+    <div className="offcanvas-header d-flex justify-content-between py-2 border border-dark-subtle border-end-0 border-start-0 border-bottom-0">
+      <div className="d-flex gap-2">
+        <h4 className="offcanvas-title bangers-regular" id="offcanvasRightLabel">Totale</h4>
+        <span className="offcanvas-title bangers-regular fs-4">&euro; {cart.reduce((total, item) => total + (item.comic.price * item.quantity), 0).toFixed(2)}</span>
+      </div>
+      <button type="button" className="btn btn-outline-success">
+        Checkout
+      </button>
     </div>
   </div>
 </>
