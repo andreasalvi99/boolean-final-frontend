@@ -63,8 +63,8 @@ export default function Navbar({ cart, setCart }) {
               <SearchForm></SearchForm>
               <button className="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                 <i className="bi bi-handbag position-relative">
-                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger fs-6">
-                  {cart.length > 0 ? cart.length : ""}
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger fs-6">
+                  {cart.length > 0 ?cart.reduce((total, item) => total + item.quantity, 0) : ""}
                 </span>
                 </i>
               </button>
@@ -75,13 +75,13 @@ export default function Navbar({ cart, setCart }) {
 
       <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div className="offcanvas-header">
-      <h5 className="offcanvas-title" id="offcanvasRightLabel">Il tuo carrello</h5>
+      <h5 className="offcanvas-title bangers-regular" id="offcanvasRightLabel">Il tuo carrello</h5>
       <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div className="offcanvas-body">
+    <div className="offcanvas-body bebas-neue-regular">
       {cart.length === 0 ? "il tuo carrello è vuoto" : cart.map((item) => {
         return(
-          <div className="card mb-3" style={{ maxWidth: "540px" }} key={item.comic.id}>
+          <div className="card mb-3" style={{ maxHeight: "540px" }} key={item.comic.id}>
             <div className="row g-0">
               <div className="col-md-4">
                 <img src={`https://laravel-final-backend.onrender.com/img/${item.comic.cover_img}`} className="img-fluid rounded-start" alt="..." />
@@ -91,7 +91,7 @@ export default function Navbar({ cart, setCart }) {
                   <h5 className="card-title fs-6">{item.comic.title}</h5>
                   <div className="d-flex justify-content-between align-items-end">
                     <p className="mb-0">Quantità: {item.quantity}</p>
-                    <p className="mb-0">&euro; {item.comic.price * item.quantity}</p>
+                    <p className="mb-0">&euro; {item.comic.price * item.quantity.toFixed(2)}</p>
                   </div>
                 </div>
               </div>
@@ -99,6 +99,10 @@ export default function Navbar({ cart, setCart }) {
           </div>
         )
       })}
+    </div>
+    <div className="offcanvas-header d-flex justify-content-between">
+      <h4 className="offcanvas-title bangers-regular" id="offcanvasRightLabel">Totale</h4>
+      <span className="offcanvas-title bangers-regular fs-4">&euro; {cart.reduce((total, item) => total + (item.comic.price * item.quantity), 0).toFixed(2)}</span>
     </div>
   </div>
 </>
