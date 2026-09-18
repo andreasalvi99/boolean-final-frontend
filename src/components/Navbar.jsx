@@ -92,9 +92,11 @@ export default function Navbar({ cart, setCart }) {
       <div className="d-flex justify-content-end align-items-center mb-2">
         {cart.length > 0 ? <button className="btn btn-danger" type="button" onClick={() => setCart([])}>Svuota carrello</button> : ""}
       </div>
+      <div className="row row-cols-1 g-3">
       {cart.length === 0 ? "il tuo carrello è vuoto" : cart.map((item) => {
         return(
-          <div className="card mb-3" style={{ maxHeight: "540px" }} key={item.comic.id}>
+          <div className="col">
+          <div className="card mb-3" key={item.comic.id}>
             <div className="row g-0">
               <div className="col-md-4">
                 <img src={`https://laravel-final-backend.onrender.com/img/${item.comic.cover_img}`} className="img-fluid rounded-start" alt="..." />
@@ -124,8 +126,10 @@ export default function Navbar({ cart, setCart }) {
               </div>
             </div>
           </div>
+          </div>
         )
       })}
+      </div>
     </div>
     <div className="offcanvas-header d-flex justify-content-between py-2 border border-dark-subtle border-end-0 border-start-0 border-bottom-0">
       <div className="d-flex gap-2">
