@@ -131,13 +131,10 @@ export default function Navbar({ cart, setCart }) {
       })}
       </div>
     </div>
-    <div className="offcanvas-header d-flex justify-content-between py-2 border border-dark-subtle border-end-0 border-start-0 border-bottom-0">
-      <div className="d-flex gap-2">
-        <h4 className="offcanvas-title bangers-regular" id="offcanvasRightLabel">Totale</h4>
-        <span className="offcanvas-title bangers-regular fs-4">&euro; {cart.reduce((total, item) => total + (item.comic.price * item.quantity), 0).toFixed(2)}</span>
-      </div>
+    <div className="offcanvas-header d-flex justify-content-between py-3 border border-dark-subtle border-end-0 border-start-0 border-bottom-0">
+      <h4 className="offcanvas-title bangers-regular align-self-end" id="offcanvasRightLabel">Totale : &euro; {cart.reduce((total, item) => total + (item.comic.price * item.quantity), 0).toFixed(2)}</h4>
       <button type="button" className="btn btn-outline-success">
-        Checkout
+        CHECKOUT
       </button>
     </div>
   </div>
