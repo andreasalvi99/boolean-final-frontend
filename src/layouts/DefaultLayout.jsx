@@ -1,6 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "../components/Header";
-import { Carousel } from "bootstrap";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 

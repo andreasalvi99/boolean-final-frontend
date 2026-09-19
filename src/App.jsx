@@ -9,6 +9,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import PaymentPage from "./pages/PaymentPage";
+import CheckoutLayout from "./layouts/CheckoutLayout";
 
 export default function App() {
   return (
@@ -25,18 +26,23 @@ export default function App() {
             <Route path=":id" element={<CharacterDetailPage />} />
           </Route>
 
-          {/* Checkout */}
-          <Route path="/checkout" element={<CheckoutPage />} />
-
-          {/* Payment */}
-          <Route path="/payment" element={<PaymentPage />} />
-
           {/*route per visualizzare risultati ricerca*/}
           <Route path="/search" element={<SearchResultsPage />} />
 
           {/* Route per error 404 */}
           <Route path="*" element={<NotFoundPage />} />
         </Route>
+
+        <Route element={<CheckoutLayout/> }>
+
+        {/* Checkout */}
+          <Route path="/checkout" element={<CheckoutPage />} />
+
+          {/* Payment */}
+          <Route path="/payment" element={<PaymentPage />} />
+        
+        </Route>
+
       </Routes>
     </BrowserRouter>
   );
