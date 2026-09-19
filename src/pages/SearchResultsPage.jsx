@@ -1,15 +1,45 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useOutletContext, useSearchParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import NoResults from "../components/NoResults";
 import ComicCard from "../components/ComicCard";
+
 
 export default function SearchResultsPage() {
   const [searchParams] = useSearchParams(); // hook per recuperare il valore cercato nel search
   const [comicsSearchResults, setComicsSearchResults] = useState([]); //stato dei comics come risultato della ricerca
   const [charactersSearchResults, setCharactersSearchResults] = useState([]); //stato personaggi come risultato della ricerca
   const [isLoading, setIsLoading] = useState(true);
+  const { cart, setCart } = useOutletContext();
+
+  function addToCart(comic) {
+    const cartItem = {
+      comic: comic,
+      quantity: 1
+    }
+
+    const existingCartItem = cart.find((item) => {
+      return item.comic.id === cartItem.comic.id
+    }
+    )
+
+    if (existingCartItem) {
+  const updatedCart = cart.map((item) => {
+    if (item.comic.id === comic.id) {
+      return {
+        ...item,
+        quantity: item.quantity + 1
+      };
+    } else {
+      return item;
+    }
+  });
+
+  setCart(updatedCart);
+} else {
+  setCart([...cart, cartItem]);
+}}
 
   const query = searchParams.get("query"); // recupero il valore cercato
 
@@ -114,6 +144,8 @@ export default function SearchResultsPage() {
                         isNew={comic.is_new}
                         isPreorder={comic.is_preorder}
                         isDiscount={comic.discount}
+                        addToCart={addToCart}
+                        comic={comic}
                       />
                     );
                   })}
