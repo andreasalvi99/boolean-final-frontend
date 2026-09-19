@@ -8,6 +8,7 @@ import CharacterDetailPage from "./pages/CharacterDetailPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import PaymentPage from "./pages/PaymentPage";
 
 export default function App() {
   return (
@@ -23,7 +24,12 @@ export default function App() {
             <Route index element={<CharactersPage />} />
             <Route path=":id" element={<CharacterDetailPage />} />
           </Route>
+
+          {/* Checkout */}
           <Route path="/checkout" element={<CheckoutPage />} />
+
+          {/* Payment */}
+          <Route path="/payment" element={<PaymentPage />} />
 
           {/*route per visualizzare risultati ricerca*/}
           <Route path="/search" element={<SearchResultsPage />} />

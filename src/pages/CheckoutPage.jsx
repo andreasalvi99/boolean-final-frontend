@@ -1,9 +1,11 @@
+import { NavLink } from "react-router-dom"
+
 export default function CheckoutPage() {
     return(
     <section id="main-content">
-        <div className="container mt-5">
+        <div className="container mt-5 bebas-neue-regular">
             <div className="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{height: '5px'}}>
-                <div className="progress-bar bg-success" style={{width: '25%'}}></div>
+                <div className="progress-bar bg-success" style={{width: '33%'}}></div>
             </div>
             <form className="row g-3 mt-3">
                 <div className="col-md-3">
@@ -70,7 +72,9 @@ export default function CheckoutPage() {
                     </div>
                 </div> */}
                 <div className="col-12">
-                    <button type="submit" className="btn btn-success">Vai al pagamento <i className="bi bi-arrow-right"></i></button>
+                    <NavLink to="/payment">
+                        <button type="submit" className="btn btn-success">Vai al pagamento <i className="bi bi-arrow-right"></i></button>
+                    </NavLink>  
                 </div>
             </form>
         </div>
