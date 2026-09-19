@@ -1,30 +1,77 @@
-import { NavLink } from "react-router-dom"
+import axios from "axios";
+import { useState } from "react";
 
 export default function CheckoutPage() {
 
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+    const total = cart.reduce((total, item) => {
+        return total + (item.quantity * item.comic.price)
+    }, 0)
+
+    const [formData, setFormData] = useState({
+        firstname: "",
+        lastname: "",
+        email: "",
+        address_type: "",
+        address: "",
+        house_number: "",
+        city: "",
+        province: "",
+        zipcode: ""
+    })
+
+    function handleChanges(e) {
+        const {name, value} = e.target
+
+        setFormData({
+            ...formData, [name]: value
+        })
+    }
+
+    async function createOrder(e) {
+        e.preventDefault()
+        console.log("funzione partita");
+        
+       const response = await axios.post("https://laravel-final-backend.onrender.com/api/orders", {
+            ...formData,
+            total,
+
+            comics: cart.map((item) => {
+                return(
+                    {
+                        comic_id: item.comic.id,
+                        quantity: item.quantity,
+                        price: item.comic.price
+                    }
+                )
+            })
+       })
+       console.log(response );
+       
+    }
+
     return(
     <section id="main-content">
         <div className="container mt-5 bebas-neue-regular">
-            <form className="row g-3 mt-3">
+            <form className="row g-3 mt-3" onSubmit={createOrder}>
                 <div className="col-md-3">
                     <label htmlFor="firstname" className="form-label">Nome</label>
-                    <input type="text" className="form-control" id="firstname"/>
+                    <input name="firstname" type="text" className="form-control" id="firstname" value={formData.firstname} onChange={handleChanges}/>
                 </div>
                 <div className="col-md-3">
                     <label htmlFor="lastname" className="form-label">Cognome</label>
-                    <input type="text" className="form-control" id="lastname"/>
+                    <input  name="lastname" type="text" className="form-control" id="lastname" value={formData.lastname} onChange={handleChanges}/>
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="email" className="form-label">Email</label>
-                    <input type="text" className="form-control" id="email"/>
+                    <input name="email"  type="text" className="form-control" id="email" value={formData.email} onChange={handleChanges}/>
                 </div>
                 <div className="col-md-2">
-                    <label htmlFor="address" className="form-label">
+                    <label htmlFor="address_type" className="form-label">
                         Toponimo
                     </label>
-                    <select id="address" className="form-select">
+                    <select name="address_type"  id="address_type" className="form-select" value={formData.address_type} onChange={handleChanges}>
                         <option value="">Scegli...</option>
                         <option value="via">Via</option>
                         <option value="viale">Viale</option>
@@ -45,23 +92,23 @@ export default function CheckoutPage() {
                 </div>
                 <div className="col-md-9">
                     <label htmlFor="address" className="form-label">Indirizzo</label>
-                    <input type="text" className="form-control" id="address"/>
+                    <input name="address"  type="text" className="form-control" id="address" value={formData.address} onChange={handleChanges}/>
                 </div>
                 <div className="col-md-1">
                     <label htmlFor="house_number" className="form-label">N°</label>
-                    <input type="text" className="form-control" id="house_number"/>
+                    <input  name="house_number" type="text" className="form-control" id="house_number" value={formData.house_number} onChange={handleChanges}/>
                 </div>
                 <div className="col-md-3">
-                    <label htmlFor="city" className="form-label">City</label>
-                    <input type="text" className="form-control" id="city"/>
+                    <label htmlFor="city" className="form-label">Città</label>
+                    <input name="city"  type="text" className="form-control" id="city" value={formData.city} onChange={handleChanges}/>
                 </div>
                 <div className="col-md-1">
                     <label htmlFor="province" className="form-label">Provincia</label>
-                    <input type="text" className="form-control" id="province"/>
+                    <input name="province"  type="text" className="form-control" id="province" value={formData.province} onChange={handleChanges}/>
                 </div>
                 <div className="col-md-2">
-                    <label htmlFor="cap" className="form-label">CAP</label>
-                    <input type="text" className="form-control" id="cap"/>
+                    <label htmlFor="zipcode" className="form-label">CAP</label>
+                    <input name="zipcode"  type="number" className="form-control" id="zipcode" value={formData.zipcode} onChange={handleChanges}/>
                 </div>
                 {/* <div className="col-12">
                     <div className="form-check">
@@ -72,9 +119,7 @@ export default function CheckoutPage() {
                     </div>
                 </div> */}
                 <div className="col-12">
-                    <NavLink to="/payment">
-                        <button type="submit" className="btn btn-success">Vai al pagamento <i className="bi bi-arrow-right"></i></button>
-                    </NavLink>  
+                    <button type="submit" className="btn btn-success">Vai al pagamento <i className="bi bi-arrow-right"></i></button>
                 </div>
             </form>
         </div>
