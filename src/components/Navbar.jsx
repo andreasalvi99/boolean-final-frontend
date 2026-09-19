@@ -95,8 +95,8 @@ export default function Navbar({ cart, setCart }) {
       <div className="row row-cols-1 g-3">
       {cart.length === 0 ? "il tuo carrello è vuoto" : cart.map((item) => {
         return(
-          <div className="col">
-          <div className="card mb-3" key={item.comic.id}>
+          <div className="col" key={item.comic.id}>
+          <div className="card mb-3">
             <div className="row g-0">
               <div className="col-md-4">
                 <img src={`https://laravel-final-backend.onrender.com/img/${item.comic.cover_img}`} className="img-fluid rounded-start" alt="..." />
