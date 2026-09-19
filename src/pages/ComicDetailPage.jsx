@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useOutletContext, useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import GoBackBtn from "../components/GoBackBtn";
 import ComicDetailCard from "../components/ComicDetailCard";
 import ReactMarkdown from "react-markdown";
 import dateFormat from "dateformat";
+
 
 export default function ComicDetailPage() {
   const { id } = useParams();
@@ -13,6 +14,7 @@ export default function ComicDetailPage() {
   const [previous, setPrevious] = useState(null);
   const [next, setNext] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const {cart, setCart} = useOutletContext()
 
   // Hook che restituisce info sulla pagina corrente
   const location = useLocation();
@@ -53,6 +55,34 @@ export default function ComicDetailPage() {
 
     return finalPrice;
   }
+
+  function addToCart(comic) {
+    const cartItem = {
+      comic: comic,
+      quantity: 1
+    }
+
+    const existingCartItem = cart.find((item) => {
+      return item.comic.id === cartItem.comic.id
+    }
+    )
+
+    if (existingCartItem) {
+  const updatedCart = cart.map((item) => {
+    if (item.comic.id === comic.id) {
+      return {
+        ...item,
+        quantity: item.quantity + 1
+      };
+    } else {
+      return item;
+    }
+  });
+
+  setCart(updatedCart);
+} else {
+  setCart([...cart, cartItem]);
+}}
 
   console.log("comic", comic);
   //   console.log(`http://127.0.0.1:8000/storage/${comic.cover_img}`);
@@ -112,6 +142,8 @@ export default function ComicDetailPage() {
                         isNew={comic.is_new}
                         isPreorder={comic.is_preorder}
                         isDiscount={comic.discount}
+                        addToCart={addToCart}
+                        comic={comic}
                       />
                     </div>
                   </div>

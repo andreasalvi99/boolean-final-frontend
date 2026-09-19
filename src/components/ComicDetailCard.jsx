@@ -13,6 +13,8 @@ export default function ComicDetailCard({
   isNew,
   isPreorder,
   isDiscount,
+  addToCart,
+  comic
 }) {
   function calcDiscountedPrice(price, discountValue) {
     const discount = (price * discountValue) / 100;
@@ -74,7 +76,7 @@ export default function ComicDetailCard({
                 ))}
               </span>
             </div>
-            <div className="d-flex justify-content-between align-items-end mt-3 mt-md-0">
+            <div className="d-flex justify-content-between align-items-center mt-3 mt-md-0 gap-3">
               <img
                 src={`https://laravel-final-backend.onrender.com/img/${brand?.logo}`}
                 alt=""
@@ -84,8 +86,14 @@ export default function ComicDetailCard({
                 }}
                 className={`${brand?.name === "Marvel Comics" ? "marvel-logo" : ""}`}
               />
+              <button type="button" className="btn btn-primary flex-grow-1" onClick={() => {addToCart(comic)}}>
+                <div className="d-flex justify-content-center align-items-center gap-3">
+                  <i className="bi bi-bag-plus"></i> 
+                  <span>Aggiungi al carrello</span>
+                </div>
+              </button>
               {!isDiscount && (
-                <p className="align-self-end m-0 fs-3 fw-semibold oswald-special">
+                <p className="align-self-center m-0 fs-3 fw-semibold oswald-special">
                   &euro; {price}
                 </p>
               )}
@@ -93,7 +101,7 @@ export default function ComicDetailCard({
               {isDiscount > 0 && (
                 <>
                   <div>
-                    <p className="align-self-end m-0 fs-3 fw-semibold position-relative">
+                    <p className="align-self-center m-0 fs-3 fw-semibold position-relative">
                       <span className="text-decoration-line-through oswald-special">
                         &euro; {price}
                       </span>
