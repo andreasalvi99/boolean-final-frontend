@@ -5,7 +5,7 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import ComicDetailPage from "./pages/ComicDetailPage";
 import CharactersPage from "./pages/CharactersPage";
 import CharacterDetailPage from "./pages/CharacterDetailPage";
-import SearchResults from "./pages/SearchResultsPage";
+import CheckoutPage from "./pages/CheckoutPage";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
@@ -23,6 +23,7 @@ export default function App() {
             <Route index element={<CharactersPage />} />
             <Route path=":id" element={<CharacterDetailPage />} />
           </Route>
+          <Route path="/checkout" element={<CheckoutPage />} />
 
           {/*route per visualizzare risultati ricerca*/}
           <Route path="/search" element={<SearchResultsPage />} />

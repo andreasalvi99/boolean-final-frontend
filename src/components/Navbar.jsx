@@ -132,10 +132,15 @@ export default function Navbar({ cart, setCart }) {
       </div>
     </div>
     <div className="offcanvas-header d-flex justify-content-between py-3 border border-dark-subtle border-end-0 border-start-0 border-bottom-0">
-      <h4 className="offcanvas-title bangers-regular align-self-end" id="offcanvasRightLabel">Totale : &euro; {cart.reduce((total, item) => total + (item.comic.price * item.quantity), 0).toFixed(2)}</h4>
-      <button type="button" className="btn btn-outline-success">
-        CHECKOUT
+      <h4 className="offcanvas-title bangers-regular align-self-end">Totale : &euro; {cart.reduce((total, item) => total + (item.comic.price * item.quantity), 0).toFixed(2)}</h4>
+      <NavLink to="/checkout" className="text-decoration-none">
+      <button type="button" className="btn btn-success"
+              disabled={cart.length === 0}>
+        <span className="bebas-neue-regular fs-5">
+        CHECKOUT <i className="bi bi-arrow-right"></i>
+        </span>
       </button>
+      </NavLink>
     </div>
   </div>
 </>
