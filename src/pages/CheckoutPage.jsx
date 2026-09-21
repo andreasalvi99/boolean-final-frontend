@@ -4,6 +4,8 @@ import { useState } from "react";
 export default function CheckoutPage() {
 
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    console.log(cart);
+    
 
     const total = cart.reduce((total, item) => {
         return total + (item.quantity * item.comic.price)
@@ -54,6 +56,7 @@ export default function CheckoutPage() {
     return(
     <section id="main-content">
         <div className="container mt-5 bebas-neue-regular">
+            <h1>Dettagli di fatturazione</h1>
             <form className="row g-3 mt-3" onSubmit={createOrder}>
                 <div className="col-md-3">
                     <label htmlFor="firstname" className="form-label">Nome</label>
@@ -114,7 +117,7 @@ export default function CheckoutPage() {
                     <div className="form-check">
                     <input className="form-check-input" type="checkbox" id="gridCheck"/>
                     <label className="form-check-label" htmlFor="gridCheck">
-                        Check me out
+                        Spedire a un indirizzo diverso?
                     </label>
                     </div>
                 </div> */}
