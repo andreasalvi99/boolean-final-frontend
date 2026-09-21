@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Header from "../components/Header";
 import Slider from "../components/slider/Slider";
 import axios from "axios";
 import ComicCard from "../components/ComicCard";

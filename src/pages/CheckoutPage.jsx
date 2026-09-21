@@ -1,7 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckoutPage() {
+
+    const navigate = useNavigate();
 
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     console.log(cart);
@@ -49,8 +52,7 @@ export default function CheckoutPage() {
                 )
             })
        })
-       console.log(response );
-       
+       navigate("/payment")
     }
 
     return(
@@ -122,7 +124,7 @@ export default function CheckoutPage() {
                     </div>
                 </div> */}
                 <div className="col-12">
-                    <button type="submit" className="btn btn-success">Vai al pagamento <i className="bi bi-arrow-right"></i></button>
+                        <button type="submit" className="btn btn-success">Vai al pagamento <i className="bi bi-arrow-right"></i></button>
                 </div>
             </form>
         </div>
