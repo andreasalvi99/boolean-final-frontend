@@ -124,8 +124,8 @@ export default function CheckoutPage() {
                     </label>
                     </div>
                 </div> */}
-                <div className="row mt-5">
-                    <div className="col-6 bg-secondary-subtle rounded p-2">
+                <div className="row mt-5 fs-5">
+                    <div className="col-8 bg-secondary-subtle rounded p-2">
                         <table className="table table-sm mb-0 table-secondary">
                             <thead>
                                 <tr>
@@ -196,9 +196,7 @@ export default function CheckoutPage() {
                         </table>
                     </div>
                 </div>
-                
-                <button type="submit" className="btn btn-success mb-5">Vai al pagamento <i className="bi bi-arrow-right"></i></button>
-                
+                <button type="submit" className="btn btn-success my-5">Vai al pagamento <i className="bi bi-arrow-right"></i></button>
             </form>
         </div>
     </section> )

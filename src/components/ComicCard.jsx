@@ -36,7 +36,7 @@ export default function ComicCard({
                 <span className="mx-2">-{isDiscount}%</span>
               </span>
             )}
-            <div style={{ height: "370px" }}>
+            <div style={{ height: "320px" }}>
               <Link
               to={`/comics/${id}`}
               className="text-decoration-none text-dark"
@@ -50,7 +50,7 @@ export default function ComicCard({
               />
               </Link>
             </div>
-            <div className="card-body h-25">
+            <div className="card-body">
               <p className="card-text text-center fw-semibold bebas-neue-regular">
                 {title}
               </p>
