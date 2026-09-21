@@ -154,7 +154,7 @@ export default function CheckoutPage() {
                                             <ul className="list-group">
                                                 <li className="list-group">
                                                     <div className="d-flex justify-content-between align-items-center gap-5 me-5">
-                                                        <span>{item.comic.price}</span>
+                                                        <span>&euro; {item.comic.price}</span>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -183,15 +183,21 @@ export default function CheckoutPage() {
                                     </td>
                                 </tr>
                                 <tr>
-                                <td>John</td>
-                                <td>Doe</td>
+                                <td>Totale</td>
+                                <td>
+                                    &euro; {cart.reduce((total, item) => {
+                                    return(
+                                        total + (item.comic.price * item.quantity)
+                                    )
+                                }, 0)}
+                                </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
                 
-                <button type="submit" className="btn btn-success">Vai al pagamento <i className="bi bi-arrow-right"></i></button>
+                <button type="submit" className="btn btn-success mb-5">Vai al pagamento <i className="bi bi-arrow-right"></i></button>
                 
             </form>
         </div>
