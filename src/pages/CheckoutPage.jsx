@@ -23,7 +23,8 @@ export default function CheckoutPage() {
         house_number: "",
         city: "",
         province: "",
-        zipcode: ""
+        zipcode: "",
+        shipping_method: ""
     })
 
     function handleChanges(e) {
@@ -123,9 +124,75 @@ export default function CheckoutPage() {
                     </label>
                     </div>
                 </div> */}
-                <div className="col-12">
-                        <button type="submit" className="btn btn-success">Vai al pagamento <i className="bi bi-arrow-right"></i></button>
+                <div className="row mt-5">
+                    <div className="col-6 bg-secondary-subtle rounded p-2">
+                        <table className="table table-sm mb-0 table-secondary">
+                            <thead>
+                                <tr>
+                                <th scope="col">Prodotto</th>
+                                <th scope="col">Subtotale</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        {cart.map((item) => {
+                                            return(
+                                                <ul className="list-group">
+                                                    <li className="list-group">
+                                                        <div className="d-flex justify-content-between align-items-center gap-5 me-5">
+                                                            <span>{item.comic.title}</span>
+                                                            <span>x {item.quantity}</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                        )})}
+                                    </td>
+                                    <td>
+                                        {cart.map((item) => {
+                                            return(
+                                            <ul className="list-group">
+                                                <li className="list-group">
+                                                    <div className="d-flex justify-content-between align-items-center gap-5 me-5">
+                                                        <span>{item.comic.price}</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                    )})}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div className="d-flex align-items-center">
+                                            <span>Spedizione</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="radio" name="shipping_method" id="shipping_standard" value="standard" onChange={handleChanges} checked={formData.shipping_method === "standard"}/>
+                                            <label className="form-check-label" htmlFor="shipping_standard">
+                                                Standard
+                                            </label>
+                                        </div>
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="radio" name="shipping_method" id="shipping_express" value="express" onChange={handleChanges} checked={formData.shipping_method === "express"}/>
+                                            <label className="form-check-label" htmlFor="shipping_express">
+                                                Express (5 gg)
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+                
+                <button type="submit" className="btn btn-success">Vai al pagamento <i className="bi bi-arrow-right"></i></button>
+                
             </form>
         </div>
     </section> )
