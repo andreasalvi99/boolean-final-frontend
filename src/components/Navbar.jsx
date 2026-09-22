@@ -112,7 +112,7 @@ function handleCheckout() {
       <div className="row row-cols-1 g-3">
       {cart.length === 0 ? "il tuo carrello è vuoto" : cart.map((item) => {
         return(
-          <div className="col" key={item.comic.id}>
+          <div className="col fs-5" key={item.comic.id}>
           <div className="card mb-3">
             <div className="row g-0">
               <div className="col-md-4">
@@ -148,16 +148,6 @@ function handleCheckout() {
       })}
       </div>
     </div>
-    {/* <div className="offcanvas-header d-flex justify-content-between py-3 border border-dark-subtle border-end-0 border-start-0 border-bottom-0">
-      <h4 className="offcanvas-title bangers-regular align-self-end">Totale : &euro; {cart.reduce((total, item) => total + (item.comic.price * item.quantity), 0).toFixed(2)}</h4>
-      <button type="button" className="btn btn-success"
-              disabled={cart.length === 0} onClick={handleCheckout}>
-        <span className="bebas-neue-regular fs-5">
-        CHECKOUT <i className="bi bi-arrow-right"></i>
-        </span>
-      </button>
-    </div> */}
-   
       <div className="d-flex justify-content-between bangers-regular align-itemx-center px-2 border border-dark-subtle border-end-0 border-start-0 border-bottom-0">
       <h4 className="offcanvas-title my-2">Totale :</h4>
       <span className="fs-4">&euro; {cart.reduce((total, item) => total + (item.comic.price * item.quantity), 0).toFixed(2)}</span>
