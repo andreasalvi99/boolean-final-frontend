@@ -45,7 +45,6 @@ export default function PaymentPage() {
     return (
     <section id="main-content">
         <div className="container mt-5">
-            <h1>Pagamento</h1>
 
             <Elements
                 stripe={stripePromise}

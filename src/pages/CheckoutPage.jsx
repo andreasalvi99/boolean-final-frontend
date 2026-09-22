@@ -58,7 +58,6 @@ export default function CheckoutPage() {
     return(
     <section id="main-content">
         <div className="container mt-5 bebas-neue-regular">
-            <h1>Dettagli di fatturazione</h1>
             <form className="row g-3 mt-3" onSubmit={createOrder}>
                 <div className="col-md-3">
                     <label htmlFor="firstname" className="form-label">Nome</label>

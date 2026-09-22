@@ -1,8 +1,11 @@
-import { NavLink, Outlet, useLocation } from "react-router-dom"
+import { NavLink, Outlet, useLocation, useMatch } from "react-router-dom"
 import Footer from "../components/Footer"
 import logo from "../assets/img/logo.png";
 
+
 export default function CheckoutLayout() {
+
+    const isPaymentPage = useMatch("/payment/:orderId")
 
     const { pathname } = useLocation()
 
@@ -27,27 +30,32 @@ export default function CheckoutLayout() {
             </div>
         </nav>
 
-      
-            <section id="main-content">
-                <div className="container mt-5 bebas-neue-regular">
-                {pathname === "/checkout" && 
-                (<div className="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{height: '5px'}}>
-                    <div className="progress-bar bg-success" style={{width: '33%'}}></div>
-                </div>)}
-               
-                {pathname === "/payment" && 
-                (<div className="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{height: '5px'}}>
-                    <div className="progress-bar bg-success" style={{width: '66%'}}></div>
-                </div>)} 
-                 
-                {pathname !== "/checkout" && pathname !== "/payment" && 
-                (<div className="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{height: '5px'}}>
-                    <div className="progress-bar bg-success" style={{width: '100%'}}></div>
-                </div>)}
-                    <Outlet/>
-                </div>
-            </section>
-            <Footer/>
+        <section id="main-content">
+            <div className="container mt-5 bebas-neue-regular">
+            {pathname === "/checkout" && 
+            (<div className="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{height: '5px'}}>
+                <div className="progress-bar bg-success" style={{width: '33%'}}></div>
+            </div>
+        )}
+            {isPaymentPage && 
+            (<div className="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{height: '5px'}}>
+                <div className="progress-bar bg-success" style={{width: '66%'}}></div>
+            </div>
+        )} 
+            {pathname !== "/checkout" && !isPaymentPage && 
+            (<div className="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{height: '5px'}}>
+                <div className="progress-bar bg-success" style={{width: '100%'}}></div>
+            </div>
+        )}
+        <div className="d-flex justify-content-between align-items-center mt-3 fs-4">
+            <span className={pathname !== "/checkout" ? "opacity-25" : ""}>Dati di fatturazione</span>
+            <span className={!isPaymentPage ? "opacity-25" : ""}>Pagamento</span>
+            <span className={pathname !== "/completed" ? "opacity-25" : ""}>Ordine effettuato</span>
+        </div>
+                <Outlet/>
+            </div>
+        </section>
+        <Footer/>
         </>
     )
 }
