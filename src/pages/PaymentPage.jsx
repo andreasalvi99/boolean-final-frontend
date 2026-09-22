@@ -1,6 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import StripePaymentForm from "../components/StripePaymentForm";
+
+const stripePromise = loadStripe(
+    import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
+);
 
 export default function PaymentPage() {
 
@@ -35,11 +42,18 @@ export default function PaymentPage() {
     }
 
 
-    return(
+    return (
     <section id="main-content">
-        <div className="container mt-5 bebas-neue-regular">
-            
+        <div className="container mt-5">
+            <h1>Pagamento</h1>
+
+            <Elements
+                stripe={stripePromise}
+                options={{ clientSecret }}
+            >
+                <StripePaymentForm />
+            </Elements>
         </div>
     </section>
-    )
+);
 }
