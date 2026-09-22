@@ -39,7 +39,7 @@ export default function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
 
           {/* Payment */}
-          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/payment/:orderId" element={<PaymentPage />} />
         
         </Route>
 

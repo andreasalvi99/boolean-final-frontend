@@ -52,7 +52,7 @@ export default function CheckoutPage() {
                 )
             })
        })
-       navigate("/payment")       
+       navigate(`/payment/${response.data.order.id}`)       
     }
 
     return(
