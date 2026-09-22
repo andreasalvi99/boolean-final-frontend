@@ -43,15 +43,21 @@ export default function Cart({cart, setCart}) {
     return(
         <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div className="offcanvas-header pb-1">
-      <h5 className="offcanvas-title bangers-regular" id="offcanvasRightLabel">Il tuo carrello</h5>
+      <h5 className="offcanvas-title bangers-regular h3" id="offcanvasRightLabel">Il tuo carrello</h5>
       <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div className="offcanvas-body bebas-neue-regular pt-1 fs-4">
+    {cart.length === 0 && (
+      <div className="offcanvas-body bebas-neue-regular pt-1 fs-4 d-flex justify-content-center align-items-center">
+        <p>Il carrello è vuoto</p>
+      </div>
+    )}
+    {cart.length > 0 && (
+          <div className="offcanvas-body bebas-neue-regular pt-1 fs-4">
       <div className="d-flex justify-content-end align-items-center mb-2">
         {cart.length > 0 ? <button className="btn btn-danger" type="button" onClick={() => setCart([])}>Svuota carrello</button> : ""}
       </div>
-      <div className="row row-cols-1 g-3">
-      {cart.length === 0 ? "il tuo carrello è vuoto" : cart.map((item) => {
+      <div className="row row-cols-1 g-3 fs-5">
+      {cart.map((item) => {
         return(
           <div className="col fs-5" key={item.comic.id}>
           <div className="card mb-3">
@@ -63,7 +69,7 @@ export default function Cart({cart, setCart}) {
                 <div className="card-body d-flex flex-column justify-content-between h-100 pb-2">
                   <div className="d-flex justify-content-between align-items-center gap-2">
                     <h4 className="card-title m-0">{item.comic.title}</h4>
-                    <button className="btn btn-danger btn-sm" type="button" onClick={removeFromCart(item)}>
+                    <button className="btn btn-danger btn-sm" type="button" onClick={() => removeFromCart(item)}>
                       <i className="bi bi-trash3-fill"></i>
                     </button>
                   </div>
@@ -73,9 +79,9 @@ export default function Cart({cart, setCart}) {
                       Quantità: 
                       </span>
                       <div>
-                        <button className="btn btn-light btn-sm" type="button" onClick={reduceQuantity(item)}>-</button>
+                        <button className="btn btn-light btn-sm" type="button" onClick={() => reduceQuantity(item)}>-</button>
                         <span className="mx-1">{item.quantity}</span>
-                        <button className="btn btn-light btn-sm" type="button" onClick={increaseQuantity(item)}>+</button>
+                        <button className="btn btn-light btn-sm" type="button" onClick={() => increaseQuantity(item)}>+</button>
                       </div>
                     </div>
                     <p className="mb-0">&euro; {Math.round(item.comic.price * item.quantity * 100) / 100}</p>
@@ -89,6 +95,7 @@ export default function Cart({cart, setCart}) {
       })}
       </div>
     </div>
+    )}
       <div className="d-flex justify-content-between bangers-regular align-itemx-center px-2 border border-dark-subtle border-end-0 border-start-0 border-bottom-0">
       <h4 className="offcanvas-title my-2">Totale :</h4>
       <span className="fs-4">&euro; {cart.reduce((total, item) => total + (item.comic.price * item.quantity), 0).toFixed(2)}</span>

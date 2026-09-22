@@ -70,8 +70,6 @@ export default function HomePage() {
   const preorderComicIds = preorderComics.map((comic) => comic.id);
   const discountComicIds = discountComics.map((comic) => comic.id);
 
-  // console.log(latestComics);
-
   useEffect(fetchSpecialComics, []);
 
   return (
