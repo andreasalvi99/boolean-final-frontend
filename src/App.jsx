@@ -10,6 +10,7 @@ import SearchResultsPage from "./pages/SearchResultsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import PaymentPage from "./pages/PaymentPage";
 import CheckoutLayout from "./layouts/CheckoutLayout";
+import OrderSuccess from "./pages/OrderSuccess";
 
 export default function App() {
   return (
@@ -35,11 +36,14 @@ export default function App() {
 
         <Route element={<CheckoutLayout/> }>
 
-        {/* Checkout */}
+          {/* Checkout */}
           <Route path="/checkout" element={<CheckoutPage />} />
 
           {/* Payment */}
           <Route path="/payment/:orderId" element={<PaymentPage />} />
+
+          {/* Order fulfilled */}
+          <Route path="/orders/:orderId/success" element={<OrderSuccess/>}/>
         
         </Route>
 

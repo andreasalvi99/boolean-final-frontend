@@ -1,9 +1,12 @@
 import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function StripePaymentForm() {
+export default function StripePaymentForm({total}) {
+    
     const stripe = useStripe();
     const elements = useElements();
+    const navigate = useNavigate();
 
     const [errorMessage, setErrorMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -30,6 +33,7 @@ export default function StripePaymentForm() {
         }
 
         setIsLoading(false);
+        navigate("/orders/:orderId/success")
     }
 
     return (
@@ -45,7 +49,7 @@ export default function StripePaymentForm() {
                 className="btn btn-success mt-3"
                 disabled={!stripe || isLoading}
             >
-                {isLoading ? "Pagamento in corso..." : "Paga ora"}
+                {isLoading ? "Pagamento in corso..." : `Paga ora ${total}`}
             </button>
         </form>
     );

@@ -8,11 +8,8 @@ export default function CheckoutPage() {
 
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     console.log(cart);
-    
 
-    const total = cart.reduce((total, item) => {
-        return total + (item.quantity * item.comic.price)
-    }, 0)
+    const expressShippingFee = 5.99
 
     const [formData, setFormData] = useState({
         firstname: "",
@@ -26,6 +23,16 @@ export default function CheckoutPage() {
         zipcode: "",
         shipping_method: ""
     })
+
+    const productsTotal = cart.reduce((total, item) => {
+        return(
+            total + (item.quantity * item.comic.price)
+        )
+    }, 0);
+
+    const shippingCost = formData.shipping_method === "express" ? expressShippingFee : 0;
+
+    const total = (productsTotal + shippingCost).toFixed(2);
 
     function handleChanges(e) {
         const {name, value} = e.target
@@ -122,7 +129,7 @@ export default function CheckoutPage() {
                     </label>
                     </div>
                 </div> */}
-                <div className="row mt-5 fs-5">
+                <div className="row mt-5 fs-5 oswald-special">
                     <div className="col-8 bg-secondary-subtle rounded p-2">
                         <table className="table table-sm mb-0 table-secondary">
                             <thead>
@@ -152,7 +159,7 @@ export default function CheckoutPage() {
                                             <ul className="list-group" key={item.comic.id}>
                                                 <li className="list-group">
                                                     <div className="d-flex justify-content-between align-items-center gap-5 me-5">
-                                                        <span>&euro; {item.comic.price}</span>
+                                                        <span>&euro; {(item.comic.price * item.quantity).toFixed(2)}</span>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -175,7 +182,7 @@ export default function CheckoutPage() {
                                         <div className="form-check">
                                             <input className="form-check-input" type="radio" name="shipping_method" id="shipping_express" value="express" onChange={handleChanges} checked={formData.shipping_method === "express"}/>
                                             <label className="form-check-label" htmlFor="shipping_express">
-                                                Express (5 gg)
+                                                Express (5 gg): {expressShippingFee}&euro;
                                             </label>
                                         </div>
                                     </td>
@@ -183,11 +190,7 @@ export default function CheckoutPage() {
                                 <tr>
                                 <td>Totale</td>
                                 <td>
-                                    &euro; {cart.reduce((total, item) => {
-                                    return(
-                                        total + (item.comic.price * item.quantity)
-                                    )
-                                }, 0)}
+                                    &euro; {total} 
                                 </td>
                                 </tr>
                             </tbody>

@@ -13,6 +13,8 @@ export default function PaymentPage() {
 
     const { orderId } = useParams();
 
+    const [total, setTotal] = useState(null)
+
     const [clientSecret, setClientSecret] = useState(null);
     const [error, setError] = useState(null);
 
@@ -22,7 +24,9 @@ export default function PaymentPage() {
                 const response = await axios.post(
                     `https://laravel-final-backend.onrender.com/api/orders/${orderId}/payment-intent`
                 );
-
+                console.log(response);
+                
+                setTotal(response.data.total)
                 setClientSecret(response.data.clientSecret);
             } catch (error) {
                 console.error(error.response?.data || error);
@@ -50,7 +54,7 @@ export default function PaymentPage() {
                 stripe={stripePromise}
                 options={{ clientSecret }}
             >
-                <StripePaymentForm />
+                <StripePaymentForm total={total}/>
             </Elements>
         </div>
     </section>
