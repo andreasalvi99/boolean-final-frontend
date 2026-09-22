@@ -84,7 +84,7 @@ export default function Cart({cart, setCart}) {
                         <button className="btn btn-light btn-sm" type="button" onClick={() => increaseQuantity(item)}>+</button>
                       </div>
                     </div>
-                    <p className="mb-0">&euro; {Math.round(item.comic.price * item.quantity * 100) / 100}</p>
+                    <p className="mb-0">{Math.round(item.comic.price * item.quantity * 100) / 100}&euro;</p>
                   </div>
                 </div>
               </div>
@@ -96,9 +96,14 @@ export default function Cart({cart, setCart}) {
       </div>
     </div>
     )}
-      <div className="d-flex justify-content-between bangers-regular align-itemx-center px-2 border border-dark-subtle border-end-0 border-start-0 border-bottom-0">
+      <div className="d-flex justify-content-between bangers-regular align-items-center px-2 border border-dark-subtle border-end-0 border-start-0 border-bottom-0">
       <h4 className="offcanvas-title my-2">Totale :</h4>
-      <span className="fs-4">&euro; {cart.reduce((total, item) => total + (item.comic.price * item.quantity), 0).toFixed(2)}</span>
+      {cart.length > 0 && (
+        <span className="fs-4">{cart.reduce((total, item) => total + (item.comic.price * item.quantity), 0).toFixed(2)}&euro;</span>
+      )}
+      {cart.length === 0 && (
+        <span className="fs-4"></span>
+      )}
       </div>
       <button type="button" className="btn btn-success mx-2 mb-2"
                 disabled={cart.length === 0} onClick={handleCheckout}>
