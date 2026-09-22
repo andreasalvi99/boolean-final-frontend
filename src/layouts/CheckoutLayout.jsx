@@ -2,6 +2,15 @@ import { NavLink, Outlet, useLocation, useMatch } from "react-router-dom"
 import Footer from "../components/Footer"
 import logo from "../assets/img/logo.png";
 
+function ScrollToTop() {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+}
 
 export default function CheckoutLayout() {
 
@@ -12,6 +21,8 @@ export default function CheckoutLayout() {
 
     return(
         <>
+        <ScrollToTop/>
+        
         <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top bebas-neue-regular">
             <div className="container">
                 <NavLink to="/">
