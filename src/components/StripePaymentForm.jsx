@@ -30,6 +30,7 @@ export default function StripePaymentForm({total, orderId}) {
             setErrorMessage(error.message);
         } else if (paymentIntent?.status === "succeeded") {
             console.log("Pagamento Stripe riuscito:", paymentIntent.id);
+            localStorage.removeItem("cart");
         }
 
         setIsLoading(false);
