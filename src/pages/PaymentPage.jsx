@@ -54,7 +54,9 @@ export default function PaymentPage() {
                 stripe={stripePromise}
                 options={{ clientSecret }}
             >
-                <StripePaymentForm total={total}/>
+                <StripePaymentForm 
+                total={total}
+                orderId={orderId}/>
             </Elements>
         </div>
     </section>

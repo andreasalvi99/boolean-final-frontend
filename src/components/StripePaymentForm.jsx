@@ -2,7 +2,7 @@ import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function StripePaymentForm({total}) {
+export default function StripePaymentForm({total, orderId}) {
     
     const stripe = useStripe();
     const elements = useElements();
@@ -33,7 +33,7 @@ export default function StripePaymentForm({total}) {
         }
 
         setIsLoading(false);
-        navigate("/orders/:orderId/success")
+        navigate(`/orders/${orderId}/success`)
     }
 
     return (
