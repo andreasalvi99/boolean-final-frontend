@@ -31,7 +31,7 @@ export default function OrderSuccess() {
             <p className="oswald-special fs-5">Il tuo ordine è stato inviato, a breve riceverai una mail di conferma con il link per il tracciamento. Grazie per aver scelto Nextpanel.</p>
         
             <h2>Riepilogo ordine:</h2>
-            <div className="row my-4">
+            <div className="row my-4 oswald-special">
                 <div className="col-8 bg-light rounded p-2 border border-dark border-opacity-25">
                     <table className="table table-light table-borderless align-middle">
                         <thead className="border-bottom">
@@ -51,7 +51,7 @@ export default function OrderSuccess() {
                                                 <img src={`https://laravel-final-backend.onrender.com/img/${comic.cover_img}`} alt="" style={{height: "60px", width: "45px"}}/>
                                             </td>
                                             <td>{comic.title}</td>
-                                            <td>x{comic.pivot.quantity}</td>
+                                            <td>Quantità: x{comic.pivot.quantity}</td>
                                             <td>{comic.pivot.quantity * comic.price}&euro;</td>
                                         </tr>
                                     )
@@ -61,7 +61,7 @@ export default function OrderSuccess() {
                                 <td>Spedizione</td>
                                 <td>{order?.shipping_method}</td>
                                 <td></td>
-                                <td>{shippingPrice.toFixed(2)}&euro;</td>
+                                <td>{shippingPrice === 0 ? "gratis" : `${shippingPrice.toFixed(2)}€`}</td>
                             </tr>
                         </tbody>
                         <tfoot className="border-top">

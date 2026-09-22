@@ -64,7 +64,7 @@ export default function CheckoutPage() {
 
     return(
     <section id="main-content">
-        <div className="container mt-5 bebas-neue-regular">
+        <div className="container mt-5 oswald-special">
             <form className="row g-3 mt-3" onSubmit={createOrder}>
                 <div className="col-md-3">
                     <label htmlFor="firstname" className="form-label">Nome</label>
@@ -130,48 +130,32 @@ export default function CheckoutPage() {
                     </div>
                 </div> */}
                 <div className="row mt-5 fs-5 oswald-special">
-                    <div className="col-8 bg-secondary-subtle rounded p-2">
-                        <table className="table table-sm mb-0 table-secondary">
+                    <div className="col-8 rounded p-2">
+                        <table className="table table-sm mb-0 table align-middle">
                             <thead>
                                 <tr>
                                 <th scope="col">Prodotto</th>
+                                <th></th>
                                 <th scope="col">Subtotale</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        {cart.map((item) => {
-                                            return(
-                                                <ul className="list-group" key={item.comic.id}>
-                                                    <li className="list-group">
-                                                        <div className="d-flex justify-content-between align-items-center gap-5 me-5">
-                                                            <span>{item.comic.title}</span>
-                                                            <span>x {item.quantity}</span>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                        )})}
-                                    </td>
-                                    <td>
-                                        {cart.map((item) => {
-                                            return(
-                                            <ul className="list-group" key={item.comic.id}>
-                                                <li className="list-group">
-                                                    <div className="d-flex justify-content-between align-items-center gap-5 me-5">
-                                                        <span>&euro; {(item.comic.price * item.quantity).toFixed(2)}</span>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                    )})}
-                                    </td>
-                                </tr>
+                                {cart.map((item) => {
+                                    return(
+                                        <tr key={item.comic.id}>
+                                            <td>{item.comic.title}</td>
+                                            <td>Quantità: x{item.quantity}</td>
+                                            <td>{item.comic.price * item.quantity}&euro;</td>
+                                        </tr>
+                                    )
+                                })}
                                 <tr>
                                     <td>
                                         <div className="d-flex align-items-center">
                                             <span>Spedizione</span>
                                         </div>
                                     </td>
+                                    <td></td>
                                     <td>
                                         <div className="form-check">
                                             <input className="form-check-input" type="radio" name="shipping_method" id="shipping_standard" value="standard" onChange={handleChanges} checked={formData.shipping_method === "standard"}/>
@@ -187,13 +171,14 @@ export default function CheckoutPage() {
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                <td>Totale</td>
-                                <td>
-                                    &euro; {total} 
-                                </td>
-                                </tr>
                             </tbody>
+                            <tfoot>
+                                    <td>Totale</td>
+                                    <td></td>
+                                    <td>
+                                        {total}&euro;
+                                    </td>
+                                </tfoot>
                         </table>
                     </div>
                 </div>
