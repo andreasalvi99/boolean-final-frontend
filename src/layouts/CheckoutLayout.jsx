@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useLocation, useMatch } from "react-router-dom"
 import Footer from "../components/Footer"
 import logo from "../assets/img/logo.png";
+import { useEffect } from "react";
 
 function ScrollToTop() {
     const { pathname } = useLocation();
