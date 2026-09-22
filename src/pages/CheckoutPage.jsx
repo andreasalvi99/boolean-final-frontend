@@ -37,7 +37,6 @@ export default function CheckoutPage() {
 
     async function createOrder(e) {
         e.preventDefault()
-        console.log("funzione partita");
         
        const response = await axios.post("https://laravel-final-backend.onrender.com/api/orders", {
             ...formData,
@@ -53,7 +52,7 @@ export default function CheckoutPage() {
                 )
             })
        })
-       navigate("/payment")
+       navigate("/payment")       
     }
 
     return(
@@ -138,7 +137,7 @@ export default function CheckoutPage() {
                                     <td>
                                         {cart.map((item) => {
                                             return(
-                                                <ul className="list-group">
+                                                <ul className="list-group" key={item.comic.id}>
                                                     <li className="list-group">
                                                         <div className="d-flex justify-content-between align-items-center gap-5 me-5">
                                                             <span>{item.comic.title}</span>
@@ -151,7 +150,7 @@ export default function CheckoutPage() {
                                     <td>
                                         {cart.map((item) => {
                                             return(
-                                            <ul className="list-group">
+                                            <ul className="list-group" key={item.comic.id}>
                                                 <li className="list-group">
                                                     <div className="d-flex justify-content-between align-items-center gap-5 me-5">
                                                         <span>&euro; {item.comic.price}</span>
