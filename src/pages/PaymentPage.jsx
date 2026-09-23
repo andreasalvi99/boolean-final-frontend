@@ -1,15 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import StripePaymentForm from "../components/StripePaymentForm";
+
 
 const stripePromise = loadStripe(
     import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
 );
 
 export default function PaymentPage() {
+
+    const {cart, setCart} = useOutletContext()
 
     const { orderId } = useParams();
 
@@ -56,7 +59,8 @@ export default function PaymentPage() {
             >
                 <StripePaymentForm 
                 total={total}
-                orderId={orderId}/>
+                orderId={orderId}
+                setCart={setCart}/>
             </Elements>
         </div>
     </section>

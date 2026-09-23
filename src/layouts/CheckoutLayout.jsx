@@ -1,7 +1,7 @@
 import { NavLink, Outlet, useLocation, useMatch } from "react-router-dom"
 import Footer from "../components/Footer"
 import logo from "../assets/img/logo.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function ScrollToTop() {
     const { pathname } = useLocation();
@@ -14,6 +14,15 @@ function ScrollToTop() {
 }
 
 export default function CheckoutLayout() {
+    const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+
+    return savedCart ? JSON.parse(savedCart) : [];
+    });
+
+    useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
 
     const isPaymentPage = useMatch("/payment/:orderId")
     const isOrderSuccessPage = useMatch("/orders/:orderId/success")
@@ -65,7 +74,7 @@ export default function CheckoutLayout() {
             <span className={!isPaymentPage ? "opacity-25" : ""}>Pagamento</span>
             <span className={!isOrderSuccessPage ? "opacity-25" : ""}>Ordine effettuato</span>
         </div>
-                <Outlet/>
+                <Outlet context={{cart, setCart}}/>
             </div>
         </section>
         <Footer/>

@@ -2,7 +2,7 @@ import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function StripePaymentForm({total, orderId}) {
+export default function StripePaymentForm({total, orderId, setCart}) {
     
     const stripe = useStripe();
     const elements = useElements();
@@ -30,11 +30,11 @@ export default function StripePaymentForm({total, orderId}) {
             setErrorMessage(error.message);
         } else if (paymentIntent?.status === "succeeded") {
             console.log("Pagamento Stripe riuscito:", paymentIntent.id);
-            localStorage.removeItem("cart");
+            navigate(`/orders/${orderId}/success`)
+            setCart([])
         }
 
         setIsLoading(false);
-        navigate(`/orders/${orderId}/success`)
     }
 
     return (

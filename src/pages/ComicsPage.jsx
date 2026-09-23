@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import Loader from "../components/Loader";
 import ComicCard from "../components/ComicCard";
 
@@ -36,23 +36,11 @@ export default function ComicsPage() {
 } else {
   setCart([...cart, cartItem]);
 }}
-  // const [isVisible, setIsVisible] = useState(false);
-
-  // function handleSwitch() {
-  //   if (isVisible) {
-  //     return setIsVisible(false);
-  //   }
-
-  //   if (!isVisible) {
-  //     return setIsVisible(true);
-  //   }
-  // }
 
   function fetchComics() {
     axios
       .get("https://laravel-final-backend.onrender.com/api/comics")
       .then((response) => {
-        //   console.log(response.data.data);
         setComics(response.data.data);
       })
       .finally(() => {
@@ -70,16 +58,6 @@ export default function ComicsPage() {
 
   const dcComicIds = dcComics.map((comic) => comic.id);
   const marvelComicIds = marvelComics.map((comic) => comic.id);
-
-  // //# Faccio slice per mostrare solo alcuni dei fumetti per ogni brand
-  // const marvelComicsSliced = marvelComics.slice(2, 7);
-  // //   console.log(marvelComicsSliced);
-
-  // const dcComicsSliced = dcComics.slice(2, 7);
-  // //   console.log(dcComicsSliced);
-
-  // //   console.log(marvelComics);
-  // //   console.log(dcComics);
 
   useEffect(fetchComics, []);
 
