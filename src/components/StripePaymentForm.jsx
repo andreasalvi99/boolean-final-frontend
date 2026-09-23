@@ -50,7 +50,7 @@ export default function StripePaymentForm({total, orderId, setCart}) {
                 className="btn btn-success mt-3"
                 disabled={!stripe || isLoading}
             >
-                {isLoading ? "Pagamento in corso..." : `Paga ora ${total}`}
+                {isLoading ? "Pagamento in corso..." : `Paga ora ${total}`}&euro;
             </button>
         </form>
     );
