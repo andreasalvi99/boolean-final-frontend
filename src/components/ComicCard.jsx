@@ -36,7 +36,7 @@ export default function ComicCard({
                 <span className="mx-2">-{isDiscount}%</span>
               </span>
             )}
-            <div style={{ height: "320px" }}>
+            <div style={{ height: "360px" }}>
               <Link
               to={`/comics/${id}`}
               className="text-decoration-none text-dark"
