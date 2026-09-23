@@ -69,7 +69,7 @@ export default function Cart({cart, setCart}) {
               <div className="col-md-8">
                 <div className="card-body d-flex flex-column justify-content-between h-100 pb-2">
                   <div className="d-flex justify-content-between align-items-center gap-2">
-                    <h5 className="card-title m-0">{item.comic.title.length < 22 ? item.comic.title : `${item.comic.title.substring(0,23)}...`}</h5>
+                    <h5 className="card-title m-0">{item.comic.title.length < 18 ? item.comic.title : `${item.comic.title.substring(0,19)}...`}</h5>
                     <button className="btn btn-danger btn-sm" type="button" onClick={() => removeFromCart(item)}>
                       <i className="bi bi-trash3-fill"></i>
                     </button>
