@@ -72,22 +72,6 @@ export default function ComicsPage() {
           {comics.length > 0 && (
             <>
               {/* DC Comics */}
-              {/* <div className="form-check form-switch my-3">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  role="switch"
-                  value=""
-                  id="switchCheckChecked"
-                  switch
-                  onClick={handleSwitch}
-                />
-                <label className="form-check-label" for="switchCheckChecked">
-                  Mostra fumetti: {!isVisible ? "DC" : "Marvel"}
-                </label>
-              </div> */}
-
-              {/* <section id="DC" className={isVisible ? "" : "d-none"}> */}
               <section id="DC" className="">
                 <h2 className="my-3 bangers-regular h1">DC Universe</h2>
                 <p className="bebas-neue-regular fs-5">
@@ -121,7 +105,6 @@ export default function ComicsPage() {
 
               {/* Marvel Comics */}
 
-              {/* <section id="Marvel" className={isVisible ? "d-none" : ""}> */}
               <section id="Marvel" className="">
                 <h2 className="my-3 bangers-regular h1">MARVEL Universe</h2>
                 <p className="bebas-neue-regular fs-5">
