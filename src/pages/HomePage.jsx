@@ -10,7 +10,7 @@ export default function HomePage() {
   const [preorderComics, setPreorderComics] = useState([]);
   const [discountComics, setDiscountComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { cart, setCart } = useOutletContext();
+  const { cart, setCart, isVisible ,setIsVisible } = useOutletContext();
 
   function addToCart(comic) {
     const cartItem = {
@@ -36,8 +36,10 @@ export default function HomePage() {
   });
 
   setCart(updatedCart);
+  setIsVisible(true)
 } else {
   setCart([...cart, cartItem]);
+  setIsVisible(true)
 }
   }
 
@@ -46,7 +48,6 @@ export default function HomePage() {
       .get("https://laravel-final-backend.onrender.com/api/comics")
       .then((response) => {
         const results = response.data.data;
-        console.log(results);
 
         const filteredLatest = results.filter((result) => result.is_new === 1);
         setLatestComics(filteredLatest);
@@ -71,6 +72,16 @@ export default function HomePage() {
   const discountComicIds = discountComics.map((comic) => comic.id);
 
   useEffect(fetchSpecialComics, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const timer = setTimeout(() => {
+        setIsVisible(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [isVisible]);
 
   return (
     <section id="main-content">

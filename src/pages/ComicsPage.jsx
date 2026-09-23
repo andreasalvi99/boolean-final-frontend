@@ -5,7 +5,7 @@ import Loader from "../components/Loader";
 import ComicCard from "../components/ComicCard";
 
 export default function ComicsPage() {
-  const { cart, setCart } = useOutletContext();
+  const { cart, setCart, isVisible ,setIsVisible } = useOutletContext();
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -33,8 +33,10 @@ export default function ComicsPage() {
   });
 
   setCart(updatedCart);
+  setIsVisible(true)
 } else {
   setCart([...cart, cartItem]);
+  setIsVisible(true)
 }}
 
   function fetchComics() {
@@ -60,6 +62,16 @@ export default function ComicsPage() {
   const marvelComicIds = marvelComics.map((comic) => comic.id);
 
   useEffect(fetchComics, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const timer = setTimeout(() => {
+        setIsVisible(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [isVisible]);
 
   return (
     <>

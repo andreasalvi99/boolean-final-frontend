@@ -14,7 +14,7 @@ export default function ComicDetailPage() {
   const [previous, setPrevious] = useState(null);
   const [next, setNext] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const {cart, setCart} = useOutletContext()
+  const {cart, setCart, isVisible ,setIsVisible} = useOutletContext()
 
   // Hook che restituisce info sulla pagina corrente
   const location = useLocation();
@@ -79,11 +79,23 @@ export default function ComicDetailPage() {
   });
 
   setCart(updatedCart);
+  setIsVisible(true)
 } else {
   setCart([...cart, cartItem]);
+  setIsVisible(true)
 }}
 
   useEffect(fetchComic, [id]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const timer = setTimeout(() => {
+        setIsVisible(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [isVisible]);
 
   return (
     <>
