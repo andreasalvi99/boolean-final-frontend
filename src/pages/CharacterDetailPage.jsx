@@ -31,7 +31,7 @@ export default function CharacterDetailPage() {
       {isLoading && (
         <section id="main-content">
           <div className="container">
-            <Loader />\
+            <Loader />
           </div>
         </section>
       )}

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Loader from "./Loader";
+import Loader from "./Loader";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({isLoading, setIsLoading}) {
 
     const navigate = useNavigate();
 
@@ -86,11 +88,17 @@ export default function CheckoutForm() {
                     }
                 )
             })
+    }).finally(() => {
+        setIsLoading(false)
     })
     navigate(`/payment/${response.data.order.id}`)       
     }
 
     return(
+        <>
+        {isLoading && (
+            <Loader />
+        )}
         <form className="row g-3 mt-3" onSubmit={createOrder}>
                 <div className="col-md-3">
                     <label htmlFor="firstname" className="form-label">Nome</label>
@@ -257,5 +265,6 @@ export default function CheckoutForm() {
                 </div>
                 <button type="submit" className="btn btn-success my-5">Vai al pagamento <i className="bi bi-arrow-right"></i></button>
             </form>
+            </>
     )
 }
