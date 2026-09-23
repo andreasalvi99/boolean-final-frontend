@@ -53,10 +53,10 @@ export default function Cart({cart, setCart}) {
     )}
     {cart.length > 0 && (
           <div className="offcanvas-body bebas-neue-regular pt-1 fs-4">
-      <div className="d-flex justify-content-end align-items-center mb-2">
+      <div className="d-flex justify-content-end align-items-center mb-3">
         {cart.length > 0 ? <button className="btn btn-danger" type="button" onClick={() => setCart([])}>Svuota carrello</button> : ""}
       </div>
-      <div className="row row-cols-1 g-3 fs-5">
+      <div className="row row-cols-1 g-0 fs-5">
       {cart.map((item) => {
         return(
           <div className="col fs-5" key={item.comic.id}>
@@ -68,14 +68,14 @@ export default function Cart({cart, setCart}) {
               <div className="col-md-8">
                 <div className="card-body d-flex flex-column justify-content-between h-100 pb-2">
                   <div className="d-flex justify-content-between align-items-center gap-2">
-                    <h4 className="card-title m-0">{item.comic.title}</h4>
+                    <h5 className="card-title m-0">{item.comic.title.length < 22 ? item.comic.title : `${item.comic.title.substring(0,23)}...`}</h5>
                     <button className="btn btn-danger btn-sm" type="button" onClick={() => removeFromCart(item)}>
                       <i className="bi bi-trash3-fill"></i>
                     </button>
                   </div>
                   <div className="d-flex justify-content-between align-items-end">
                     <div className="mb-0 d-flex justify-content-center align-items-center gap-2">
-                      <span>
+                      <span className="fs-5">
                       Quantità: 
                       </span>
                       <div>
