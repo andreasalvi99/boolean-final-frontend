@@ -21,8 +21,10 @@ export default function CheckoutPage() {
         city: "",
         province: "",
         zipcode: "",
-        shipping_method: ""
+        shipping_method: "standard"
     })
+
+    const [fieldErrors, setFieldErrors] = useState({})
 
     const productsTotal = cart.reduce((total, item) => {
         return(
@@ -44,8 +46,30 @@ export default function CheckoutPage() {
 
     async function createOrder(e) {
         e.preventDefault()
+
+        const errors = {}
+
+        Object.entries(formData).forEach(([field, value]) => {
+            if(value.trim() === "") {
+                errors[field] = "Questo campo è obbligatorio.";
+            }
+        })
         
-       const response = await axios.post("https://laravel-final-backend.onrender.com/api/orders", {
+        if(formData.zipcode.length !== 5 && formData.zipcode !== "") {
+            errors.zipcode = "Il CAP deve avere 5 cifre."
+        }
+
+        if(formData.province.length !== 2 && formData.province !== "") {
+            errors.province = "La provincia deve contenere 2 caratteri."
+        }
+
+        setFieldErrors(errors);
+
+        if (Object.keys(errors).length > 0) {
+            return;
+        }
+        
+        const response = await axios.post("https://laravel-final-backend.onrender.com/api/orders", {
             ...formData,
             total,
 
@@ -58,8 +82,8 @@ export default function CheckoutPage() {
                     }
                 )
             })
-       })
-       navigate(`/payment/${response.data.order.id}`)       
+    })
+    navigate(`/payment/${response.data.order.id}`)       
     }
 
     return(
@@ -68,21 +92,36 @@ export default function CheckoutPage() {
             <form className="row g-3 mt-3" onSubmit={createOrder}>
                 <div className="col-md-3">
                     <label htmlFor="firstname" className="form-label">Nome</label>
-                    <input name="firstname" type="text" className="form-control" id="firstname" value={formData.firstname} onChange={handleChanges}/>
+                    <input name="firstname" type="text" className={`form-control ${fieldErrors.firstname ? "is-invalid" : ""} ${!fieldErrors.firstname && formData.firstname !== "" ? "is-valid" : ""}`} id="firstname" value={formData.firstname} onChange={handleChanges}/>
+                    {fieldErrors.firstname && (
+                        <div className="invalid-feedback">
+                            {fieldErrors.firstname}
+                        </div>
+                    )}
                 </div>
                 <div className="col-md-3">
                     <label htmlFor="lastname" className="form-label">Cognome</label>
-                    <input  name="lastname" type="text" className="form-control" id="lastname" value={formData.lastname} onChange={handleChanges}/>
+                    <input  name="lastname" type="text" className={`form-control ${fieldErrors.lastname ? "is-invalid" : ""} ${!fieldErrors.lastname && formData.lastname !== "" ? "is-valid" : ""}`}  id="lastname" value={formData.lastname} onChange={handleChanges}/>
+                    {fieldErrors.lastname && (
+                        <div className="invalid-feedback">
+                            {fieldErrors.lastname}
+                        </div>
+                    )}
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="email" className="form-label">Email</label>
-                    <input name="email"  type="text" className="form-control" id="email" value={formData.email} onChange={handleChanges}/>
+                    <input name="email"  type="text" className={`form-control ${fieldErrors.email ? "is-invalid" : ""} ${!fieldErrors.email && formData.email !== "" ? "is-valid" : ""}`}  id="email" value={formData.email} onChange={handleChanges}/>
+                    {fieldErrors.email && (
+                        <div className="invalid-feedback">
+                            {fieldErrors.email}
+                        </div>
+                    )}
                 </div>
                 <div className="col-md-2">
                     <label htmlFor="address_type" className="form-label">
                         Toponimo
                     </label>
-                    <select name="address_type"  id="address_type" className="form-select" value={formData.address_type} onChange={handleChanges}>
+                    <select name="address_type"  id="address_type" className={`form-select ${fieldErrors.address_type ? "is-invalid" : ""} ${!fieldErrors.address_type && formData.address_type !== "" ? "is-valid" : ""}`}  value={formData.address_type} onChange={handleChanges}>
                         <option value="">Scegli...</option>
                         <option value="via">Via</option>
                         <option value="viale">Viale</option>
@@ -100,26 +139,56 @@ export default function CheckoutPage() {
                         <option value="traversa">Traversa</option>
                         <option value="strada-provinciale">Strada provinciale</option>
                     </select>
+                    {fieldErrors.address_type && (
+                        <div className="invalid-feedback">
+                            {fieldErrors.address_type}
+                        </div>
+                    )}
                 </div>
                 <div className="col-md-9">
                     <label htmlFor="address" className="form-label">Indirizzo</label>
-                    <input name="address"  type="text" className="form-control" id="address" value={formData.address} onChange={handleChanges}/>
+                    <input name="address"  type="text" className={`form-control ${fieldErrors.address ? "is-invalid" : ""} ${!fieldErrors.address && formData.address !== "" ? "is-valid" : ""}`}  id="address" value={formData.address} onChange={handleChanges}/>
+                    {fieldErrors && (
+                        <div className="invalid-feedback">
+                            {fieldErrors.address}
+                        </div>
+                    )}
                 </div>
                 <div className="col-md-1">
                     <label htmlFor="house_number" className="form-label">N°</label>
-                    <input  name="house_number" type="text" className="form-control" id="house_number" value={formData.house_number} onChange={handleChanges}/>
+                    <input  name="house_number" type="text" className={`form-control ${fieldErrors.house_number ? "is-invalid" : ""} ${!fieldErrors.house_number && formData.house_number !== "" ? "is-valid" : ""}`}  id="house_number" value={formData.house_number} onChange={handleChanges}/>
+                    {fieldErrors.house_number && (
+                        <div className="invalid-feedback">
+                            {fieldErrors.house_number}
+                        </div>
+                    )}
                 </div>
                 <div className="col-md-3">
                     <label htmlFor="city" className="form-label">Città</label>
-                    <input name="city"  type="text" className="form-control" id="city" value={formData.city} onChange={handleChanges}/>
+                    <input name="city"  type="text" className={`form-control ${fieldErrors.city ? "is-invalid" : ""} ${!fieldErrors.city && formData.city !== "" ? "is-valid" : ""}`}  id="city" value={formData.city} onChange={handleChanges}/>
+                    {fieldErrors.city && (
+                        <div className="invalid-feedback">
+                            {fieldErrors.city}
+                        </div>
+                    )}
                 </div>
                 <div className="col-md-1">
                     <label htmlFor="province" className="form-label">Provincia</label>
-                    <input name="province"  type="text" className="form-control" id="province" value={formData.province} onChange={handleChanges}/>
+                    <input name="province"  type="text" className={`form-control ${fieldErrors.province ? "is-invalid" : ""} ${!fieldErrors.province && formData.province !== "" ? "is-valid" : ""}`}  id="province" value={formData.province} onChange={handleChanges}/>
+                    {fieldErrors.province && (
+                        <div className="invalid-feedback">
+                            {fieldErrors.province}
+                        </div>
+                    )}
                 </div>
                 <div className="col-md-2">
                     <label htmlFor="zipcode" className="form-label">CAP</label>
-                    <input name="zipcode"  type="number" className="form-control" id="zipcode" value={formData.zipcode} onChange={handleChanges}/>
+                    <input name="zipcode"  type="text" maxLength={5} className={`form-control ${fieldErrors.zipcode ? "is-invalid" : ""} ${!fieldErrors.zipcode && formData.zipcode !== "" ? "is-valid" : ""}`}  id="zipcode" value={formData.zipcode} onChange={handleChanges}/>
+                    {fieldErrors.zipcode && (
+                        <div className="invalid-feedback">
+                            {fieldErrors.zipcode}
+                        </div>
+                    )}
                 </div>
                 {/* <div className="col-12">
                     <div className="form-check">
@@ -173,11 +242,13 @@ export default function CheckoutPage() {
                                 </tr>
                             </tbody>
                             <tfoot>
+                                <tr>
                                     <td>Totale</td>
                                     <td></td>
                                     <td>
                                         {total}&euro;
                                     </td>
+                                </tr>
                                 </tfoot>
                         </table>
                     </div>
