@@ -107,6 +107,7 @@ export default function HomePage() {
                       isNew={comic.is_new}
                       addToCart={addToCart}
                       comic={comic}
+                      price={comic.price}
                     />
                   );
                 })}
@@ -143,6 +144,7 @@ export default function HomePage() {
                       isPreorder={comic.is_preorder}
                       addToCart={addToCart}
                       comic={comic}
+                      price={comic.price}
                     />
                   );
                 })}
@@ -183,6 +185,7 @@ export default function HomePage() {
                       isDiscount={comic.discount}
                       addToCart={addToCart}
                       comic={comic}
+                      price={comic.price}
                     />
                   );
                 })}

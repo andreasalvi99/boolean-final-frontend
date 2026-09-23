@@ -532,3 +532,16 @@
 .bi.bi-bag-plus {
   font-size: 1.15rem;
 }
+
+.cart-item-push {
+  position: absolute;
+  background-color: green;
+  border-radius: 50%;
+  height: 17px;
+  width: 17px;
+  transform: translate(-50%, 0%);
+  color: white;
+  font-size: 15px;
+  line-height: 19px;
+  padding-right: 3px;
+}

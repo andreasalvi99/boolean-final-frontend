@@ -93,7 +93,7 @@ export default function ComicDetailCard({
               </button>
               {!isDiscount && (
                 <p className="align-self-center m-0 fs-3 fw-semibold oswald-special">
-                  &euro; {price}
+                  {price} &euro; 
                 </p>
               )}
 
@@ -101,14 +101,14 @@ export default function ComicDetailCard({
                 <>
                   <div>
                     <p className="align-self-center m-0 fs-3 fw-semibold position-relative">
-                      <span className="text-decoration-line-through oswald-special">
-                        &euro; {price}
+                      <span className="text-decoration-line-through oswald-special fw-semibold">
+                        {price} &euro;
                       </span>
-                      <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger fs-6">
+                      <span className="position-absolute top-0 start-100 fw-semibold translate-middle badge rounded-pill bg-danger fs-6 oswald-special">
                         -{isDiscount}%
                       </span>
-                      <span className="d-block oswald-special text-danger">
-                        &euro; {calcDiscountedPrice(price, isDiscount)}
+                      <span className="d-block oswald-special fw-semibold text-danger">
+                        {calcDiscountedPrice(price, isDiscount)} &euro;
                       </span>
                     </p>
                   </div>

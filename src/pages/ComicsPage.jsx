@@ -97,6 +97,7 @@ export default function ComicsPage() {
                         isDiscount={dcComic.discount}
                         addToCart={addToCart}
                         comic={dcComic}
+                        price={dcComic.price}
                       />
                     );
                   })}
@@ -130,6 +131,7 @@ export default function ComicsPage() {
                         isDiscount={marvelComic.discount}
                         addToCart={addToCart}
                         comic={marvelComic}
+                        price={marvelComic.price}
                       />
                     );
                   })}
