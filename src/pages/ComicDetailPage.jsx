@@ -38,7 +38,6 @@ export default function ComicDetailPage() {
     axios
       .get(`https://laravel-final-backend.onrender.com/api/comics/${id}`)
       .then((response) => {
-        console.log("response", response.data);
         setComic(response.data.data);
         setPrevious(response.data.previous);
         setNext(response.data.next);
@@ -84,8 +83,6 @@ export default function ComicDetailPage() {
   setCart([...cart, cartItem]);
 }}
 
-  console.log("comic", comic);
-  //   console.log(`http://127.0.0.1:8000/storage/${comic.cover_img}`);
   useEffect(fetchComic, [id]);
 
   return (
@@ -306,7 +303,6 @@ export default function ComicDetailPage() {
                         style={{
                           height:
                             comic.brand?.name === "DC Comics" ? "70px" : "60px",
-                          // width: brand?.name === "Marvel Comics" ? "80px" : "80px",
                         }}
                         className={`${comic.brand?.name === "Marvel Comics" ? "marvel-logo" : ""}`}
                       />

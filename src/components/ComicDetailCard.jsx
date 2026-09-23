@@ -82,7 +82,6 @@ export default function ComicDetailCard({
                 alt=""
                 style={{
                   height: brand?.name === "DC Comics" ? "80px" : "80px",
-                  // width: brand?.name === "Marvel Comics" ? "80px" : "80px",
                 }}
                 className={`${brand?.name === "Marvel Comics" ? "marvel-logo" : ""}`}
               />

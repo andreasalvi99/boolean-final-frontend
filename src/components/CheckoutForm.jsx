@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Loader from "./Loader";
-import Loader from "./Loader";
 
-export default function CheckoutForm({isLoading, setIsLoading}) {
+export default function CheckoutForm() {
 
     const navigate = useNavigate();
 
@@ -27,10 +25,6 @@ export default function CheckoutForm({isLoading, setIsLoading}) {
     console.log(cart);
 
     const expressShippingFee = 5.99
-
-    
-
-    
 
     const productsTotal = cart.reduce((total, item) => {
         return(
@@ -88,17 +82,11 @@ export default function CheckoutForm({isLoading, setIsLoading}) {
                     }
                 )
             })
-    }).finally(() => {
-        setIsLoading(false)
     })
     navigate(`/payment/${response.data.order.id}`)       
     }
 
     return(
-        <>
-        {isLoading && (
-            <Loader />
-        )}
         <form className="row g-3 mt-3" onSubmit={createOrder}>
                 <div className="col-md-3">
                     <label htmlFor="firstname" className="form-label">Nome</label>
@@ -265,6 +253,5 @@ export default function CheckoutForm({isLoading, setIsLoading}) {
                 </div>
                 <button type="submit" className="btn btn-success my-5">Vai al pagamento <i className="bi bi-arrow-right"></i></button>
             </form>
-            </>
     )
 }

@@ -82,11 +82,6 @@ export default function HomePage() {
 
           <section id="latest-comics" className="p-4">
             <div className="container">
-              {/* <div className="d-flex justify-content-center align-items-center gap-4"> */}
-              {/* <button className="go-prev">
-                <i class="bi bi-caret-left-fill"></i>
-              </button> */}
-              {/* <div> */}
               <h1 className="bangers-regular">Ultimi arrivi</h1>
               <p className="bebas-neue-regular fs-5">
                 Scopri le ultime novità dal mondo dei fumetti Marvel e DC: nuove
@@ -116,11 +111,6 @@ export default function HomePage() {
                   );
                 })}
               </div>
-              {/* </div> */}
-              {/* <button className="go-next">
-                <i class="bi bi-caret-right-fill"></i>
-              </button> */}
-              {/* </div> */}
               <div className="d-flex justify-content-center">
                 <button className="button-49" role="button">
                   LET'S GO
@@ -131,11 +121,6 @@ export default function HomePage() {
 
           <section id="preoder-comics" className="p-4">
             <div className="container">
-              {/* <div className="d-flex justify-content-center align-items-center gap-4"> */}
-              {/* <button className="go-prev">
-                <i class="bi bi-caret-left-fill"></i>
-              </button> */}
-              {/* <div> */}
               <h1 className="bangers-regular">Preordini</h1>
               <p className="bebas-neue-regular fs-5">
                 Anticipa tutti e prenota i fumetti Marvel e DC in uscita. I
@@ -177,11 +162,6 @@ export default function HomePage() {
 
           <section id="discount-comics" className="p-4">
             <div className="container">
-              {/* <div className="d-flex justify-content-center align-items-center gap-4"> */}
-              {/* <button className="go-prev">
-                <i class="bi bi-caret-left-fill"></i>
-              </button> */}
-              {/* <div> */}
               <h1 className="bangers-regular">Scontati</h1>
               <p className="bebas-neue-regular fs-5">
                 La tua collezione merita sempre nuove avventure. Abbiamo
@@ -207,11 +187,6 @@ export default function HomePage() {
                   );
                 })}
               </div>
-              {/* </div> */}
-              {/* <button className="go-next">
-                <i class="bi bi-caret-right-fill"></i>
-              </button> */}
-              {/* </div> */}
               <div className="d-flex justify-content-center">
                 <button className="button-49" role="button">
                   LET'S GO
