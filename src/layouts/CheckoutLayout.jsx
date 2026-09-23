@@ -69,8 +69,8 @@ export default function CheckoutLayout() {
                 <div className="progress-bar bg-success" style={{width: '100%'}}></div>
             </div>
         )}
-        <div className="d-flex justify-content-between align-items-center mt-3 fs-4">
-            <span className={pathname !== "/checkout" ? "opacity-25" : ""}>Dati di fatturazione</span>
+        <div className="d-flex justify-content-around align-items-center mt-3 fs-4">
+            <span className={pathname !== "/checkout" ? "opacity-25" : ""}>Fatturazione</span>
             <span className={!isPaymentPage ? "opacity-25" : ""}>Pagamento</span>
             <span className={!isOrderSuccessPage ? "opacity-25" : ""}>Ordine effettuato</span>
         </div>

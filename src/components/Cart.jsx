@@ -41,6 +41,7 @@ export default function Cart({cart, setCart}) {
   }
 
     return(
+      <>
         <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div className="offcanvas-header pb-1">
       <h5 className="offcanvas-title bangers-regular h3" id="offcanvasRightLabel">Il tuo carrello</h5>
@@ -54,7 +55,7 @@ export default function Cart({cart, setCart}) {
     {cart.length > 0 && (
           <div className="offcanvas-body bebas-neue-regular pt-1 fs-4">
       <div className="d-flex justify-content-end align-items-center mb-3">
-        {cart.length > 0 ? <button className="btn btn-danger" type="button" onClick={() => setCart([])}>Svuota carrello</button> : ""}
+        {cart.length > 0 ? <button className="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Svuota carrello</button> : ""}
       </div>
       <div className="row row-cols-1 g-0 fs-5">
       {cart.map((item) => {
@@ -111,7 +112,22 @@ export default function Cart({cart, setCart}) {
           CHECKOUT <i className="bi bi-arrow-right"></i>
           </span>
       </button>
-    
   </div>
+
+  <div className="modal fade bebas-neue-regular" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h1 className="modal-title fs-5" id="staticBackdropLabel">sicuro di voler eliminare il carrello?</h1>
+            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={() => setCart([])}>Svuota</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </>
     )
 }

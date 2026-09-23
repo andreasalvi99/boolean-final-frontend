@@ -41,7 +41,7 @@ export default function Navbar({ cart, setCart }) {
               <SearchForm></SearchForm>
               <button className="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                 <i className="bi bi-handbag position-relative">
-                  <span className="cart-item-push">
+                  <span className={cart.length > 0 ? "cart-item-push" : ""}>
                   {cart.length > 0 ? cart.reduce((total, item) => total + item.quantity, 0) : ""}
                 </span>
                 </i>
