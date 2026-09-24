@@ -159,11 +159,6 @@ export default function HomePage() {
                   );
                 })}
               </div>
-              {/* </div> */}
-              {/* <button className="go-next">
-                <i class="bi bi-caret-right-fill"></i>
-              </button> */}
-              {/* </div> */}
               <div className="d-flex justify-content-center">
                 <button className="button-49" role="button">
                   LET'S GO
