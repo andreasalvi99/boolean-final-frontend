@@ -14,7 +14,7 @@ export default function ComicDetailCard({
   isPreorder,
   isDiscount,
   addToCart,
-  comic
+  comic,
 }) {
   function calcDiscountedPrice(price, discountValue) {
     const discount = (price * discountValue) / 100;
@@ -85,15 +85,21 @@ export default function ComicDetailCard({
                 }}
                 className={`${brand?.name === "Marvel Comics" ? "marvel-logo" : ""}`}
               />
-              <button type="button" className="btn btn-primary flex-grow-1" onClick={() => {addToCart(comic)}}>
+              <button
+                type="button"
+                className="btn btn-primary flex-grow-1"
+                onClick={() => {
+                  addToCart(comic);
+                }}
+              >
                 <div className="d-flex justify-content-center align-items-center gap-3">
-                  <i className="bi bi-bag-plus"></i> 
+                  <i className="bi bi-bag-plus"></i>
                   <span>Aggiungi al carrello</span>
                 </div>
               </button>
               {!isDiscount && (
                 <p className="align-self-center m-0 fs-3 fw-semibold oswald-special">
-                  {price} &euro; 
+                  {price} &euro;
                 </p>
               )}
 

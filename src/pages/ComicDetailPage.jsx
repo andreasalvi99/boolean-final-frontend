@@ -1,12 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate, useOutletContext, useParams } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useOutletContext,
+  useParams,
+} from "react-router-dom";
 import Loader from "../components/Loader";
 import GoBackBtn from "../components/GoBackBtn";
 import ComicDetailCard from "../components/ComicDetailCard";
 import ReactMarkdown from "react-markdown";
 import dateFormat from "dateformat";
-
 
 export default function ComicDetailPage() {
   const { id } = useParams();
@@ -14,7 +19,7 @@ export default function ComicDetailPage() {
   const [previous, setPrevious] = useState(null);
   const [next, setNext] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const {cart, setCart, isVisible ,setIsVisible} = useOutletContext()
+  const { cart, setCart, isVisible, setIsVisible } = useOutletContext();
 
   // Hook che restituisce info sulla pagina corrente
   const location = useLocation();
@@ -58,32 +63,32 @@ export default function ComicDetailPage() {
   function addToCart(comic) {
     const cartItem = {
       comic: comic,
-      quantity: 1
-    }
+      quantity: 1,
+    };
 
     const existingCartItem = cart.find((item) => {
-      return item.comic.id === cartItem.comic.id
-    }
-    )
+      return item.comic.id === cartItem.comic.id;
+    });
 
     if (existingCartItem) {
-  const updatedCart = cart.map((item) => {
-    if (item.comic.id === comic.id) {
-      return {
-        ...item,
-        quantity: item.quantity + 1
-      };
-    } else {
-      return item;
-    }
-  });
+      const updatedCart = cart.map((item) => {
+        if (item.comic.id === comic.id) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          };
+        } else {
+          return item;
+        }
+      });
 
-  setCart(updatedCart);
-  setIsVisible(true)
-} else {
-  setCart([...cart, cartItem]);
-  setIsVisible(true)
-}}
+      setCart(updatedCart);
+      setIsVisible(true);
+    } else {
+      setCart([...cart, cartItem]);
+      setIsVisible(true);
+    }
+  }
 
   useEffect(fetchComic, [id]);
 
@@ -91,7 +96,7 @@ export default function ComicDetailPage() {
     if (!isVisible) return;
 
     const timer = setTimeout(() => {
-        setIsVisible(false);
+      setIsVisible(false);
     }, 2000);
 
     return () => clearTimeout(timer);

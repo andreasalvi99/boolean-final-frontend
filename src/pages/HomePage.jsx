@@ -10,37 +10,36 @@ export default function HomePage() {
   const [preorderComics, setPreorderComics] = useState([]);
   const [discountComics, setDiscountComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { cart, setCart, isVisible ,setIsVisible } = useOutletContext();
+  const { cart, setCart, isVisible, setIsVisible } = useOutletContext();
 
   function addToCart(comic) {
     const cartItem = {
       comic: comic,
-      quantity: 1
-    }
+      quantity: 1,
+    };
 
     const existingCartItem = cart.find((item) => {
-      return item.comic.id === cartItem.comic.id
-    }
-    )
+      return item.comic.id === cartItem.comic.id;
+    });
 
     if (existingCartItem) {
-  const updatedCart = cart.map((item) => {
-    if (item.comic.id === comic.id) {
-      return {
-        ...item,
-        quantity: item.quantity + 1
-      };
-    } else {
-      return item;
-    }
-  });
+      const updatedCart = cart.map((item) => {
+        if (item.comic.id === comic.id) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          };
+        } else {
+          return item;
+        }
+      });
 
-  setCart(updatedCart);
-  setIsVisible(true)
-} else {
-  setCart([...cart, cartItem]);
-  setIsVisible(true)
-}
+      setCart(updatedCart);
+      setIsVisible(true);
+    } else {
+      setCart([...cart, cartItem]);
+      setIsVisible(true);
+    }
   }
 
   function fetchSpecialComics() {
@@ -77,7 +76,7 @@ export default function HomePage() {
     if (!isVisible) return;
 
     const timer = setTimeout(() => {
-        setIsVisible(false);
+      setIsVisible(false);
     }, 2000);
 
     return () => clearTimeout(timer);

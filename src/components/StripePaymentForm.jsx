@@ -1,57 +1,58 @@
-import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import {
+  PaymentElement,
+  useElements,
+  useStripe,
+} from "@stripe/react-stripe-js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function StripePaymentForm({total, orderId, setCart}) {
-    
-    const stripe = useStripe();
-    const elements = useElements();
-    const navigate = useNavigate();
+export default function StripePaymentForm({ total, orderId, setCart }) {
+  const stripe = useStripe();
+  const elements = useElements();
+  const navigate = useNavigate();
 
-    const [errorMessage, setErrorMessage] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-    async function handleSubmit(e) {
-        e.preventDefault();
+  async function handleSubmit(e) {
+    e.preventDefault();
 
-        if (!stripe || !elements) {
-            return;
-        }
-
-        setIsLoading(true);
-        setErrorMessage(null);
-
-        const { error, paymentIntent } = await stripe.confirmPayment({
-            elements,
-            redirect: "if_required",
-        });
-
-        if (error) {
-            setErrorMessage(error.message);
-        } else if (paymentIntent?.status === "succeeded") {
-            console.log("Pagamento Stripe riuscito:", paymentIntent.id);
-            navigate(`/orders/${orderId}/success`)
-            setCart([])
-        }
-
-        setIsLoading(false);
+    if (!stripe || !elements) {
+      return;
     }
 
-    return (
-        <form onSubmit={handleSubmit} className="mt-4">
-            <PaymentElement />
+    setIsLoading(true);
+    setErrorMessage(null);
 
-            {errorMessage && (
-                <p className="text-danger mt-3">{errorMessage}</p>
-            )}
+    const { error, paymentIntent } = await stripe.confirmPayment({
+      elements,
+      redirect: "if_required",
+    });
 
-            <button
-                type="submit"
-                className="btn btn-success mt-3"
-                disabled={!stripe || isLoading}
-            >
-                {isLoading ? "Pagamento in corso..." : `Paga ora ${total}`}&euro;
-            </button>
-        </form>
-    );
+    if (error) {
+      setErrorMessage(error.message);
+    } else if (paymentIntent?.status === "succeeded") {
+      console.log("Pagamento Stripe riuscito:", paymentIntent.id);
+      navigate(`/orders/${orderId}/success`);
+      setCart([]);
+    }
+
+    setIsLoading(false);
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="mt-4">
+      <PaymentElement />
+
+      {errorMessage && <p className="text-danger mt-3">{errorMessage}</p>}
+
+      <button
+        type="submit"
+        className="btn btn-success mt-3"
+        disabled={!stripe || isLoading}
+      >
+        {isLoading ? "Pagamento in corso..." : `Paga ora ${total}`}&euro;
+      </button>
+    </form>
+  );
 }

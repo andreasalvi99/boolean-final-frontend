@@ -5,39 +5,39 @@ import Loader from "../components/Loader";
 import ComicCard from "../components/ComicCard";
 
 export default function ComicsPage() {
-  const { cart, setCart, isVisible ,setIsVisible } = useOutletContext();
+  const { cart, setCart, isVisible, setIsVisible } = useOutletContext();
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   function addToCart(comic) {
     const cartItem = {
       comic: comic,
-      quantity: 1
-    }
+      quantity: 1,
+    };
 
     const existingCartItem = cart.find((item) => {
-      return item.comic.id === cartItem.comic.id
-    }
-    )
+      return item.comic.id === cartItem.comic.id;
+    });
 
     if (existingCartItem) {
-  const updatedCart = cart.map((item) => {
-    if (item.comic.id === comic.id) {
-      return {
-        ...item,
-        quantity: item.quantity + 1
-      };
-    } else {
-      return item;
-    }
-  });
+      const updatedCart = cart.map((item) => {
+        if (item.comic.id === comic.id) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          };
+        } else {
+          return item;
+        }
+      });
 
-  setCart(updatedCart);
-  setIsVisible(true)
-} else {
-  setCart([...cart, cartItem]);
-  setIsVisible(true)
-}}
+      setCart(updatedCart);
+      setIsVisible(true);
+    } else {
+      setCart([...cart, cartItem]);
+      setIsVisible(true);
+    }
+  }
 
   function fetchComics() {
     axios
@@ -67,7 +67,7 @@ export default function ComicsPage() {
     if (!isVisible) return;
 
     const timer = setTimeout(() => {
-        setIsVisible(false);
+      setIsVisible(false);
     }, 2000);
 
     return () => clearTimeout(timer);

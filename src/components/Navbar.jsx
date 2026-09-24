@@ -1,11 +1,9 @@
 import { NavLink } from "react-router-dom";
 import logo from "../assets/img/logo.png";
 import SearchForm from "./SearchForm";
-import Cart from "./Cart.jsx"
-
+import Cart from "./Cart.jsx";
 
 export default function Navbar({ cart, setCart }) {
-
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top bebas-neue-regular">
@@ -39,11 +37,19 @@ export default function Navbar({ cart, setCart }) {
             </ul>
             <div className="d-flex gap-4 align-items-center">
               <SearchForm></SearchForm>
-              <button className="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+              <button
+                className="btn"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"
+              >
                 <i className="bi bi-handbag position-relative">
                   <span className={cart.length > 0 ? "cart-item-push" : ""}>
-                  {cart.length > 0 ? cart.reduce((total, item) => total + item.quantity, 0) : ""}
-                </span>
+                    {cart.length > 0
+                      ? cart.reduce((total, item) => total + item.quantity, 0)
+                      : ""}
+                  </span>
                 </i>
               </button>
             </div>
@@ -51,10 +57,7 @@ export default function Navbar({ cart, setCart }) {
         </div>
       </nav>
 
-      <Cart 
-        cart={cart}
-        setCart={setCart}
-      />
-</>
+      <Cart cart={cart} setCart={setCart} />
+    </>
   );
 }

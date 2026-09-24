@@ -34,8 +34,7 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
 
-        <Route element={<CheckoutLayout/> }>
-
+        <Route element={<CheckoutLayout />}>
           {/* Checkout */}
           <Route path="/checkout" element={<CheckoutPage />} />
 
@@ -43,10 +42,8 @@ export default function App() {
           <Route path="/payment/:orderId" element={<PaymentPage />} />
 
           {/* Order fulfilled */}
-          <Route path="/orders/:orderId/success" element={<OrderSuccess/>}/>
-        
+          <Route path="/orders/:orderId/success" element={<OrderSuccess />} />
         </Route>
-
       </Routes>
     </BrowserRouter>
   );

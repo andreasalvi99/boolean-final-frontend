@@ -5,64 +5,56 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import StripePaymentForm from "../components/StripePaymentForm";
 
-
-const stripePromise = loadStripe(
-    import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
-);
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 export default function PaymentPage() {
+  const { cart, setCart } = useOutletContext();
 
-    const {cart, setCart} = useOutletContext()
+  const { orderId } = useParams();
 
-    const { orderId } = useParams();
+  const [total, setTotal] = useState(null);
 
-    const [total, setTotal] = useState(null)
+  const [clientSecret, setClientSecret] = useState(null);
+  const [error, setError] = useState(null);
 
-    const [clientSecret, setClientSecret] = useState(null);
-    const [error, setError] = useState(null);
+  useEffect(() => {
+    async function getPaymentIntent() {
+      try {
+        const response = await axios.post(
+          `https://laravel-final-backend.onrender.com/api/orders/${orderId}/payment-intent`,
+        );
+        console.log(response);
 
-    useEffect(() => {
-        async function getPaymentIntent() {
-            try {
-                const response = await axios.post(
-                    `https://laravel-final-backend.onrender.com/api/orders/${orderId}/payment-intent`
-                );
-                console.log(response);
-                
-                setTotal(response.data.total)
-                setClientSecret(response.data.clientSecret);
-            } catch (error) {
-                console.error(error.response?.data || error);
-                setError("Non è stato possibile preparare il pagamento.");
-            }
-        }
-
-        getPaymentIntent();
-    }, [orderId]);
-
-    if (error) {
-        return <p>{error}</p>;
+        setTotal(response.data.total);
+        setClientSecret(response.data.clientSecret);
+      } catch (error) {
+        console.error(error.response?.data || error);
+        setError("Non è stato possibile preparare il pagamento.");
+      }
     }
 
-    if (!clientSecret) {
-        return <p>Preparazione del pagamento...</p>;
-    }
+    getPaymentIntent();
+  }, [orderId]);
 
+  if (error) {
+    return <p>{error}</p>;
+  }
 
-    return (
+  if (!clientSecret) {
+    return <p>Preparazione del pagamento...</p>;
+  }
+
+  return (
     <section id="main-content">
-        <div className="container mt-5">
-
-            <Elements
-                stripe={stripePromise}
-                options={{ clientSecret }}
-            >
-                <StripePaymentForm 
-                total={total}
-                orderId={orderId}
-                setCart={setCart}/>
-            </Elements>
-        </div>
+      <div className="container mt-5">
+        <Elements stripe={stripePromise} options={{ clientSecret }}>
+          <StripePaymentForm
+            total={total}
+            orderId={orderId}
+            setCart={setCart}
+          />
+        </Elements>
+      </div>
     </section>
-);
+  );
 }

@@ -5,7 +5,6 @@ import Loader from "../components/Loader";
 import NoResults from "../components/NoResults";
 import ComicCard from "../components/ComicCard";
 
-
 export default function SearchResultsPage() {
   const [searchParams] = useSearchParams(); // hook per recuperare il valore cercato nel search
   const [comicsSearchResults, setComicsSearchResults] = useState([]); //stato dei comics come risultato della ricerca
@@ -16,30 +15,30 @@ export default function SearchResultsPage() {
   function addToCart(comic) {
     const cartItem = {
       comic: comic,
-      quantity: 1
-    }
+      quantity: 1,
+    };
 
     const existingCartItem = cart.find((item) => {
-      return item.comic.id === cartItem.comic.id
-    }
-    )
+      return item.comic.id === cartItem.comic.id;
+    });
 
     if (existingCartItem) {
-  const updatedCart = cart.map((item) => {
-    if (item.comic.id === comic.id) {
-      return {
-        ...item,
-        quantity: item.quantity + 1
-      };
-    } else {
-      return item;
-    }
-  });
+      const updatedCart = cart.map((item) => {
+        if (item.comic.id === comic.id) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          };
+        } else {
+          return item;
+        }
+      });
 
-  setCart(updatedCart);
-} else {
-  setCart([...cart, cartItem]);
-}}
+      setCart(updatedCart);
+    } else {
+      setCart([...cart, cartItem]);
+    }
+  }
 
   const query = searchParams.get("query"); // recupero il valore cercato
 

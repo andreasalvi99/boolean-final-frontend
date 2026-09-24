@@ -1,83 +1,122 @@
-import { NavLink, Outlet, useLocation, useMatch } from "react-router-dom"
-import Footer from "../components/Footer"
+import { NavLink, Outlet, useLocation, useMatch } from "react-router-dom";
+import Footer from "../components/Footer";
 import logo from "../assets/img/logo.png";
 import { useEffect, useState } from "react";
 
 function ScrollToTop() {
-    const { pathname } = useLocation();
+  const { pathname } = useLocation();
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [pathname]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
-    return null;
+  return null;
 }
 
 export default function CheckoutLayout() {
-    const [cart, setCart] = useState(() => {
+  const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
 
     return savedCart ? JSON.parse(savedCart) : [];
-    });
+  });
 
-    useEffect(() => {
+  useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
-    }, [cart]);
+  }, [cart]);
 
-    const isPaymentPage = useMatch("/payment/:orderId")
-    const isOrderSuccessPage = useMatch("/orders/:orderId/success")
+  const isPaymentPage = useMatch("/payment/:orderId");
+  const isOrderSuccessPage = useMatch("/orders/:orderId/success");
 
-    const { pathname } = useLocation()
+  const { pathname } = useLocation();
 
-    return(
-        <>
-        <ScrollToTop/>
-        
-        <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top bebas-neue-regular">
-            <div className="container">
-                <NavLink to="/">
-                    <img src={logo} alt="" className="navbar-logo" />
-                </NavLink>
-                <button
-                className="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-                >
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </nav>
+  return (
+    <>
+      <ScrollToTop />
 
-        <section id="main-content">
-            <div className="container mt-5 bebas-neue-regular">
-            {pathname === "/checkout" && 
-            (<div className="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{height: '2px'}}>
-                <div className="progress-bar bg-success" style={{width: '33%'}}></div>
-            </div>
-        )}
-            {isPaymentPage && 
-            (<div className="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{height: '2px'}}>
-                <div className="progress-bar bg-success" style={{width: '66%'}}></div>
-            </div>
-        )} 
-            {pathname !== "/checkout" && !isPaymentPage && 
-            (<div className="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{height: '2px'}}>
-                <div className="progress-bar bg-success" style={{width: '100%'}}></div>
-            </div>
-        )}
-        <div className="d-flex justify-content-around align-items-center mt-3 fs-4">
-            <span className={pathname !== "/checkout" ? "opacity-25" : ""}>Fatturazione</span>
-            <span className={!isPaymentPage ? "opacity-25" : ""}>Pagamento</span>
-            <span className={!isOrderSuccessPage ? "opacity-25" : ""}>Ordine effettuato</span>
+      <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top bebas-neue-regular">
+        <div className="container">
+          <NavLink to="/">
+            <img src={logo} alt="" className="navbar-logo" />
+          </NavLink>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
         </div>
-                <Outlet context={{cart, setCart}}/>
+      </nav>
+
+      <section id="main-content">
+        <div className="container mt-5 bebas-neue-regular">
+          {pathname === "/checkout" && (
+            <div
+              className="progress"
+              role="progressbar"
+              aria-label="Example 1px high"
+              aria-valuenow="25"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style={{ height: "2px" }}
+            >
+              <div
+                className="progress-bar bg-success"
+                style={{ width: "33%" }}
+              ></div>
             </div>
-        </section>
-        <Footer/>
-        </>
-    )
+          )}
+          {isPaymentPage && (
+            <div
+              className="progress"
+              role="progressbar"
+              aria-label="Example 1px high"
+              aria-valuenow="25"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style={{ height: "2px" }}
+            >
+              <div
+                className="progress-bar bg-success"
+                style={{ width: "66%" }}
+              ></div>
+            </div>
+          )}
+          {pathname !== "/checkout" && !isPaymentPage && (
+            <div
+              className="progress"
+              role="progressbar"
+              aria-label="Example 1px high"
+              aria-valuenow="25"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style={{ height: "2px" }}
+            >
+              <div
+                className="progress-bar bg-success"
+                style={{ width: "100%" }}
+              ></div>
+            </div>
+          )}
+          <div className="d-flex justify-content-around align-items-center mt-3 fs-4">
+            <span className={pathname !== "/checkout" ? "opacity-25" : ""}>
+              Fatturazione
+            </span>
+            <span className={!isPaymentPage ? "opacity-25" : ""}>
+              Pagamento
+            </span>
+            <span className={!isOrderSuccessPage ? "opacity-25" : ""}>
+              Ordine effettuato
+            </span>
+          </div>
+          <Outlet context={{ cart, setCart }} />
+        </div>
+      </section>
+      <Footer />
+    </>
+  );
 }
