@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
+import Toast from "../components/Toast";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -33,24 +34,7 @@ export default function DefaultLayout() {
 
       <Outlet context={{ cart, setCart, isVisible, setIsVisible }} />
 
-      <div className="toast-container position-fixed bottom-0 end-0 p-3">
-        <div
-          className={`toast ${isVisible ? "show" : ""} align-items-center bg-success text-white`}
-          role="alert"
-          aria-live="assertive"
-          aria-atomic="true"
-        >
-          <div className="d-flex">
-            <div className="toast-body">Aggiunto al carrello</div>
-            <button
-              type="button"
-              className="btn-close btn-close-white me-2 m-auto"
-              data-bs-dismiss="toast"
-              aria-label="Close"
-            ></button>
-          </div>
-        </div>
-      </div>
+      <Toast isVisible={isVisible} />
 
       <Footer />
     </>
